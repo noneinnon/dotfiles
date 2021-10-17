@@ -1,0 +1,16 @@
+[user]
+	name = Anton Baranov
+	email = 44464480+noneinnon@users.noreply.github.com
+[core]
+	editor = nvim
+[mergetool "idea"]
+	cmd = /Applications/WebStorm.app/Contents/MacOS/webstorm merge \
+	$(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") \
+  $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") \
+  $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") \
+  $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED") \
+  && read -n 1 -s
+[merge]
+	tool = idea
+[mergetool]
+	keepBackup = false
