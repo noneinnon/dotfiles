@@ -1,4 +1,4 @@
-FILES_TO_SKIP=( 'scripts' '.config' '.' '..' $0 '.git' );
+FILES_TO_SKIP=( 'scripts' '.config' '.' '..' $0 '.git' 'README.md' );
 
 [[ ! $USER ]] && echo "Current user is not defined" && exit 1
 
