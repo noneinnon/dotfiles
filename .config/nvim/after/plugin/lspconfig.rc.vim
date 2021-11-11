@@ -169,6 +169,15 @@ nvim_lsp.html.setup {
 nvim_lsp.cssls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    css = {
+      validate = false
+      }
+    }
 }
 
+nvim_lsp.elmls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 EOF

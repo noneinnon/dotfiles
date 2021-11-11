@@ -13,6 +13,10 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " General Mappings
 let mapleader = "\<Space>"
 
+" quickfix
+nnoremap ;h :cprev<CR>
+nnoremap ;l :cnext<CR>
+
 " Substitute
 "
 " replace word
