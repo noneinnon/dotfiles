@@ -26,7 +26,7 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 vnoremap <leader>0 :s/\%V\<<c-r>0\>//g<left><left>
 
 " Substitute in quickfix
-nnoremap <leader>cd :cdo %s//gc | update
+nnoremap <leader>cd :cdo %s///gc <bar> update<c-b><right><right><right><right><right><right><right>
 
 nnoremap <leader>- :vimgrep <C-r><C-w> % <bar>:copen<CR>
 
