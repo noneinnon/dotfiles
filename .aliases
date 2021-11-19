@@ -19,7 +19,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias oldvim="vim"
 
-alias ide="sh ~/.scripts/ide.sh"
+alias ide="sh scripts/ide.sh"
 
 alias webstorm='open -a "Webstorm" .'
 alias storm='open -a "Webstorm" .'
