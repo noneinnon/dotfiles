@@ -12,7 +12,6 @@ alias push='git push'
 alias ywav='youtube-dl -x --audio-format "wav"'
 alias ymp3='youtube-dl -x --audio-format "wav"'
 alias ymp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
-
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias vim="nvim"
@@ -28,6 +27,7 @@ alias sublime='open -a "Sublime text" .'
 # npm
 alias start='npm run start'
 alias sscripts='cat package.json | jq ".scripts"'
+alias svers='cat package.json | jq ".version"'
 
 # GIT
 alias gb='git branch --sort=-committerdate'
@@ -37,13 +37,9 @@ alias grf='git checkout HEAD --'
 
 # Paths
 alias ig-helper='cd ~/Projects/ig-helper'
-alias web-crm='cd ~/Ozon/web-crm-bare'
-alias ui-kit='cd ~/Ozon/ui-kit-bare'
 alias vimrc='vim ~/.vimrc'
 alias nvimrc='vim ~/.config/nvim/init.vim'
-
-alias wcrm='~/Ozon/web-crm-bare'
-alias uikit='~/Ozon/ui-kit-bare'
+alias dotfiles="cd ~/dotfiles"
 
 # FZF
 alias vf='vim $(fzf)'

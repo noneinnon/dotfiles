@@ -36,7 +36,8 @@ export EDITOR='nvim'
 # export ARCHFLAGS="-arch x86_64"
 
 # Load dotfiles:
-for file in ~/.{bash_prompt,aliases,private}; do
+for file in ~/.{bash_prompt,aliases,private,bash_profile}; do
+		echo $file
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
