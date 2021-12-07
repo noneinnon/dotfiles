@@ -2,8 +2,6 @@
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>cc :close<CR>
 
-
-
 " Nerdtree
 "nnoremap <leader>n :NERDTreeFocus<CR>
 "nnoremap <C-n> :NERDTree<CR>
@@ -121,7 +119,7 @@ nnoremap <leader>bd :1, $bd!<CR>
 
 " source
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
-nnoremap <leader>9 :e ~/.config<CR>
+nnoremap <leader>9 :Explore ~/.config<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :wq<CR>
 

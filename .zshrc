@@ -1,4 +1,6 @@
 export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -67,17 +69,10 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 ZSH_THEME="gruvbox"
 SOLARIZED_THEME="dark"
 
-# The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/Users/antbaranov/yandex-cloud/path.bash.inc' ]; then source '/Users/antbaranov/yandex-cloud/path.bash.inc'; fi
-
-# The next line enables shell command completion for yc.
-if [ -f '/Users/antbaranov/yandex-cloud/completion.zsh.inc' ]; then source '/Users/antbaranov/yandex-cloud/completion.zsh.inc'; fi
-
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
 # Tmux
 ZSH_TMUX_AUTOSTART=true
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -101,3 +96,4 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
+export PATH="/usr/local/opt/python@3.9/bin:$PATH"
