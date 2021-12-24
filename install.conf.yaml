@@ -7,7 +7,6 @@
 - link:
     ~/.config: .config
     ~/.zshrc: .zshrc
-    ~/.gitignore_global: git/gitignore_global
     ~/.aliases: .aliases
     ~/.tmux.conf: .tmux.conf
     ~/.tmux.conf.local: .tmux.conf.local
