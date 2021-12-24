@@ -14,6 +14,5 @@
 	tool = idea
 [mergetool]
 	keepBackup = false
-
 [worktree]
 	guessRemote = true
