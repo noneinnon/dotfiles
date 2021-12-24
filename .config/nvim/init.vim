@@ -124,7 +124,7 @@ set formatoptions+=r
 
 " Highlights "{{{
 " ---------------------------------------------------------------------
-set cursorline
+"set cursorline
 "set cursorcolumn
 
 " Set cursor line color on visual mode
