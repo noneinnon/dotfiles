@@ -17,12 +17,11 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
   Plug 'neovim/nvim-lspconfig'
-  "Plug 'nvim-lua/completion-nvim'
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-  Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+  Plug 'ms-jpq/coq_nvim', {'branch': 'coq' }
   Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 endif
 call plug#end()

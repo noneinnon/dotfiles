@@ -21,28 +21,21 @@ nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
 
 lua << EOF
 local actions = require('telescope.actions')
+local trouble = require("trouble.providers.telescope")
 -- Global remapping
 ------------------------------
 require('telescope').setup{
-  extensions = {
-      fzf = {
-        fuzzy = true,                    -- false will only do exact matching
-        override_generic_sorter = true,  -- override the generic sorter
-        override_file_sorter = true,     -- override the file sorter
-        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                         -- the default case_mode is "smart_case"
-      }
-    },
   defaults = {
     preview = false,
     initial_mode = "normal",
     mappings = {
       n = {
+        ["<c-b>"] = trouble.open_with_trouble,
         ["q"] = actions.close
       },
+      i = { ["<c-b>"] = trouble.open_with_trouble },
     },
   }
 }
 
-require('telescope').load_extension('fzf')
 EOF
