@@ -5,13 +5,13 @@
 - clean: ['~']
 
 - link:
-    ~/.dotfiles: ''
     ~/.config: .config
-    ~/.zshrc: zsh/zshrc
+    ~/.zshrc: .zshrc
     ~/.gitignore_global: git/gitignore_global
-    ~/.aliases: aliases
+    ~/.aliases: .aliases
     ~/.tmux.conf: .tmux.conf
     ~/.tmux.conf.local: .tmux.conf.local
+    ~/.gitignore: .gitignore
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
