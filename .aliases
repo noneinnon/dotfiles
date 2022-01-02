@@ -36,14 +36,14 @@ alias gdf='git diff-tree --no-commit-id --name-only -r'
 alias grf='git checkout HEAD --'
 
 # Paths
-alias ig-helper='cd ~/Projects/ig-helper'
 alias vimrc='vim ~/.vimrc'
 alias nvimrc='vim ~/.config/nvim/init.vim'
-alias dotfiles="cd ~/dotfiles"
+alias zshrc='vim ~/.zshrc'
 
 # FZF
 alias vf='vim $(fzf)'
 
 # Other
 alias lg='lazygit'
-alias link-dotfile=~/dotfiles/scripts/create_symlink.sh
+
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}

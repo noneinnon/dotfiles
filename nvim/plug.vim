@@ -8,13 +8,14 @@ Plug 'preservim/nerdcommenter'
 Plug 'gruvbox-community/gruvbox'
 Plug 'flatcap/vim-local'
 Plug 'easymotion/vim-easymotion'
-Plug 'folke/trouble.nvim'
 
 if has("nvim")
 
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  if has("mac")
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  endif
 
   Plug 'neovim/nvim-lspconfig'
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
@@ -22,6 +23,7 @@ if has("nvim")
   Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'folke/trouble.nvim'
   "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 endif
 call plug#end()

@@ -5,23 +5,26 @@ export LC_CTYPE="en_US.UTF-8"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/antbaranov/.oh-my-zsh"
-
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+# Color theme
+ZSH_THEME="half-life"
+SOLARIZED_THEME="dark"
+#
+# Tmux
+#ZSH_TMUX_AUTOSTART=true
+
 plugins=(
-	zsh-syntax-highlighting
 	git
   tmux
+  zsh-syntax-highlighting
 )
-
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,7 +42,6 @@ export EDITOR='nvim'
 
 # Load dotfiles:
 for file in ~/.{bash_prompt,aliases,private,bash_profile}; do
-		echo $file
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -65,15 +67,6 @@ export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
-# Color theme
-ZSH_THEME="gruvbox"
-SOLARIZED_THEME="dark"
-
-function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
-
-# Tmux
-ZSH_TMUX_AUTOSTART=true
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
@@ -88,12 +81,12 @@ function node_prompt_version {
 }
 
 PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-PROMPT+=' %{$fg[cyan]%}%c%{$reset_color%} $(node_prompt_version) $(git_prompt_info)'
+PROMPT+=' %{$fg[cyan]%}%c%{$reset_color%} %{$fg_bold[yellow]%}%n@%m%{$reset_color%} $(node_prompt_version) $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/python@3.9/bin:$PATH"
