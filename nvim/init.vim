@@ -3,10 +3,9 @@ source ~/.vimrc
 runtime ./mappings.vim
 runtime ./plug.vim
 
-language en_US
-
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+set noswapfile
 
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1

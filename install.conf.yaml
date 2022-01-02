@@ -1,19 +1,22 @@
 - defaults:
     link:
       relink: true
-      force: true
+      create: true
 
 - clean: ['~']
 
 - link:
-    ~/.config: .config
+    ~/.config/nvim: nvim/
+    ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
     ~/.aliases: .aliases
-    ~/.tmux.conf: .tmux.conf
-    ~/.tmux.conf.local: .tmux.conf.local
+    ~/.tmux/.tmux.conf: .tmux.conf
+    ~/.tmux/.tmux.conf.local: .tmux.conf.local
     ~/.gitignore: .gitignore
-    ~/.vimrc: .vimrc
     ~/.gitconfig: .gitconfig
+    ~/.config/karabiner/karabiner.json: karabiner.json
+    ~/.oh-my-zsh/plugins/zsh-syntax-highlighting: .oh-my-zsh/plugins/zsh-syntax-highlighting
+    ~/.oh-my-zsh/plugins/zsh-vi-mode: .oh-my-zsh/plugins/zsh-vi-mode
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
