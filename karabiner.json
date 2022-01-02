@@ -23,6 +23,10 @@
                   "key_code": "home",
                   "modifiers": {
                     "mandatory": ["left_command"]
+                  },
+                  "key_code": "f12",
+                  "modifiers": {
+                    "mandatory": ["left_command"]
                   }
                 },
                 "to": {
@@ -40,6 +44,10 @@
                   "key_code": "page_up",
                   "modifiers": {
                     "mandatory": ["left_command"]
+                  },
+                  "key_code": "f11",
+                  "modifiers": {
+                    "mandatory": ["left_command"]
                   }
                 },
                 "to": {
@@ -55,6 +63,10 @@
               {
                 "from": {
                   "key_code": "page_down",
+                  "modifiers": {
+                    "mandatory": ["left_command"]
+                  },
+                  "key_code": "f10",
                   "modifiers": {
                     "mandatory": ["left_command"]
                   }
