@@ -33,15 +33,6 @@ nnoremap <leader>- :vimgrep <C-r><C-w> % <bar>:copen<CR>
 " For global replace
 "nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
-" FZF
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>Ff :FZF -q <C-r><C-w><CR>
-nnoremap <leader>fg :GFiles<CR>
-nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fc :Rg<CR>
-nnoremap <leader>Fc :Rg <C-r><C-w><CR>
-nnoremap <leader>fh :History<CR>
-
 " Fugitive
 nnoremap <leader>gs :tab Git<CR>
 nnoremap <leader>gc :tab Git commit<CR>
