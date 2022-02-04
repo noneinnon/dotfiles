@@ -58,11 +58,6 @@ nnoremap <leader>l :diffget //3<CR>
 map <leader>ct :NERDCommenterToggle<CR>
 
 " Windows & panes
-map <silent> <C-h> :call WinMove('h')<CR>
-map <silent> <C-j> :call WinMove('j')<CR>
-map <silent> <C-k> :call WinMove('k')<CR>
-map <silent> <C-l> :call WinMove('l')<CR>
-
 function! WinMove(key)
   let t:cuwin = winnr()
   exec "wincmd "a:key
@@ -75,6 +70,16 @@ function! WinMove(key)
     exec "wincmd ".a:key
   endif
 endfunction
+
+map <silent> <C-h> :call WinMove('h')<CR>
+map <silent> <C-j> :call WinMove('j')<CR>
+map <silent> <C-k> :call WinMove('k')<CR>
+map <silent> <C-l> :call WinMove('l')<CR>
+
+nmap <S-h> <C-w>>
+nmap <S-l> <C-w><
+nmap <S-j> <C-w>+
+nmap <S-k> <C-w>-
 
 " tabs
 " previous
@@ -105,6 +110,8 @@ nnoremap <leader>2 "=GetBranchName()<CR>pi<space>
 " Buffers
 nnoremap <leader>B :Buffers<CR>
 nnoremap <leader><leader>d :bd<CR>
+
+nnoremap <C-w> :wq<CR>
 " close all buffers
 nnoremap <leader>bd :1, $bd!<CR>
 
@@ -129,3 +136,9 @@ if has("mac") || has("gui_macvim") || has("gui_mac") || has("nvim") || has("neov
   " directory name (/something/src)
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
+
+" Increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" 

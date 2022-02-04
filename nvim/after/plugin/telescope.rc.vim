@@ -13,6 +13,8 @@ nnoremap <silent> gr <cmd>Telescope lsp_references<cr>
 nnoremap <silent> ;s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <silent> ;S <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent> ;m <cmd>Telescope marks<cr>
+nnoremap <silent> ;c <cmd>Telescope commands<cr>
+nnoremap <silent> ;k <cmd>Telescope keymaps<cr>
 nnoremap <silent> <C-t> <cmd>Telescope file_browser<cr>
 nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
 
