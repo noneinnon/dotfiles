@@ -1,3 +1,8 @@
+## run
+
+```bash
+sh install
+```
 ## Dependencies
 - zsh
 - oh-my-zsh
