@@ -5,14 +5,12 @@ alias la='ls -A'
 alias rmr='rm -r'
 alias chrome='open -a "Google Chrome"'
 alias img='curl -O'
-alias react='npx create-react-app'
 alias add='git add -A'
 alias commit='git commit -m'
 alias push='git push'
 alias ywav='youtube-dl -x --audio-format "wav"'
 alias ymp3='youtube-dl -x --audio-format "wav"'
 alias ymp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias vim="nvim"
 alias vi="nvim"
@@ -25,7 +23,6 @@ alias storm='open -a "Webstorm" .'
 alias sublime='open -a "Sublime text" .'
 
 # npm
-alias start='npm run start'
 alias sscripts='cat package.json | jq ".scripts"'
 alias svers='cat package.json | jq ".version"'
 
@@ -42,6 +39,8 @@ alias zshrc='vim ~/.zshrc'
 
 # FZF
 alias vf='vim $(fzf)'
+alias gco='fzf-git-checkout'
+#alias gcb='fzf-git-branch'
 
 # Other
 alias lg='lazygit'
