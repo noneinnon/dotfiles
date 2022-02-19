@@ -1,57 +1,6 @@
---vim.opt.termguicolors = true
---require('bufferline').setup{
-  --numbers = "buffer_id",
-    --close_command = "bdelete! %d",
-    --right_mouse_command = nil,
-    --left_mouse_command = "buffer %d",
-    --middle_mouse_command = nil,
-    --indicator_icon = "▎",
-    --buffer_close_icon = "",
-    --modified_icon = "●",
-    --close_icon = "",
-    --left_trunc_marker = "",
-    --right_trunc_marker = "",
-    --max_name_length = 18,
-    --max_prefix_length = 15,
-    --tab_size = 10,
-    --diagnostics = false,
-    --custom_filter = function(bufnr)
-      ---- if the result is false, this buffer will be shown, otherwise, this
-      ---- buffer will be hidden.
+local map = require('utils').map
 
-      ---- filter out filetypes you don't want to see
-      --local exclude_ft = { "qf", "fugitive", "git" }
-      --local cur_ft = vim.bo[bufnr].filetype
-      --local should_filter = vim.tbl_contains(exclude_ft, cur_ft)
+require("bufferline").setup{}
 
-      --if should_filter then
-        --return false
-      --end
-
-      --return true
-    --end,
-    --show_buffer_icons = false,
-    --show_buffer_close_icons = true,
-    --show_close_icon = true,
-    --show_tab_indicators = true,
-    --persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-    --separator_style = "bar",
-    --enforce_regular_tabs = false,
-    --always_show_bufferline = true,
-    --sort_by = "id",
---}
-
---local map = require("utils").map
-
---map("n", "<C-[>", ":BufferLineCyclePrev<CR>", { silent = true })
---map("n", "<C-]>", ":BufferLineCycleNext<CR>", { silent = true })
---map("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", { silent = true })
---map("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", { silent = true })
---map("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", { silent = true })
---map("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", { silent = true })
---map("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", { silent = true })
---map("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", { silent = true })
---map("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", { silent = true })
---map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", { silent = true })
---map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { silent = true })
-
+map('n', '[b', '<cmd>BufferLineCyclePrev<CR>', { silent = true })
+map('n', ']b', '<cmd>BufferLineCycleNext<CR>', { silent = true })

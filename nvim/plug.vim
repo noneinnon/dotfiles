@@ -41,12 +41,10 @@ if has("nvim")
   Plug 'honza/vim-snippets'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'andersevenrud/nordic.nvim'
-  "Plug 'akinsho/bufferline.nvim'
+  Plug 'akinsho/bufferline.nvim'
   Plug 'savq/melange'
   Plug 'ludovicchabant/vim-gutentags'
-
-
-
+  Plug 'ThePrimeagen/harpoon'
   "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 endif
 call plug#end()

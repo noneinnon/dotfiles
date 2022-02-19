@@ -11,12 +11,6 @@ nnoremap Q <Nop>
 nnoremap <leader>qfo :copen<CR>
 nnoremap <leader>qfc :close<CR>
 
-" Nerdtree
-"nnoremap <leader>n :NERDTreeFocus<CR>
-"nnoremap <C-n> :NERDTree<CR>
-"nnoremap <C-t> :NERDTreeToggle<CR>
-"nnoremap <C-f> :NERDTreeFind<CR>
-
 " quickfix
 nnoremap ;h :cprev<CR>
 nnoremap ;l :cnext<CR>
@@ -27,17 +21,12 @@ nnoremap ;l :cnext<CR>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 
 " replace in visual
-vnoremap <leader>0 :s/\%V\<<c-r>0\>//g<left><left>
+vnoremap <leader>1 :s/\%V\<<c-r>0\>//g<left><left>
 
 " Substitute in quickfix
 nnoremap <leader>cd :cdo %s///gc <bar> update<c-b><right><right><right><right><right><right><right>
 
 nnoremap <leader>- :vimgrep <C-r><C-w> % <bar>:copen<CR>
-
-"" For local replace
-"nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
-" For global replace
-"nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
 " Fugitive
 nnoremap <leader>gs :tab Git<CR>
@@ -87,32 +76,20 @@ nmap <S-l> <C-w><
 nmap <S-j> <C-w>+
 nmap <S-k> <C-w>-
 
-" ETC
-" create component in directory of current opened buffer
-
-" web-crm
-"function! GetBranchName()
-  "let name = system('git symbolic-ref --short HEAD')
-  "let trimmed = substitute(name, '\n$', '', 'g')
-  "return '[' . trimmed . ']' . ' '
-"endfunction
-
-nnoremap <leader>1 :cd %:p:h <bar> !npm run create  <left>
-nnoremap <leader>2 "=GetBranchName()<CR>pi<space>
-
 " Buffers
-nnoremap <leader>B :Buffers<CR>
+"
+" close single buffer
 nnoremap <leader><leader>d :bd<CR>
-
 " close all buffers
 nnoremap <leader>bd :1, $bd!<CR>
 
-" source
+" Source
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
-nnoremap <leader>9 :Explore ~/.config<CR>
+nnoremap <leader>9 :e ~/.config<CR>
+
+" ETC
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :wq<CR>
-
 
 " copy current file name (relative/absolute) to system clipboard
 if has("mac") || has("gui_macvim") || has("gui_mac") || has("nvim") || has("neovim")
@@ -129,8 +106,3 @@ if has("mac") || has("gui_macvim") || has("gui_mac") || has("nvim") || has("neov
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
 
-" Increment/decrement
-nnoremap + <C-a>
-nnoremap - <C-x>
-
-" 
