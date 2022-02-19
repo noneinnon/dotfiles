@@ -15,7 +15,7 @@ nnoremap <silent> ;S <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent> ;m <cmd>Telescope marks<cr>
 nnoremap <silent> ;c <cmd>Telescope commands<cr>
 nnoremap <silent> ;k <cmd>Telescope keymaps<cr>
-nnoremap <silent> <C-t> <cmd>Telescope file_browser<cr>
+"nnoremap <silent> <C-t> <cmd>Telescope file_browser<cr>
 nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
 
 "nnoremap <silent> <C-f> <cmd>lua require('telescope.builtin').file_browser( { cwd = vim.fn.expand('%:p:h') })<cr>
@@ -23,7 +23,7 @@ nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
 
 lua << EOF
 local actions = require('telescope.actions')
-local trouble = require("trouble.providers.telescope")
+local previewers = require('telescope.previewers')
 -- Global remapping
 ------------------------------
 require('telescope').setup{
@@ -32,12 +32,18 @@ require('telescope').setup{
     initial_mode = "normal",
     mappings = {
       n = {
-        ["<c-b>"] = trouble.open_with_trouble,
-        ["q"] = actions.close
+        ["q"] = actions.close,
+        ["<C-Q>"] = actions.send_to_qflist,
+        ["<C-q>"] = actions.send_selected_to_qflist,
       },
-      i = { ["<c-b>"] = trouble.open_with_trouble },
+      i = { 
+        ["<C-Q>"] = actions.send_to_qflist,
+        ["<C-q>"] = actions.send_selected_to_qflist,
+      },
     },
-  }
+  },
+  pickers = {
+    }
 }
 
 EOF

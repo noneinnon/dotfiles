@@ -1,15 +1,21 @@
+" General Mappings
+let mapleader = "\<Space>"
+
+" disable command history
+nnoremap q: <Nop>
+"
+" disable ex mode
+nnoremap Q <Nop>
+
 " Quickfix
-nnoremap <leader>co :copen<CR>
-nnoremap <leader>cc :close<CR>
+nnoremap <leader>qfo :copen<CR>
+nnoremap <leader>qfc :close<CR>
 
 " Nerdtree
 "nnoremap <leader>n :NERDTreeFocus<CR>
 "nnoremap <C-n> :NERDTree<CR>
 "nnoremap <C-t> :NERDTreeToggle<CR>
 "nnoremap <C-f> :NERDTreeFind<CR>
-
-" General Mappings
-let mapleader = "\<Space>"
 
 " quickfix
 nnoremap ;h :cprev<CR>
@@ -81,19 +87,6 @@ nmap <S-l> <C-w><
 nmap <S-j> <C-w>+
 nmap <S-k> <C-w>-
 
-" tabs
-" previous
-map <leader>{ :tabp<CR>
-" next
-map <leader>} :tabn<CR>
-" close
-map <leader>w :tabc<CR>
-" new
-map <leader>n :tabnew<CR>
-
-" No highlight
-nmap <leader>\ :noh<CR>
-
 " ETC
 " create component in directory of current opened buffer
 
@@ -111,7 +104,6 @@ nnoremap <leader>2 "=GetBranchName()<CR>pi<space>
 nnoremap <leader>B :Buffers<CR>
 nnoremap <leader><leader>d :bd<CR>
 
-nnoremap <C-w> :wq<CR>
 " close all buffers
 nnoremap <leader>bd :1, $bd!<CR>
 

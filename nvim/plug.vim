@@ -14,16 +14,39 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   if has("mac")
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'hrsh7th/cmp-emoji'
   endif
 
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-  Plug 'ms-jpq/coq_nvim', {'branch': 'coq' }
-  Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+ "Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+  "Plug 'ms-jpq/coq_nvim', {'branch': 'coq' }
+  "Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'folke/trouble.nvim'
+  Plug 'kyazdani42/nvim-tree.lua'
+  "Plug 'folke/trouble.nvim'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'rafamadriz/friendly-snippets'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'SirVer/ultisnips'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+  Plug 'onsails/lspkind-nvim'
+  Plug 'honza/vim-snippets'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'andersevenrud/nordic.nvim'
+  "Plug 'akinsho/bufferline.nvim'
+  Plug 'savq/melange'
+  Plug 'ludovicchabant/vim-gutentags'
+
+
+
   "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 endif
 call plug#end()

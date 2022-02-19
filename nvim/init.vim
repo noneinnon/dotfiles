@@ -1,7 +1,4 @@
 source ~/.vimrc
-" Imports
-runtime ./mappings.vim
-runtime ./plug.vim
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
@@ -113,11 +110,18 @@ set backspace=start,eol,indent
 set path+=**
 set wildignore+=*/node_modules/*
 
+" removes commenting next line, after inserting a new line next to a commented
+" one
+set formatoptions-=cro
+
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
 " Add asterisks in block comments
 set formatoptions+=r
+
+" constant room for sign columns
+set signcolumn=yes
 
 "}}}
 
@@ -168,6 +172,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 " Imports "{{{
 " ---------------------------------------------------------------------
+runtime ./mappings.vim
 runtime ./plug.vim
 if has("unix")
   let s:uname = system("uname -s")
@@ -177,7 +182,6 @@ if has("unix")
   endif
 endif
 
-runtime ./maps.vim
 "}}}
 
 " Syntax theme "{{{
@@ -189,14 +193,24 @@ if exists("&termguicolors") && exists("&winblend")
   "set winblend=0
   "set wildoptions=pum
   "set pumblend=5
-  set background=dark
+
   " Use NeoSolarized
   "let g:neosolarized_termtrans=1
   "runtime ./colors/NeoSolarized.vim
   "colorscheme NeoSolarized
   " gruvbox
+  "set background=dark
   colorscheme gruvbox
-endif
+ "let g:nord_underline_option = 'none'
+  "let g:nord_italic = v:true
+  "let g:nord_italic_comments = v:false
+  "let g:nord_minimal_mode = v:false
+  "let g:nord_alternate_backgrounds = v:false
+  set background=light
+  "colorscheme nordic
+  "
+  "colorscheme melange
+  endif
 
 "}}}
 
