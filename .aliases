@@ -46,3 +46,11 @@ alias gco='fzf-git-checkout'
 alias lg='lazygit'
 
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+function replace() {
+  replace=$1
+  replacement=$2
+  directory=${3:="."}
+
+  ack $replace -l $directory | xargs -n 1 sed -i "" "s/$replace/$replacement/g"
+}
