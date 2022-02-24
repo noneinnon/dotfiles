@@ -19,13 +19,9 @@ if has("nvim")
   endif
 
 
- "Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-  "Plug 'ms-jpq/coq_nvim', {'branch': 'coq' }
-  "Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
-  "Plug 'folke/trouble.nvim'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -35,10 +31,8 @@ if has("nvim")
   Plug 'hrsh7th/vim-vsnip'
   Plug 'rafamadriz/friendly-snippets'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'SirVer/ultisnips'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'onsails/lspkind-nvim'
-  Plug 'honza/vim-snippets'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'andersevenrud/nordic.nvim'
   Plug 'akinsho/bufferline.nvim'

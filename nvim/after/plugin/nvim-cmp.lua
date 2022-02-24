@@ -1,13 +1,14 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local lspkind = require'lspkind'
+local feedkey = require'utils'.feedkey
 
 cmp.setup({
      snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+         --luasnip.lsp_expand(args.body) -- For `luasnip` users.
         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
@@ -16,17 +17,21 @@ cmp.setup({
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      else
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else 
         fallback()
       end
     end,
-    ['<S-Tab>'] = function(fallback)
+    ['<S-Tab>'] =cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
-      else
-        fallback()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
       end
-    end,
+    end, { "i", "s" }), 
     ['<Esc>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -44,7 +49,7 @@ cmp.setup({
     { name = 'tags' }
   },
   completion = {
-    autocomplete = false,
+    autocomplete = true,
     keyword_length = 1,
     completeopt = "menu,noselect"
   },

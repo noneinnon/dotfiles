@@ -105,4 +105,3 @@ if has("mac") || has("gui_macvim") || has("gui_mac") || has("nvim") || has("neov
   " directory name (/something/src)
   nnoremap <leader>ch :let @*=expand("%:p:h")<CR>
 endif
-
