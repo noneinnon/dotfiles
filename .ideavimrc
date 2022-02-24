@@ -1,0 +1,22 @@
+source ~/.vimrc
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+let mapleader=" "
+
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+map Q gq
+
+set surround
+set easymotion
+set multiple-cursors
+
+set nu
+set relativenumber

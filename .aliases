@@ -21,6 +21,7 @@ alias ide="sh scripts/ide.sh"
 alias webstorm='open -a "Webstorm" .'
 alias storm='open -a "Webstorm" .'
 alias sublime='open -a "Sublime text" .'
+alias submerge='open -a "Sublime merge" .'
 
 # npm
 alias sscripts='cat package.json | jq ".scripts"'
