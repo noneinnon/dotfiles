@@ -15,6 +15,8 @@ if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
   if has("mac")
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'nvim-treesitter/nvim-treesitter-refactor'
+    Plug 'windwp/nvim-ts-autotag'
     Plug 'hrsh7th/cmp-emoji'
   endif
 
