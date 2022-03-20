@@ -36,9 +36,7 @@ if has("nvim")
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'andersevenrud/nordic.nvim'
-  Plug 'akinsho/bufferline.nvim'
-  Plug 'savq/melange'
+  "Plug 'akinsho/bufferline.nvim'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'ThePrimeagen/harpoon'
   "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }

@@ -1,6 +1,7 @@
 if !exists('g:loaded_telescope') | finish | endif
 
 nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;F <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <silent> ;o <cmd>Telescope oldfiles<cr>
 nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
 nnoremap <silent> ;b <cmd>Telescope buffers<cr>
@@ -16,6 +17,7 @@ nnoremap <silent> ;S <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <silent> ;m <cmd>Telescope marks<cr>
 nnoremap <silent> ;c <cmd>Telescope commands<cr>
 nnoremap <silent> ;k <cmd>Telescope keymaps<cr>
+nnoremap <silent> ;T <cmd>Telescope tags<cr>
 "nnoremap <silent> <C-t> <cmd>Telescope file_browser<cr>
 nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
 

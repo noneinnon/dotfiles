@@ -37,6 +37,7 @@ nnoremap <leader>ggfl :Git push --force-with-lease<CR>
 nnoremap <leader>gff :Git fetch<CR>
 nnoremap <leader>gdo :Gvdiff origin<CR>
 nnoremap <leader>gdm :Gvdiff origin/master<CR>
+nnoremap <leader>gdc :Gvdiff origin/"=git rev-parse --abbrev-ref HEAD<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gm :Git checkout master<CR>
 nnoremap <leader>g- :Git checkout
