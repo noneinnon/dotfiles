@@ -10,9 +10,15 @@
   $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") \
   $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED") \
   && read -n 1 -s
-[merge]
-	tool = idea
+
 [mergetool]
 	keepBackup = false
 [worktree]
 	guessRemote = true
+
+[merge]
+	tool = smerge
+[mergetool "smerge"]
+	trustExitCode = false
+[diff]
+	tool = smerge

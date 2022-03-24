@@ -10,7 +10,6 @@ Plug 'flatcap/vim-local'
 Plug 'easymotion/vim-easymotion'
 
 if has("nvim")
-
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   if has("mac")
@@ -31,7 +30,8 @@ if has("nvim")
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
-  Plug 'rafamadriz/friendly-snippets'
+  Plug 'hrsh7th/vim-vsnip-integ'
+  "Plug 'rafamadriz/friendly-snippets'
   Plug 'neovim/nvim-lspconfig'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'onsails/lspkind-nvim'
@@ -40,5 +40,9 @@ if has("nvim")
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'ThePrimeagen/harpoon'
   "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-endif
+  "
+  " snippets
+  "Plug 'burkeholland/simple-react-snippets'
+  Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
+  endif
 call plug#end()
