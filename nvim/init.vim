@@ -38,8 +38,8 @@ set wildignore+=**/node_modules/**
 "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " relative line
-":set relativenumber
-":set rnu
+:set relativenumber
+:set rnu
 
 "set wildmenu
 
@@ -206,7 +206,7 @@ if exists("&termguicolors") && exists("&winblend")
   "let g:nord_italic_comments = v:false
   "let g:nord_minimal_mode = v:false
   "let g:nord_alternate_backgrounds = v:false
-  set background=light
+  "set background=light
   "colorscheme nordic
   "
   "colorscheme melange

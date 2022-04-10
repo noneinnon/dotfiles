@@ -36,13 +36,8 @@ if has("nvim")
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  "Plug 'akinsho/bufferline.nvim'
+  Plug 'akinsho/bufferline.nvim'
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'ThePrimeagen/harpoon'
-  "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-  "
-  " snippets
-  "Plug 'burkeholland/simple-react-snippets'
-  Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
   endif
 call plug#end()
