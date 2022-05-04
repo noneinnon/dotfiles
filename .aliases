@@ -3,7 +3,6 @@
 # ALIASES
 alias la='ls -A'
 alias rmr='rm -r'
-alias chrome='open -a "Google Chrome"'
 alias img='curl -O'
 alias add='git add -A'
 alias commit='git commit -m'
@@ -42,6 +41,9 @@ alias zshrc='vim ~/.zshrc'
 alias vf='vim $(fzf)'
 alias gco='fzf-git-checkout'
 #alias gcb='fzf-git-branch'
+
+# Kitty
+alias s='kitty +kitten ssh'
 
 # Other
 alias lg='lazygit'
