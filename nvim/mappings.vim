@@ -47,8 +47,8 @@ nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>gL :Gclog<CR>
 
 " Fugitive mappings https://gist.github.com/mikaelz/38600d22b716b39b031165cd6d201a67
-nnoremap <leader>h :diffget //2<CR>
-nnoremap <leader>l :diffget //3<CR>
+"nnoremap <leader>h :diffget //2<CR>
+"nnoremap <leader>l :diffget //3<CR>
 "
 " Nerd Commenter
 map <leader>ct :NERDCommenterToggle<CR>
@@ -67,10 +67,10 @@ function! WinMove(key)
   endif
 endfunction
 
-map <silent> <C-h> :call WinMove('h')<CR>
-map <silent> <C-j> :call WinMove('j')<CR>
-map <silent> <C-k> :call WinMove('k')<CR>
-map <silent> <C-l> :call WinMove('l')<CR>
+nmap <silent> <C-h> :call WinMove('h')<CR>
+nmap <silent> <C-j> :call WinMove('j')<CR>
+nmap <silent> <C-k> :call WinMove('k')<CR>
+nmap <silent> <C-l> :call WinMove('l')<CR>
 
 nmap <S-h> <C-w>>
 nmap <S-l> <C-w><
