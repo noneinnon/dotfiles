@@ -92,7 +92,8 @@ end
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascript.jsx", "javascriptreact" },
-}
+  }
+
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
@@ -125,6 +126,7 @@ nvim_lsp.diagnosticls.setup {
       javascriptreact = 'eslint',
       typescript = 'eslint',
       typescriptreact = 'eslint',
+      svelte = 'eslint'
     },
     formatters = {
       eslint_d = {
@@ -149,6 +151,7 @@ nvim_lsp.diagnosticls.setup {
       json = 'prettier',
       markdown = 'prettier',
       html = 'prettier',
+      svelte = 'prettier'
     }
   }
 }
@@ -189,5 +192,10 @@ nvim_lsp.cssls.setup {
 nvim_lsp.elmls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+}
+
+nvim_lsp.svelte.setup{
+  on_attach = on_attach,
+  filetypes = {"svelte"},
 }
 EOF

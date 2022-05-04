@@ -19,7 +19,6 @@ if has("nvim")
     Plug 'hrsh7th/cmp-emoji'
   endif
 
-
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
