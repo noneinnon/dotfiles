@@ -47,6 +47,7 @@ alias s='kitty +kitten ssh'
 
 # Other
 alias lg='lazygit'
+alias ghw='gh repo view --web'
 
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
