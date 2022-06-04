@@ -2,11 +2,10 @@ local nvim_tree = require("nvim-tree")
 local map = require("utils").map
 
 nvim_tree.setup({
-  disable_netrw = true,
-  hijack_netrw = true,
+  disable_netrw = false,
+  hijack_netrw = false,
   open_on_setup = false,
   ignore_ft_on_setup = {},
-  auto_close = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
@@ -33,7 +32,7 @@ nvim_tree.setup({
     args = {},
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
     custom = {},
   },
   git = {
@@ -42,14 +41,16 @@ nvim_tree.setup({
     timeout = 500,
   },
   view = {
-    width = 35,
+    width = 40,
     height = 30,
     hide_root_folder = false,
-    side = "left",
-    auto_resize = true,
+    side = "right",
+    auto_resize = false,
     mappings = {
       custom_only = false,
-      list = {},
+      list = {
+        { key = "H", action = "" }
+      },
     },
     number = false,
     relativenumber = false,
@@ -62,3 +63,5 @@ nvim_tree.setup({
 })
 
 map("n", "<C-f>", "<cmd>NvimTreeFindFileToggle<CR>", { silent = true })
+--map("n", "<H>","<Nop>")
+--map("n", "<L>", "<Nop>")

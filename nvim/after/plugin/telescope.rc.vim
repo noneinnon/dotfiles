@@ -8,8 +8,8 @@ nnoremap <silent> ;b <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 nnoremap <silent> ;d <cmd>Telescope lsp_definitions<cr>
 nnoremap <silent> ;e <cmd>Telescope lsp_document_diagnostics<cr>
-nnoremap <silent> ;t <cmd>Telescope lsp_type_definitions<cr>
-"nnoremap <silent> ;t <cmd>Telescope treesitter<cr>
+"nnoremap <silent> ;t <cmd>Telescope lsp_type_definitions<cr>
+nnoremap <silent> ;t <cmd>Telescope treesitter<cr>
 nnoremap <silent> ;a <cmd>Telescope lsp_code_actions<cr>
 nnoremap <silent> gr <cmd>Telescope lsp_references<cr>
 nnoremap <silent> ;s <cmd>Telescope lsp_document_symbols<cr>
@@ -18,7 +18,7 @@ nnoremap <silent> ;m <cmd>Telescope marks<cr>
 nnoremap <silent> ;c <cmd>Telescope commands<cr>
 nnoremap <silent> ;k <cmd>Telescope keymaps<cr>
 nnoremap <silent> ;T <cmd>Telescope tags<cr>
-"nnoremap <silent> <C-t> <cmd>Telescope file_browser<cr>
+"nnoremap <silent> ;B <cmd>Telescope file_browser<cr>
 nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
 
 "nnoremap <silent> <C-f> <cmd>lua require('telescope.builtin').file_browser( { cwd = vim.fn.expand('%:p:h') })<cr>

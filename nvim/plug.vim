@@ -36,7 +36,7 @@ if has("nvim")
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lualine/lualine.nvim'
   Plug 'akinsho/bufferline.nvim'
-  Plug 'ludovicchabant/vim-gutentags'
+  "Plug 'ludovicchabant/vim-gutentags'
   Plug 'ThePrimeagen/harpoon'
   endif
 call plug#end()

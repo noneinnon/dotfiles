@@ -29,8 +29,10 @@ nnoremap <leader>cd :cdo %s///gc <bar> update<c-b><right><right><right><right><r
 nnoremap <leader>- :vimgrep <C-r><C-w> % <bar>:copen<CR>
 
 " Fugitive
-nnoremap <leader>gs :tab Git<CR>
-nnoremap <leader>gc :tab Git commit<CR>
+"nnoremap <leader>gs :tab Git<CR>
+nnoremap <leader>gs :vertical Git<CR>
+"nnoremap <leader>gc :tab Git commit<CR>
+nnoremap <leader>gc :vertical Git commit<CR>
 
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>ggfl :Git push --force-with-lease<CR>
@@ -43,7 +45,7 @@ nnoremap <leader>gm :Git checkout master<CR>
 nnoremap <leader>g- :Git checkout
 nnoremap <leader>grm :Git rebase -i origin/master<CR>
 
-nnoremap <leader>gl :Git log<CR>
+nnoremap <leader>gl :vertical Git log<CR>
 nnoremap <leader>gL :Gclog<CR>
 
 " Fugitive mappings https://gist.github.com/mikaelz/38600d22b716b39b031165cd6d201a67
@@ -67,15 +69,15 @@ function! WinMove(key)
   endif
 endfunction
 
-nmap <silent> <C-h> :call WinMove('h')<CR>
-nmap <silent> <C-j> :call WinMove('j')<CR>
-nmap <silent> <C-k> :call WinMove('k')<CR>
-nmap <silent> <C-l> :call WinMove('l')<CR>
+nmap <silent> <leader>h :call WinMove('h')<CR>
+nmap <silent> <leader>j :call WinMove('j')<CR>
+nmap <silent> <leader>k :call WinMove('k')<CR>
+nmap <silent> <leader>l :call WinMove('l')<CR>
 
-nmap <S-h> <C-w>>
-nmap <S-l> <C-w><
-nmap <S-j> <C-w>+
-nmap <S-k> <C-w>-
+nnoremap <S-l> <C-w>>
+nnoremap <S-h> <C-w><
+nnoremap <S-j> <C-w>-
+nnoremap <S-k> <C-w>+
 
 " Buffers
 "
@@ -87,6 +89,7 @@ nnoremap <leader>bd :1, $bd!<CR>
 " Source
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>9 :e ~/.config<CR>
+nnoremap <leader>8 :so %
 
 " ETC
 nnoremap <leader>q :q<CR>
