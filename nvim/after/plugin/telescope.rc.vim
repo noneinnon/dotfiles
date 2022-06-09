@@ -4,6 +4,7 @@ nnoremap <silent> ;f <cmd>Telescope find_files<cr>
 nnoremap <silent> ;F <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <silent> ;o <cmd>Telescope oldfiles<cr>
 nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> ;R <cmd>Telescope grep_string<cr>
 nnoremap <silent> ;b <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 nnoremap <silent> ;d <cmd>Telescope lsp_definitions<cr>
