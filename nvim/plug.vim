@@ -1,13 +1,14 @@
 call plug#begin()
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 Plug 'gruvbox-community/gruvbox'
 Plug 'flatcap/vim-local'
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 
 if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
@@ -19,6 +20,7 @@ if has("nvim")
     Plug 'hrsh7th/cmp-emoji'
   endif
 
+  Plug 'phaazon/hop.nvim'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
