@@ -2,6 +2,7 @@
 local cmp = require'cmp'
 local lspkind = require'lspkind'
 local feedkey = require'utils'.feedkey
+local luasnip = require'luasnip'
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -12,8 +13,8 @@ cmp.setup({
      snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-         --luasnip.lsp_expand(args.body) -- For `luasnip` users.
+        --vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+         luasnip.lsp_expand(args.body) -- For `luasnip` users.
         -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
@@ -22,10 +23,12 @@ cmp.setup({
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
+      --elseif vim.fn["vsnip#available"](1) == 1 then
+        --feedkey("<Plug>(vsnip-expand-or-jump)", "")
       else 
         fallback()
       end
@@ -33,20 +36,30 @@ cmp.setup({
     ['<S-Tab>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        feedkey("<Plug>(vsnip-jump-prev)", "")
+      --elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        --feedkey("<Plug>(vsnip-jump-prev)", "")
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       end
     end, { "i", "s" }), 
     ['<Esc>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    --['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-s>'] = cmp.mapping.complete({
+            config = {
+              sources = {
+                { name = 'vsnip' }
+              }
+            }
+          }),
   },
   sources = {
     { name = 'nvim_lsp' }, -- For nvim-lsp
-    { name = 'vsnip' },
-    --{ name = 'ultisnips' }, -- For ultisnips user.
+    --{ name = 'vsnip' },
+    { name = 'luasnip' },
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
