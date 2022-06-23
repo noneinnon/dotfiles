@@ -11,7 +11,7 @@ nnoremap <silent> ;d <cmd>Telescope lsp_definitions<cr>
 nnoremap <silent> ;e <cmd>Telescope lsp_document_diagnostics<cr>
 "nnoremap <silent> ;t <cmd>Telescope lsp_type_definitions<cr>
 nnoremap <silent> ;t <cmd>Telescope treesitter<cr>
-nnoremap <silent> ;a <cmd>Telescope lsp_code_actions<cr>
+"nnoremap <silent> ;a <cmd>Telescope lsp_code_actions<cr>
 nnoremap <silent> gr <cmd>Telescope lsp_references<cr>
 nnoremap <silent> ;s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <silent> ;S <cmd>Telescope lsp_workspace_symbols<cr>
@@ -31,8 +31,9 @@ local previewers = require('telescope.previewers')
 ------------------------------
 require('telescope').setup{
   defaults = {
-    preview = false,
-    initial_mode = "normal",
+    --preview = true,
+    theme = "dropdown",
+    initial_mode = "insert",
     mappings = {
       n = {
         ["q"] = actions.close,

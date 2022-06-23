@@ -4,11 +4,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
-Plug 'gruvbox-community/gruvbox'
 Plug 'flatcap/vim-local'
-"Plug 'easymotion/vim-easymotion'
 
 if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
@@ -20,8 +17,10 @@ if has("nvim")
     Plug 'hrsh7th/cmp-emoji'
   endif
 
-  Plug 'phaazon/hop.nvim'
-  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  " lsp
+  Plug 'neovim/nvim-lspconfig'
+
+  " cmp
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'hrsh7th/nvim-cmp'
@@ -30,15 +29,32 @@ if has("nvim")
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-vsnip'
+  
+  " snippets
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
-  "Plug 'rafamadriz/friendly-snippets'
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-  Plug 'onsails/lspkind-nvim'
-  Plug 'nvim-lualine/lualine.nvim'
-  Plug 'akinsho/bufferline.nvim'
+  Plug 'rafamadriz/friendly-snippets'
+  Plug 'L3MON4D3/LuaSnip'
+   Plug 'saadparwaiz1/cmp_luasnip'
+
   "Plug 'ludovicchabant/vim-gutentags'
   Plug 'ThePrimeagen/harpoon'
-  endif
+  " themes
+  "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  "Plug 'ellisonleao/gruvbox.nvim'
+  Plug 'sainnhe/everforest'
+
+  " other
+  Plug 'onsails/lspkind-nvim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'phaazon/hop.nvim'
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  Plug 'akinsho/bufferline.nvim'
+  Plug 'windwp/nvim-autopairs'
+
+else
+  Plug 'easymotion/vim-easymotion'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'gruvbox-community/gruvbox'
+endif
 call plug#end()

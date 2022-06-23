@@ -3,14 +3,14 @@ local map = require("utils").map
 
 nvim_tree.setup({
   disable_netrw = false,
-  hijack_netrw = false,
+  hijack_netrw = true,
   open_on_setup = false,
   ignore_ft_on_setup = {},
   open_on_tab = false,
   hijack_cursor = false,
-  update_cwd = true,
+  update_cwd = false,
   update_to_buf_dir = {
-    enable = true,
+    enable = false,
     auto_open = false,
   },
   diagnostics = {
@@ -24,7 +24,7 @@ nvim_tree.setup({
   },
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_cwd = false,
     ignore_list = {},
   },
   system_open = {

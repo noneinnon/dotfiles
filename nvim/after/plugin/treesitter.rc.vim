@@ -9,7 +9,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
   refactor = {
-    highlight_current_scope = { enable = true },
+    highlight_current_scope = { enable = false },
     smart_rename = {
     enable = true,
     keymaps = {
