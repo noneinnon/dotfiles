@@ -24,6 +24,9 @@ plugins=(
 	git
   tmux
   zsh-syntax-highlighting
+  npm
+  yarn
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
