@@ -91,6 +91,10 @@ nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>9 :e ~/.config<CR>
 nnoremap <leader>8 :so %
 
+" Clipboard
+noremap <C-c> "*y
+noremap <C-p> "*p
+
 " ETC
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :wq<CR>
