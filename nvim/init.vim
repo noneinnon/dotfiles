@@ -218,3 +218,5 @@ function! PerformanceLogStop()
 endfunction
 
 set guifont=Hack\ Nerd\ Font:h15
+
+let g:neovide_frameless=v:true

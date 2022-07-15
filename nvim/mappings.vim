@@ -12,8 +12,8 @@ nnoremap <leader>qfo :copen<CR>
 nnoremap <leader>qfc :close<CR>
 
 " quickfix
-nnoremap ;h :cprev<CR>
-nnoremap ;l :cnext<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
 
 " Substitute
 "
@@ -25,12 +25,11 @@ vnoremap <leader>1 :s/\%V\<<c-r>0\>//g<left><left>
 
 " Substitute in quickfix
 nnoremap <leader>cd :cdo %s///gc <bar> update<c-b><right><right><right><right><right><right><right>
-
 nnoremap <leader>- :vimgrep <C-r><C-w> % <bar>:copen<CR>
 
 " Fugitive
 "nnoremap <leader>gs :tab Git<CR>
-nnoremap <leader>gs :vertical Git<CR>
+nnoremap <leader>gs :Git<CR>
 "nnoremap <leader>gc :tab Git commit<CR>
 nnoremap <leader>gc :vertical Git commit<CR>
 
@@ -39,7 +38,7 @@ nnoremap <leader>ggfl :Git push --force-with-lease<CR>
 nnoremap <leader>gff :Git fetch<CR>
 nnoremap <leader>gdo :Gvdiff origin<CR>
 nnoremap <leader>gdm :Gvdiff origin/master<CR>
-nnoremap <leader>gdc :Gvdiff origin/"=git rev-parse --abbrev-ref HEAD<CR>
+nnoremap <leader>gdc :Gvdiff origin/"=! git rev-parse --abbrev-ref HEAD"<CR>
 nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gm :Git checkout master<CR>
 nnoremap <leader>g- :Git checkout
@@ -49,11 +48,11 @@ nnoremap <leader>gl :vertical Git log<CR>
 nnoremap <leader>gL :Gclog<CR>
 
 " Fugitive mappings https://gist.github.com/mikaelz/38600d22b716b39b031165cd6d201a67
-"nnoremap <leader>h :diffget //2<CR>
-"nnoremap <leader>l :diffget //3<CR>
-"
+nnoremap <leader>< :diffget //2<CR>
+nnoremap <leader>> :diffget //3<CR>
+
 " Nerd Commenter
-map <leader>ct :NERDCommenterToggle<CR>
+" map <leader>ct :NERDCommenterToggle<CR>
 
 " Windows & panes
 function! WinMove(key)
@@ -82,9 +81,9 @@ nnoremap <S-k> <C-w>+
 " Buffers
 "
 " close single buffer
-nnoremap <leader><leader>d :bd<CR>
+nnoremap <leader>d :bd<CR>
 " close all buffers
-nnoremap <leader>bd :1, $bd!<CR>
+nnoremap <leader>bd :%bdelete<CR>
 
 " Source
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>

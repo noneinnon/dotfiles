@@ -92,6 +92,7 @@ end
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascript.jsx", "javascriptreact" },
+  root_dir = nvim_lsp.util.root_pattern('package.json')
   }
 
 
@@ -198,4 +199,9 @@ nvim_lsp.svelte.setup{
   on_attach = on_attach,
   filetypes = {"svelte"},
 }
+
+nvim_lsp.denols.setup{
+  root_dir = nvim_lsp.util.root_pattern('deno.json')
+}
+
 EOF

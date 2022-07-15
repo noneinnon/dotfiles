@@ -1,9 +1,9 @@
 if !exists('g:loaded_telescope') | finish | endif
 
-nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;f <cmd>Telescope find_files theme=dropdown<cr>
 nnoremap <silent> ;F <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <silent> ;o <cmd>Telescope oldfiles<cr>
-nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> ;r <cmd>Telescope live_grep theme=dropdown<cr>
 nnoremap <silent> ;R <cmd>Telescope grep_string<cr>
 nnoremap <silent> ;b <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
@@ -32,14 +32,13 @@ local previewers = require('telescope.previewers')
 require('telescope').setup{
   defaults = {
     --preview = true,
-    theme = "dropdown",
-    initial_mode = "insert",
+    initial_mode = "normal",
     mappings = {
       n = {
         ["q"] = actions.close,
         ["<C-Q>"] = actions.send_to_qflist,
         ["<C-q>"] = actions.send_selected_to_qflist,
-      },
+        },
       i = { 
         ["<C-Q>"] = actions.send_to_qflist,
         ["<C-q>"] = actions.send_selected_to_qflist,

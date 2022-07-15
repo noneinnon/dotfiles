@@ -9,12 +9,8 @@ nvim_tree.setup({
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = false,
-  update_to_buf_dir = {
-    enable = false,
-    auto_open = false,
-  },
   diagnostics = {
-    enable = false,
+    enable = true,
     icons = {
       hint = "",
       info = "",
@@ -25,6 +21,7 @@ nvim_tree.setup({
   update_focused_file = {
     enable = true,
     update_cwd = false,
+    update_root = false,
     ignore_list = {},
   },
   system_open = {
@@ -45,7 +42,6 @@ nvim_tree.setup({
     height = 30,
     hide_root_folder = false,
     side = "right",
-    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {
@@ -60,6 +56,9 @@ nvim_tree.setup({
     cmd = "trash",
     require_confirm = true,
   },
+  live_filter = {
+    always_show_folders = false
+  }
 })
 
 map("n", "<C-f>", "<cmd>NvimTreeFindFileToggle<CR>", { silent = true })

@@ -23,8 +23,8 @@ cmp.setup({
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      --elseif luasnip.expand_or_jumpable() then
+        --luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       --elseif vim.fn["vsnip#available"](1) == 1 then
@@ -48,13 +48,21 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     --['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-s>'] = cmp.mapping.complete({
-            config = {
-              sources = {
-                { name = 'vsnip' }
-              }
+    ['<C-s>'] = function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete({
+          config = {
+            sources = {
+              { name = 'luasnip' }
             }
-          }),
+          }
+        })
+      else
+          fallback()
+      end
+    end,
   },
   sources = {
     { name = 'nvim_lsp' }, -- For nvim-lsp
@@ -64,10 +72,11 @@ cmp.setup({
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
     { name = 'emoji', insert = true, }, -- emoji completion
-    { name = 'tags' }
+    { name = 'tags' },
+    { name = 'treesitter' }
   },
   completion = {
-    autocomplete = true,
+    autocomplete = false,
     keyword_length = 1,
     completeopt = "menu,noselect"
   },
@@ -84,7 +93,8 @@ cmp.setup({
         path = "[Path]",
         buffer = "[Buffer]",
         emoji = "[Emoji]",
-        tags = "[Tag]"
+        tags = "[Tag]",
+        treesitter = "[Tree]"
       },
     }),
   },
