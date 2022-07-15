@@ -70,6 +70,10 @@ yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
 yabai -m rule --add app="^Spark$" manage=off
 yabai -m rule --add app="^Preview$" manage=off
+yabai -m rule --add app="obs" manage=off
+yabai -m rule --add app="Alfred" manage=off
+yabai -m rule --add app="Calculator" manage=off
+
 ## misc
 yabai -m rule --add app="^Notes$" space=5
 yabai -m rule --add app="^Notion$" space=5

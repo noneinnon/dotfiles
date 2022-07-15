@@ -1,9 +1,6 @@
 .DS_Store
-.config/nvim/plugged
 nvim/plugged
 
 tags
-
 temp
-
 .idea

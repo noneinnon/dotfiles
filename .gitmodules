@@ -12,6 +12,7 @@
   path = .oh-my-zsh/plugins/zsh-vi-mode
   url = https://github.com/jeffreytse/zsh-vi-mode 
   ignore = dirty
+
 [submodule "kitty/kitty_search"]
 	path = kitty/kitty_search
 	url = https://github.com/trygveaa/kitty-kitten-search

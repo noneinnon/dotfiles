@@ -50,8 +50,8 @@ alias lg='lazygit'
 alias ghw='gh repo view --web'
 #alias neo='open -na "neovide" --args --frame None'
 
-function neo() { open -na "neovide" --args --frame "None" "$PWD" ;}
-function ne() { open -na "neovide" --args --frame "None" "$@" ;}
+function neo() { open -a "neovide" --args --frame "None" "$PWD" ;}
+function ne() { open -a "neovide" --args --frame "None" "$@" ;}
 
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
