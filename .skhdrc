@@ -191,7 +191,7 @@ cmd + shift - l : yabai -m window --resize right:-20:0
         
            
 cmd - f1 : open -na kitty; yabai -m window --title 'kitty' --focus
-cmd - f2 : open -a neovide --args --frame None ~ # neovide
+cmd - f2 : open -a "neovide" --args --frame "None" ~/ #neovide
 cmd - f3 : open -a "sublime merge"
 cmd - f4 : open -a "sublime text"
 cmd - f5 : open -a qutebrowser
