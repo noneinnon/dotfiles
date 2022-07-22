@@ -69,7 +69,7 @@ set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=dark
+set background=light
 set nobackup
 set showcmd
 set cmdheight=1
@@ -199,7 +199,6 @@ if exists("&termguicolors") && exists("&winblend")
   "runtime ./colors/NeoSolarized.vim
   "colorscheme NeoSolarized
   " gruvbox
-  set background=dark
   colorscheme everforest
   endif
 "}}}
