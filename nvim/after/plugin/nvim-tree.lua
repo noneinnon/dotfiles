@@ -9,8 +9,9 @@ nvim_tree.setup({
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = false,
+  sync_root_with_cwd = false,
   diagnostics = {
-    enable = true,
+    enable = false,
     icons = {
       hint = "",
       info = "",
@@ -19,7 +20,7 @@ nvim_tree.setup({
     },
   },
   update_focused_file = {
-    enable = true,
+    enable = false,
     update_cwd = false,
     update_root = false,
     ignore_list = {},
@@ -33,7 +34,7 @@ nvim_tree.setup({
     custom = {},
   },
   git = {
-    enable = true,
+    enable = false,
     ignore = true,
     timeout = 500,
   },

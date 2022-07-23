@@ -12,7 +12,7 @@ nnoremap <leader>qfo :copen<CR>
 nnoremap <leader>qfc :close<CR>
 
 " quickfix
-nnoremap ]q :cnext<CR>
+nnoremap ]q q:cnext<CR>
 nnoremap [q :cprev<CR>
 
 " Substitute
@@ -29,7 +29,7 @@ nnoremap <leader>- :vimgrep <C-r><C-w> % <bar>:copen<CR>
 
 " Fugitive
 "nnoremap <leader>gs :tab Git<CR>
-nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gs :vertical G<CR>
 "nnoremap <leader>gc :tab Git commit<CR>
 nnoremap <leader>gc :vertical Git commit<CR>
 
