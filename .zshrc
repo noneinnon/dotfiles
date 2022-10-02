@@ -27,6 +27,9 @@ plugins=(
   npm
   yarn
   vi-mode
+  docker
+  gh
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
