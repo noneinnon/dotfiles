@@ -10,6 +10,9 @@ nvim_tree.setup({
   hijack_cursor = false,
   update_cwd = false,
   sync_root_with_cwd = false,
+  hijack_directories = {
+    auto_open = false,
+  },
   diagnostics = {
     enable = false,
     icons = {

@@ -17,6 +17,7 @@ if has("nvim")
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
     Plug 'windwp/nvim-ts-autotag'
     Plug 'hrsh7th/cmp-emoji'
+    Plug 'nvim-telescope/telescope-file-browser.nvim'
   endif
 
   " lsp

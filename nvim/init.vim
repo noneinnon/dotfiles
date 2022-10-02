@@ -189,7 +189,7 @@ endif
 
 " true color
 if exists("&termguicolors") && exists("&winblend")
-  set termguicolors
+  " set termguicolors
   "set winblend=0
   "set wildoptions=pum
   "set pumblend=5
