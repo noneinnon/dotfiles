@@ -1,0 +1,11 @@
+# .goreleaser.yml
+builds:
+  - skip: true
+
+release:
+  extra_files:
+    - glob: ./bitwarden-alfred-workflow.alfredworkflow
+  draft: true
+
+changelog:
+  skip: false
