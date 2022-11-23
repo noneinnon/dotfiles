@@ -34,6 +34,7 @@ if has("nvim")
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-vsnip'
+  Plug 'github/copilot.vim'
   
   " snippets
   Plug 'hrsh7th/vim-vsnip'
