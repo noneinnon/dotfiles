@@ -1,6 +1,11 @@
 " General Mappings
 let mapleader = "\<Space>"
 
+" LSP
+nnoremap <C-l> :LspStop<CR>
+nnoremap <C-L> :LspStart<CR>
+" Netrw
+nnoremap <C-f> :Explore<CR>
 " disable command history
 nnoremap q: <Nop>
 "
@@ -21,7 +26,7 @@ nnoremap [q :cprev<CR>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 
 " replace in visual
-vnoremap <leader>1 :s/\%V\<<c-r>0\>//g<left><left>
+vnoremap <leader>s :s/\%V\<<C-r><C-w>\>/
 
 " Substitute in quickfix
 nnoremap <leader>cd :cdo %s///gc <bar> update<c-b><right><right><right><right><right><right><right>
@@ -81,9 +86,9 @@ nnoremap <S-k> <C-w>+
 " Buffers
 "
 " close single buffer
-nnoremap <leader>d :bd<CR>
+nnoremap <leader>bd :bd<CR>
 " close all buffers
-nnoremap <leader>bd :%bdelete<CR>
+nnoremap <leader>Bd :%bdelete<CR>
 
 " Source
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>

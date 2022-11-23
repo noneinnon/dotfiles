@@ -22,11 +22,12 @@ if has("nvim")
 
   " lsp
   Plug 'neovim/nvim-lspconfig'
-  Plug 'folke/trouble.nvim'
+  Plug 'williamboman/mason.nvim'
+  " Plug 'folke/trouble.nvim'
 
   " cmp
-  Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'kyazdani42/nvim-tree.lua'
+  " Plug 'kyazdani42/nvim-web-devicons'
+  " Plug 'kyazdani42/nvim-tree.lua'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -45,19 +46,19 @@ if has("nvim")
   Plug 'ThePrimeagen/harpoon'
   " themes
   "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  "Plug 'ellisonleao/gruvbox.nvim'
-  Plug 'sainnhe/everforest'
+  Plug 'ellisonleao/gruvbox.nvim'
+  " Plug 'sainnhe/everforest'
 
   " other
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lualine/lualine.nvim'
-  Plug 'phaazon/hop.nvim'
+  " Plug 'phaazon/hop.nvim'
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-  Plug 'akinsho/bufferline.nvim'
+  " Plug 'akinsho/bufferline.nvim'
   Plug 'windwp/nvim-autopairs'
 
 else
-  Plug 'easymotion/vim-easymotion'
+  " Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
   Plug 'gruvbox-community/gruvbox'
 endif

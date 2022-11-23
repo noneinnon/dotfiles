@@ -38,8 +38,7 @@ set wildignore+=**/node_modules/**
 "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " relative line
-:set relativenumber
-:set rnu
+set rnu
 
 "set wildmenu
 
@@ -69,7 +68,7 @@ set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=light
+set background=dark
 set nobackup
 set showcmd
 set cmdheight=1
@@ -123,16 +122,12 @@ set formatoptions+=r
 " constant room for sign columns
 set signcolumn=yes
 
-"}}}
-
-" Highlights "{{{
 " ---------------------------------------------------------------------
 "set cursorline
 "set cursorcolumn
 
 " Set cursor line color on visual mode
 highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
-
 highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
 augroup BgHighlight
@@ -168,8 +163,6 @@ autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
-"}}}
-
 " Imports "{{{
 " ---------------------------------------------------------------------
 runtime ./mappings.vim
@@ -198,8 +191,8 @@ if exists("&termguicolors") && exists("&winblend")
   "let g:neosolarized_termtrans=1
   "runtime ./colors/NeoSolarized.vim
   "colorscheme NeoSolarized
-  " gruvbox
-  colorscheme everforest
+  colorscheme gruvbox
+  " colorscheme everforest
   endif
 "}}}
 
@@ -216,6 +209,6 @@ function! PerformanceLogStop()
   :noautocmd qall!
 endfunction
 
-set guifont=Hack\ Nerd\ Font:h15
+" set guifont=Hack\ Nerd\ Font:h15
 
 let g:neovide_frameless=v:true
