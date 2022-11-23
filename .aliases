@@ -62,3 +62,7 @@ function replace() {
 
   ack $replace -l $directory | xargs -n 1 sed -i "" "s/$replace/$replacement/g"
 }
+
+function p() {
+  pnpm "$@"
+}
