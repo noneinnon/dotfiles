@@ -7,16 +7,14 @@
 
 - link:
     ~/.config/kitty: kitty
-    ~/.yabairc: .yabairc
-    ~/.skhdrc: .skhdrc
     ~/.config/nvim: nvim/
     ~/.ideavimrc: .ideavimrc
     ~/.config/karabiner: karabiner/
     ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
     ~/.aliases: .aliases
-    # ~/.tmux/.tmux.conf: .tmux.conf
-    # ~/.tmux/.tmux.conf.local: .tmux.conf.local
+    ~/.tmux/.tmux.conf: .tmux.conf
+    ~/.tmux/.tmux.conf.local: .tmux.conf.local
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
     ~/.oh-my-zsh/plugins/zsh-syntax-highlighting: .oh-my-zsh/plugins/zsh-syntax-highlighting
