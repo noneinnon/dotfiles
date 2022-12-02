@@ -20,7 +20,7 @@ nnoremap <silent> ;c <cmd>Telescope commands<cr>
 nnoremap <silent> ;k <cmd>Telescope keymaps<cr>
 nnoremap <silent> ;T <cmd>Telescope tags<cr>
 nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
-nnoremap <silent> ;; <cmd>Telescope file_browser<cr>
+nnoremap <silent> ;; <cmd>Telescope file_browser path=%:p:h<cr>
 
 "nnoremap <silent> <C-f> <cmd>lua require('telescope.builtin').file_browser( { cwd = vim.fn.expand('%:p:h') })<cr>
 

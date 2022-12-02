@@ -73,7 +73,8 @@ cmp.setup({
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
     { name = 'emoji', insert = true, }, -- emoji completion
     { name = 'tags' },
-    { name = 'treesitter' }
+    { name = 'treesitter' },
+    { name = 'copilot' }
   },
   completion = {
     autocomplete = false,
@@ -94,7 +95,8 @@ cmp.setup({
         buffer = "[Buffer]",
         emoji = "[Emoji]",
         tags = "[Tag]",
-        treesitter = "[Tree]"
+        treesitter = "[Tree]",
+        copilot = "[Copilot]"
       },
     }),
   },

@@ -1,5 +1,6 @@
 " General Mappings
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 " LSP
 nnoremap <C-l> :LspStop<CR>

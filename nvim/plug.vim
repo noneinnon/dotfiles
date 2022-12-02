@@ -34,6 +34,7 @@ if has("nvim")
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/cmp-copilot'
   Plug 'github/copilot.vim'
   
   " snippets
@@ -47,8 +48,8 @@ if has("nvim")
   Plug 'ThePrimeagen/harpoon'
   " themes
   "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  Plug 'ellisonleao/gruvbox.nvim'
-  " Plug 'sainnhe/everforest'
+  " Plug 'ellisonleao/gruvbox.nvim'
+  Plug 'sainnhe/everforest'
 
   " other
   Plug 'onsails/lspkind-nvim'
@@ -57,6 +58,8 @@ if has("nvim")
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   " Plug 'akinsho/bufferline.nvim'
   Plug 'windwp/nvim-autopairs'
+  " Clojure
+  Plug 'Olical/conjure'
 
 else
   " Plug 'easymotion/vim-easymotion'

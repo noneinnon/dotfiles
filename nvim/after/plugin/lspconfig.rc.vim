@@ -39,19 +39,8 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap('n', '<C-j>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', '<S-C-j>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  --buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-
-  -- formatting
-  -- if client.resolved_capabilities.document_formatting then
-  -- vim.api.nvim_command [[augroup Format]]
-  -- vim.api.nvim_command [[autocmd! * <buffer>]]
-  -- vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-  -- vim.api.nvim_command [[augroup END]]
-  -- end
-
-  --require'completion'.on_attach(client, bufnr)
-
+  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  -- buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   --protocol.SymbolKind = { }
   protocol.CompletionItemKind = {
@@ -203,5 +192,23 @@ nvim_lsp.svelte.setup{
 nvim_lsp.denols.setup{
   root_dir = nvim_lsp.util.root_pattern('deno.json')
 }
+
+nvim_lsp.pylsp.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = {"python"},
+}
+
+nvim_lsp.clojure_lsp.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = {"clojure", "edn"},
+}
+
+-- nvim_lsp.joker.setup{
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+--   filetypes = {"clojure"},
+-- }
 
 EOF

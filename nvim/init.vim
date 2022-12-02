@@ -191,8 +191,8 @@ if exists("&termguicolors") && exists("&winblend")
   "let g:neosolarized_termtrans=1
   "runtime ./colors/NeoSolarized.vim
   "colorscheme NeoSolarized
-  colorscheme gruvbox
-  " colorscheme everforest
+  " colorscheme gruvbox
+  colorscheme everforest
   endif
 "}}}
 
