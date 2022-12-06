@@ -7,6 +7,7 @@ Plug 'tpope/vim-surround'
 "Plug 'preservim/nerdcommenter'
 Plug 'flatcap/vim-local'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 
 if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
@@ -49,7 +50,8 @@ if has("nvim")
   " themes
   "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   " Plug 'ellisonleao/gruvbox.nvim'
-  Plug 'sainnhe/everforest'
+  " Plug 'sainnhe/everforest'
+  Plug 'pgdouyon/vim-yin-yang'
 
   " other
   Plug 'onsails/lspkind-nvim'
@@ -60,6 +62,8 @@ if has("nvim")
   Plug 'windwp/nvim-autopairs'
   " Clojure
   Plug 'Olical/conjure'
+  Plug 'mhinz/vim-startify'
+
 
 else
   " Plug 'easymotion/vim-easymotion'

@@ -42,6 +42,7 @@ nnoremap <leader>gc :vertical Git commit<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>ggfl :Git push --force-with-lease<CR>
 nnoremap <leader>gff :Git fetch<CR>
+nnoremap <leader>gd :Gvdiff HEAD
 nnoremap <leader>gdo :Gvdiff origin<CR>
 nnoremap <leader>gdm :Gvdiff origin/master<CR>
 nnoremap <leader>gdc :Gvdiff origin/"=! git rev-parse --abbrev-ref HEAD"<CR>
@@ -56,6 +57,8 @@ nnoremap <leader>gL :Gclog<CR>
 " Fugitive mappings https://gist.github.com/mikaelz/38600d22b716b39b031165cd6d201a67
 nnoremap <leader>< :diffget //2<CR>
 nnoremap <leader>> :diffget //3<CR>
+nnoremap <leader>dg :diffget<CR>
+nnoremap <leader>dp :diffpush<CR>
 
 " Nerd Commenter
 " map <leader>ct :NERDCommenterToggle<CR>
@@ -103,6 +106,10 @@ noremap <C-p> "*p
 " ETC
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :wq<CR>
+
+" kudos to ThePrimeagen
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
 
 " copy current file name (relative/absolute) to system clipboard
 if has("mac") || has("gui_macvim") || has("gui_mac") || has("nvim") || has("neovim")

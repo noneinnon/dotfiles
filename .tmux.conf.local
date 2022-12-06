@@ -348,7 +348,7 @@ unbind C-Space
 ## Use vim keybindings in copy mode
 set-option -g mouse on
 setw -g mode-keys vi
-set-option -s set-clipboard off
+# set-option -s set-clipboard off
 bind P paste-buffer
 bind-key -T copy-mode-vi v send-keys -X begin-selection
 bind-key -T copy-mode-vi y send-keys -X rectangle-toggle

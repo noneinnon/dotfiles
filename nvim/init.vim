@@ -192,7 +192,8 @@ if exists("&termguicolors") && exists("&winblend")
   "runtime ./colors/NeoSolarized.vim
   "colorscheme NeoSolarized
   " colorscheme gruvbox
-  colorscheme everforest
+  " colorscheme everforest
+  colorscheme yang
   endif
 "}}}
 
@@ -212,3 +213,7 @@ endfunction
 " set guifont=Hack\ Nerd\ Font:h15
 
 let g:neovide_frameless=v:true
+
+if exists("g:neovide")
+    cd ~
+endif
