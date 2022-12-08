@@ -5,8 +5,7 @@ let maplocalleader = "\<Space>"
 " LSP
 nnoremap <C-l> :LspStop<CR>
 nnoremap <C-L> :LspStart<CR>
-" Netrw
-" nnoremap <C-f> :Explore<CR>
+"
 " disable command history
 nnoremap q: <Nop>
 "

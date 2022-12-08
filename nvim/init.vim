@@ -1,9 +1,18 @@
+lua << EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+EOF
+
 source ~/.vimrc
+
+augroup cdpwd
+    autocmd!
+    autocmd VimEnter * cd $PWD
+augroup END
 
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 set noswapfile
-
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "
@@ -24,7 +33,7 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 syntax on
 
 " change working directory to buffer
-set autochdir
+" set autochdir
 " adds searching of the current directory for the .vimrc file and loads it.
 set exrc
 " ensures that shell, autocmd and write commands are not allowed in the .vimrc file that was found in the current directory as there’s no need to take risks
@@ -216,6 +225,8 @@ endfunction
 " set guifont=Hack\ Nerd\ Font:h15
 
 let g:neovide_frameless=v:true
+" set guifont=Fira\ Code\ Nerd\ Font:h14
+
 
 if exists("g:neovide")
     cd ~
