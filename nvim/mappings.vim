@@ -6,7 +6,7 @@ let maplocalleader = "\<Space>"
 nnoremap <C-l> :LspStop<CR>
 nnoremap <C-L> :LspStart<CR>
 " Netrw
-nnoremap <C-f> :Explore<CR>
+" nnoremap <C-f> :Explore<CR>
 " disable command history
 nnoremap q: <Nop>
 "
@@ -22,7 +22,6 @@ nnoremap ]q q:cnext<CR>
 nnoremap [q :cprev<CR>
 
 " Substitute
-"
 " replace word
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/
 
@@ -88,7 +87,6 @@ nnoremap <S-j> <C-w>-
 nnoremap <S-k> <C-w>+
 
 " Buffers
-"
 " close single buffer
 nnoremap <leader>bd :bd<CR>
 " close all buffers

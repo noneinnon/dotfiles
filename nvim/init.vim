@@ -23,6 +23,8 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 
 syntax on
 
+" change working directory to buffer
+set autochdir
 " adds searching of the current directory for the .vimrc file and loads it.
 set exrc
 " ensures that shell, autocmd and write commands are not allowed in the .vimrc file that was found in the current directory as there’s no need to take risks
@@ -68,7 +70,7 @@ set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=dark
+set background=light
 set nobackup
 set showcmd
 set cmdheight=1
@@ -193,7 +195,8 @@ if exists("&termguicolors") && exists("&winblend")
   "colorscheme NeoSolarized
   " colorscheme gruvbox
   " colorscheme everforest
-  colorscheme yang
+  " colorscheme yang
+  colorscheme edge
   endif
 "}}}
 

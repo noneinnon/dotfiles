@@ -52,6 +52,7 @@ if has("nvim")
   " Plug 'ellisonleao/gruvbox.nvim'
   " Plug 'sainnhe/everforest'
   Plug 'pgdouyon/vim-yin-yang'
+  Plug 'sainnhe/edge'
 
   " other
   Plug 'onsails/lspkind-nvim'
@@ -63,6 +64,7 @@ if has("nvim")
   " Clojure
   Plug 'Olical/conjure'
   Plug 'mhinz/vim-startify'
+  Plug 'justinmk/vim-gtfo'
 
 
 else

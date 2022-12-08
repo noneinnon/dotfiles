@@ -2,7 +2,7 @@ if !exists('g:loaded_telescope') | finish | endif
 
 nnoremap <silent> ;f <cmd>Telescope find_files theme=dropdown<cr>
 nnoremap <silent> ;F <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <silent> ;o <cmd>Telescope oldfiles<cr>
+nnoremap <silent> ;o <cmd>Telescope oldfiles theme=dropdown<cr>
 nnoremap <silent> ;r <cmd>Telescope live_grep theme=dropdown<cr>
 nnoremap <silent> ;R <cmd>Telescope grep_string<cr>
 nnoremap <silent> ;b <cmd>Telescope buffers<cr>
@@ -30,9 +30,12 @@ local previewers = require('telescope.previewers')
 -- Global remapping
 ------------------------------
 require('telescope').setup{
-  defaults = {
-    --preview = true,
-    initial_mode = "normal",
+defaults = {
+  preview = true,
+  sorting_strategy = "descending",  
+  layout_strategy = "center",
+  layout_config = { height = 0.95 },
+  initial_mode = "normal",
     mappings = {
       n = {
         ["q"] = actions.close,
@@ -45,19 +48,21 @@ require('telescope').setup{
       },
     },
   },
-  file_browser = {
-        theme = "ivy",
-        -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
-        mappings = {
-          ["i"] = {
-            -- your custom insert mode mappings
-          },
-          ["n"] = {
-            -- your custom normal mode mappings
+  extensions = {
+    file_browser = {
+          theme = "ivy",
+          -- disables netrw and use telescope-file-browser in its place
+          hijack_netrw = true,
+          mappings = {
+            ["i"] = {
+              -- your custom insert mode mappings
+            },
+            ["n"] = {
+              -- your custom normal mode mappings
+            },
           },
         },
-      },
+      }
   }
 
 require("telescope").load_extension "file_browser"
