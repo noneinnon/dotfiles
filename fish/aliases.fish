@@ -1,4 +1,3 @@
-#!/bin/bash 
 #
 # ALIASES
 alias la='ls -A'
@@ -43,19 +42,3 @@ alias lg='lazygit'
 alias ghw='gh repo view --web'
 #alias neo='open -na "neovide" --args --frame None'
 
-function neo() { open -a "neovide" --args --frame "None" "$PWD" ;}
-function ne() { open -a "neovide" --args --frame "None" "$@" ;}
-
-function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
-
-function replace() {
-  replace=$1
-  replacement=$2
-  directory=${3:="."}
-
-  ack $replace -l $directory | xargs -n 1 sed -i "" "s/$replace/$replacement/g"
-}
-
-function p() {
-  pnpm "$@"
-}

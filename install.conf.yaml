@@ -8,7 +8,6 @@
 - link:
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim/
-    ~/.ideavimrc: .ideavimrc
     ~/.config/karabiner: karabiner/
     ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
@@ -17,8 +16,13 @@
     ~/.tmux/.tmux.conf.local: .tmux.conf.local
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
-    ~/.oh-my-zsh/plugins/zsh-syntax-highlighting: .oh-my-zsh/plugins/zsh-syntax-highlighting
-    ~/.oh-my-zsh/plugins/zsh-vi-mode: .oh-my-zsh/plugins/zsh-vi-mode
+    ~/.config/fish: fish/
+    # ~/.oh-my-zsh/plugins/zsh-syntax-highlighting: .oh-my-zsh/plugins/zsh-syntax-highlighting
+    # ~/.oh-my-zsh/plugins/zsh-vi-mode: .oh-my-zsh/plugins/zsh-vi-mode
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+    # install plug
+  - [curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim] 
+    # install oh my fish
+  - [curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish]
