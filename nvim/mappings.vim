@@ -1,7 +1,12 @@
 " General Mappings
+lua << EOF
+require('mappings')
+EOF
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 
+" Notes
+nnoremap <leader>O :lua require("notes").openNotes("vsplit", "/todo.md")<CR>
 " LSP
 nnoremap <C-l> :LspStop<CR>
 nnoremap <C-L> :LspStart<CR>
@@ -13,8 +18,8 @@ nnoremap q: <Nop>
 nnoremap Q <Nop>
 
 " Quickfix
-nnoremap <leader>qfo :copen<CR>
-nnoremap <leader>qfc :close<CR>
+" nnoremap <leader>qfo :copen<CR>
+" nnoremap <leader>qfc :close<CR>
 
 " quickfix
 nnoremap ]q q:cnext<CR>
@@ -87,9 +92,9 @@ nnoremap <S-k> <C-w>+
 
 " Buffers
 " close single buffer
-nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bd <Cmd>bd<CR>
 " close all buffers
-nnoremap <leader>Bd :%bdelete<CR>
+nnoremap <leader>Bd <Cmd>%bdelete<CR>
 
 " Source
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
@@ -101,8 +106,10 @@ noremap <C-c> "*y
 noremap <C-p> "*p
 
 " ETC
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :wq<CR>
+nnoremap <leader>q <Nop>
+nnoremap <leader>q <Cmd>bd<CR>
+nnoremap <leader>Q <Cmd>bd!<CR>
+nnoremap <leader>w <Cmd>wq<CR>
 
 " kudos to ThePrimeagen
 nnoremap <C-u> <C-u>zz

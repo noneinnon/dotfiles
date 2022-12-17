@@ -19,6 +19,7 @@ if has("nvim")
     Plug 'windwp/nvim-ts-autotag'
     Plug 'hrsh7th/cmp-emoji'
     Plug 'nvim-telescope/telescope-file-browser.nvim'
+    Plug 'akinsho/toggleterm.nvim'
   endif
 
   " lsp
@@ -39,8 +40,8 @@ if has("nvim")
   Plug 'github/copilot.vim'
   
   " snippets
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
+  " Plug 'hrsh9th/vim-vsnip'
+  " Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'rafamadriz/friendly-snippets'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
@@ -51,7 +52,7 @@ if has("nvim")
   "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   " Plug 'ellisonleao/gruvbox.nvim'
   " Plug 'sainnhe/everforest'
-  Plug 'pgdouyon/vim-yin-yang'
+  " Plug 'pgdouyon/vim-yin-yang'
   Plug 'sainnhe/edge'
 
   " other

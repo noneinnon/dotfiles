@@ -3,6 +3,7 @@ local cmp = require'cmp'
 local lspkind = require'lspkind'
 local feedkey = require'utils'.feedkey
 local luasnip = require'luasnip'
+require("luasnip.loaders.from_vscode").lazy_load()
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -71,8 +72,8 @@ cmp.setup({
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
-    { name = 'emoji', insert = true, }, -- emoji completion
-    { name = 'tags' },
+    -- { name = 'emoji', insert = true, }, -- emoji completion
+    -- { name = 'tags' },
     { name = 'treesitter' },
     { name = 'copilot' }
   },

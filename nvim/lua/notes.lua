@@ -1,12 +1,12 @@
-local N = {}
-
-local notesDir = os.getenv("NOTES_DIR")
+local N = {
+  notesDir = os.getenv("NOTES_DIR")
+}
 
 function N.openNotes(command, path)
   command = command or "e"
   path = path or "/"
-  if notesDir then
-    vim.cmd(command .. notesDir .. path)
+  if N.notesDir then
+    vim.cmd(command .. N.notesDir .. path)
   else
     vim.notify('Notes Dir is not defined')
   end

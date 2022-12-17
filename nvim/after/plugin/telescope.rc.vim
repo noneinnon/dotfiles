@@ -1,6 +1,6 @@
 if !exists('g:loaded_telescope') | finish | endif
 
-nnoremap <silent> ;f <cmd>Telescope find_files theme=dropdown<cr>
+nnoremap <silent> ;f <cmd>Telescope find_files theme=dropdown hidden=true<cr>
 nnoremap <silent> ;F <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <silent> ;o <cmd>Telescope oldfiles theme=dropdown<cr>
 nnoremap <silent> ;r <cmd>Telescope live_grep theme=dropdown<cr>
@@ -20,9 +20,8 @@ nnoremap <silent> ;c <cmd>Telescope commands<cr>
 nnoremap <silent> ;k <cmd>Telescope keymaps<cr>
 nnoremap <silent> ;T <cmd>Telescope tags<cr>
 nnoremap <silent> <C-q> <cmd>Telescope quickfix<cr>
-nnoremap <silent> ;; <cmd>Telescope file_browser path=%:p:h<cr>
-
-"nnoremap <silent> <C-f> <cmd>lua require('telescope.builtin').file_browser( { cwd = vim.fn.expand('%:p:h') })<cr>
+nnoremap <silent> ;; <cmd>Telescope file_browser hidden=true path=%:p:h<cr>
+nnoremap <silent> ;n <cmd>lua require('telescope').extensions.file_browser.file_browser( { cwd = require('notes').notesDir })<cr>
 
 lua << EOF
 local actions = require('telescope.actions')
@@ -35,7 +34,7 @@ defaults = {
   sorting_strategy = "descending",  
   layout_strategy = "center",
   layout_config = { height = 0.95 },
-  initial_mode = "normal",
+  initial_mode = "insert",
     mappings = {
       n = {
         ["q"] = actions.close,
