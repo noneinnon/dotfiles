@@ -1,4 +1,1 @@
-local map = require("utils").map
-
-map("n", "+", "<C-a>")
-map("n", "-", "<C-x>")
+vim.keymap.set('n', '<leader>ft', ":NvimTreeToggle<CR>", { desc = '[?] Find recently opened files' })
