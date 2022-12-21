@@ -20,6 +20,8 @@ vim.keymap.set('n', '<leader>ws', ':split<CR>', { silent = true })
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { silent = true })
 -- Buffers
 --
+vim.keymap.set('v', '<C-c>', '"*y', { silent = true })
+vim.keymap.set('n', '<C-p>', '"*p', { silent = true })
 vim.keymap.set('', '<leader><tab>', 'b#<CR>', { silent = true })
 vim.keymap.set('', '<leader>ba', ':ball<CR>', { silent = true })
 vim.keymap.set('', '<leader>bb', ':Telescope buffers<CR>', { silent = true })
@@ -32,7 +34,6 @@ vim.keymap.set('', '<leader>bp', ':bprevious<CR>', { silent = true })
 -- (util.lnnoremap :ch "Telescope neoclip")
 vim.keymap.set('', '<leader>ch', ':Telescope neoclip<CR>', { silent = true })
 
-
 -- Git
 -- (util.lnnoremap :gd "DiffviewOpen")
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true })
@@ -43,12 +44,12 @@ vim.keymap.set('n', '<leader>.', ':ToggleTerm<CR>', { silent = true })
 --
 vim.keymap.set('n', 'ga', ':EasyAlign<CR>', { silent = true })
 vim.keymap.set('x', 'ga', ':EasyAlign<CR>', { silent = true })
+vim.keymap.set('n', 'gx', ':!open <c-r><c-a>', { silent = true })
 
 -- Github
   -- (util.lnnoremap :gga "Octo actions")
   -- (util.lnnoremap :gggl "Octo gist list")
-  --
--- (util.lnnoremap :ggib "Octo issue browser")
+  -- (util.lnnoremap :ggib "Octo issue browser")
 -- (util.lnnoremap :ggic "Octo issue create")
 -- (util.lnnoremap :ggil "Octo issue list")
 -- (util.lnnoremap :ggis "Octo issue search")
@@ -61,6 +62,18 @@ vim.keymap.set('x', 'ga', ':EasyAlign<CR>', { silent = true })
 -- (util.lnnoremap :ggpu "Octo pr url")
 --
 -- (util.lnnoremap :ggrb "Octo repo browse")
--- (util.lnnoremap :ggrf "Octo repo fork")
+-- (util.lnnoremap ggrf "Octo repo fork")
 -- (util.lnnoremap :ggrl "Octo repo list")
--- (util.lnnoremap :ggru "Octo repo url")
+-- (util.lnnoremap :ggru "Octo repo url"
+M = {}
+M.HandleURL = function()
+  local url = string.match(vim.fn.getline("."), "[a-z]*://[^ >,;]*")
+  if url ~= "" then
+    vim.cmd('exec "!open \'' .. url .. '\'"')
+  else
+    vim.cmd('echo "No URI found in line."')
+  end
+end
+
+vim.api.nvim_set_keymap("n", "gx", [[ <Cmd>lua M.HandleURL()<CR> ]], {})
+
