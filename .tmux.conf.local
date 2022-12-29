@@ -47,17 +47,20 @@ tmux_conf_new_session_prompt=false
 #  - false (default)
 tmux_conf_24b_colour=false
 
+# everforest palette
+# https://github.com/sainnhe/everforest/blob/master/palette.md
+
 # default theme
 tmux_conf_theme_colour_1="#080808"    # dark gray
 tmux_conf_theme_colour_2="#303030"    # gray
 tmux_conf_theme_colour_3="#8a8a8a"    # light gray
-tmux_conf_theme_colour_4="#00afff"    # light blue
+tmux_conf_theme_colour_4="d3c6aa"    # light brown
 tmux_conf_theme_colour_5="#ffff00"    # yellow
 tmux_conf_theme_colour_6="#080808"    # dark gray
 tmux_conf_theme_colour_7="#e4e4e4"    # white
 tmux_conf_theme_colour_8="#080808"    # dark gray
 tmux_conf_theme_colour_9="#ffff00"    # yellow
-tmux_conf_theme_colour_10="#ff00af"   # pink
+tmux_conf_theme_colour_10="a7c080"   # green
 tmux_conf_theme_colour_11="#5fff00"   # green
 tmux_conf_theme_colour_12="#8a8a8a"   # light gray
 tmux_conf_theme_colour_13="#e4e4e4"   # white
@@ -111,7 +114,7 @@ tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_4"
 tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_4"
 
 # status line style
-tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_message_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_message_bg="$tmux_conf_theme_colour_10"
 tmux_conf_theme_message_attr="bold"
 
@@ -152,8 +155,8 @@ tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_5"
+tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_10"
 tmux_conf_theme_window_status_attr="none"
 tmux_conf_theme_window_status_format="#I #W"
 #tmux_conf_theme_window_status_format="#{circled_window_index} #W"
@@ -169,7 +172,7 @@ tmux_conf_theme_window_status_format="#I #W"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_10"
 tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
 #tmux_conf_theme_window_status_current_attr="bold"
 tmux_conf_theme_window_status_current_format="#I #W"
@@ -237,8 +240,8 @@ tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_17,$tmux_conf_theme_colo
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
-tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_17,$tmux_conf_theme_colour_1,$tmux_conf_theme_colour_10"
+tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_10"
+tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_1,$tmux_conf_theme_colour_10"
 tmux_conf_theme_status_right_attr="none,none,bold"
 
 # pairing indicator
@@ -357,7 +360,7 @@ bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel 'xclip -se c -i
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy
 
 # move status line to top
-#set -g status-position top
+set -g status-position top
 
 # -- tpm -----------------------------------------------------------------------
 

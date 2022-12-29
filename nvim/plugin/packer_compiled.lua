@@ -75,6 +75,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = true,
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
@@ -119,6 +120,12 @@ _G.packer_plugins = {
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
+  ["everforest-nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0" },
+    loaded = true,
+    path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/everforest-nvim",
+    url = "https://github.com/neanias/everforest-nvim"
+  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -129,7 +136,14 @@ _G.packer_plugins = {
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["hop.nvim"] = {
+    config = { "\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0" },
+    loaded = true,
+    path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/hop.nvim",
+    url = "https://github.com/phaazon/hop.nvim"
+  },
   ["indent-blankline.nvim"] = {
+    config = { "\27LJ\2\n“\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\20buftype_exclude\1\2\0\0\rterminal\1\0\2\tchar\bâ”Š#show_trailing_blankline_indent\1\nsetup\21indent_blankline\frequire\0" },
     loaded = true,
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
@@ -213,6 +227,11 @@ _G.packer_plugins = {
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rest.nvim"] = {
+    loaded = true,
+    path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/rest.nvim",
+    url = "https://github.com/rest-nvim/rest.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     cond = { true },
     loaded = false,
@@ -233,15 +252,29 @@ _G.packer_plugins = {
     url = "https://github.com/folke/todo-comments.nvim"
   },
   ["toggleterm.nvim"] = {
-    config = { "\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0" },
     loaded = true,
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  undotree = {
+    loaded = true,
+    path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
   },
   ["vim-dadbod"] = {
     loaded = true,
     path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/vim-dadbod",
     url = "https://github.com/tpope/vim-dadbod"
+  },
+  ["vim-dadbod-ui"] = {
+    loaded = true,
+    path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/vim-dadbod-ui",
+    url = "https://github.com/kristijanhusak/vim-dadbod-ui"
+  },
+  ["vim-dotenv"] = {
+    loaded = true,
+    path = "/Users/antonio/.local/share/nvim/site/pack/packer/start/vim-dotenv",
+    url = "https://github.com/tpope/vim-dotenv"
   },
   ["vim-easy-align"] = {
     loaded = true,
@@ -297,26 +330,38 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: octo.nvim
-time([[Config for octo.nvim]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tocto\frequire\0", "config", "octo.nvim")
-time([[Config for octo.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
+-- Config for: hop.nvim
+time([[Config for hop.nvim]], true)
+try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop.nvim")
+time([[Config for hop.nvim]], false)
+-- Config for: everforest-nvim
+time([[Config for everforest-nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15everforest\frequire\0", "config", "everforest-nvim")
+time([[Config for everforest-nvim]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\n“\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\20buftype_exclude\1\2\0\0\rterminal\1\0\2\tchar\bâ”Š#show_trailing_blankline_indent\1\nsetup\21indent_blankline\frequire\0", "config", "indent-blankline.nvim")
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Config for: octo.nvim
+time([[Config for octo.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tocto\frequire\0", "config", "octo.nvim")
+time([[Config for octo.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)

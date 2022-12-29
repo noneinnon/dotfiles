@@ -1,6 +1,9 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+
+-- relative line numbers
+vim.o.relativenumber = true
 
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
@@ -33,10 +36,19 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme everforest]]
 
+-- Set :nos[wapfile]
+vim.cmd [[nos]]
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -48,16 +60,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
--- Enable Comment.nvim
-require('Comment').setup()
-
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

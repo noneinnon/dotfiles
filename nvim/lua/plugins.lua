@@ -25,7 +25,8 @@ require('packer').startup(function(use)
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-copilot', 'github/copilot.vim' },
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-copilot',
+      'github/copilot.vim' },
   }
 
   use { -- Highlight, edit, and navigate code
@@ -51,18 +52,41 @@ require('packer').startup(function(use)
       'nvim-telescope/telescope.nvim',
       'kyazdani42/nvim-web-devicons',
     },
-    config = function ()
-      require"octo".setup()
+    config = function()
+      require "octo".setup()
     end
   }
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use({
+    "neanias/everforest-nvim",
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup()
+    end,
+  })
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  use({
+    'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
+    config = function()
+      require("indent_blankline").setup {
+        char = '┊',
+        show_trailing_blankline_indent = false,
+        buftype_exclude = { "terminal" },
+      }
+    end,
+  })
+  use({
+    'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
+    config = function()
+      require('Comment').setup()
+    end,
+  })
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'tpope/vim-dadbod' -- DB client
+  use 'kristijanhusak/vim-dadbod-ui'
+  use 'tpope/vim-dotenv'
 
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -73,12 +97,12 @@ require('packer').startup(function(use)
 
   -- File tree
   use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  },
-  tag = 'nightly' -- optional, updated every week. (see issue #1193)
-}
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   -- lisp related stuff
   use 'tpope/vim-sexp-mappings-for-regular-people'
@@ -88,7 +112,7 @@ require('packer').startup(function(use)
   -- other
   use 'tpope/vim-sensible'
   use 'tpope/vim-repeat'
-  use {"akinsho/toggleterm.nvim", tag = '*'}
+  use { "akinsho/toggleterm.nvim", tag = '*' }
   use 'mg979/vim-visual-multi'
   use 'junegunn/vim-easy-align'
   use({
@@ -106,7 +130,7 @@ require('packer').startup(function(use)
   use {
     'folke/which-key.nvim',
     config = function()
-      require("which-key").setup{}
+      require("which-key").setup {}
     end
   }
   -- TODO comments
@@ -121,6 +145,22 @@ require('packer').startup(function(use)
       }
     end
   }
+
+  use {
+    "rest-nvim/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
+
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end,
+  }
+
+  use "mbbill/undotree"
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')

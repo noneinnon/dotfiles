@@ -44,7 +44,12 @@ vim.keymap.set('n', '<leader>.', ':ToggleTerm<CR>', { silent = true })
 --
 vim.keymap.set('n', 'ga', ':EasyAlign<CR>', { silent = true })
 vim.keymap.set('x', 'ga', ':EasyAlign<CR>', { silent = true })
-vim.keymap.set('n', 'gx', ':!open <c-r><c-a>', { silent = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set('', 'Q', '<Nop>', { silent = true })
+
+vim.keymap.set('x', '<leader>p', '\"_dP', { silent = true })
+-- vim.keymap.set('n', 'gx', ':!open <c-r><c-a>', { silent = true })
 
 -- Github
   -- (util.lnnoremap :gga "Octo actions")
@@ -65,15 +70,21 @@ vim.keymap.set('n', 'gx', ':!open <c-r><c-a>', { silent = true })
 -- (util.lnnoremap ggrf "Octo repo fork")
 -- (util.lnnoremap :ggrl "Octo repo list")
 -- (util.lnnoremap :ggru "Octo repo url"
-M = {}
-M.HandleURL = function()
-  local url = string.match(vim.fn.getline("."), "[a-z]*://[^ >,;]*")
-  if url ~= "" then
-    vim.cmd('exec "!open \'' .. url .. '\'"')
-  else
-    vim.cmd('echo "No URI found in line."')
-  end
-end
 
-vim.api.nvim_set_keymap("n", "gx", [[ <Cmd>lua M.HandleURL()<CR> ]], {})
+-- hack for gx motion, if netrw is disabled
+-- M = {}
+-- M.HandleURL = function()
+--   local url = string.match(vim.fn.getline("."), "[a-z]*://[^ >,;]*")
+--   if url ~= "" then
+--     vim.cmd('exec "!open \'' .. url .. '\'"')
+--   else
+--     vim.cmd('echo "No URI found in line."')
+--   end
+-- end
+--
+-- vim.api.nvim_set_keymap("n", "gx", [[ <Cmd>lua M.HandleURL()<CR> ]], {})
+--
+-- REmap conjure
+vim.g["conjure#client#clojure#nrepl#mapping#session_fresh"]= '<leader>csf'
+vim.g["conjure#client#clojure#nrepl#mapping#session_select"]= '<leader>css'
 

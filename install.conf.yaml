@@ -12,8 +12,8 @@
     ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
     ~/.aliases: .aliases
-    ~/.tmux/.tmux.conf: .tmux.conf
-    ~/.tmux/.tmux.conf.local: .tmux.conf.local
+    ~/.tmux.conf: .tmux.conf
+    ~/.tmux.conf.local: .tmux.conf.local
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
     ~/.config/fish: fish/
@@ -23,6 +23,6 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
     # install plug
-  - [curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim] 
+  # - [curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim] 
     # install oh my fish
-  - [curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish]
+  # - [curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish]
