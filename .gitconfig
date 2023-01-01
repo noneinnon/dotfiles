@@ -1,24 +1,40 @@
 [user]
 	name = Anton Baranov
 	email = 44464480+noneinnon@users.noreply.github.com
-[core]
-	editor = nvim
+
 [mergetool "idea"]
 	cmd = /Applications/WebStorm.app/Contents/MacOS/webstorm merge \
-	$(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") \
-  $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") \
-  $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") \
-  $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED") \
-  && read -n 1 -s
+		$(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") \
+		$(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") \
+		$(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") \
+		$(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED") \
+		&& read -n 1 -s
+
+[mergetool "vimdiff"]
+	cmd = "nvim $MERGED -c ':Gvdiffsplit!'"
 
 [mergetool]
 	keepBackup = false
+	prompt = false
+
 [worktree]
 	guessRemote = true
 
 [merge]
-	tool = smerge
-[mergetool "smerge"]
-	trustExitCode = false
+	tool = vimdiff
+	conflictstyle = diff3
+
 [diff]
-	tool = smerge
+	editor = nvim
+	tool = nvim
+	colorMoved = default
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)

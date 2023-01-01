@@ -4,3 +4,6 @@ nvim/plugged
 tags
 temp
 .idea
+node_modules
+.lsp
+.clj-kondo
