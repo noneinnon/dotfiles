@@ -26,17 +26,17 @@ vim.keymap.set('', '<leader><tab>', 'b#<CR>', { silent = true })
 vim.keymap.set('', '<leader>ba', ':ball<CR>', { silent = true })
 vim.keymap.set('', '<leader>bb', ':Telescope buffers<CR>', { silent = true })
 vim.keymap.set('', '<leader>bd', ':bdelete<CR>', { silent = true })
+vim.keymap.set('', '<leader>Bd', ':%bd!|e#<CR>', { silent = true })
 vim.keymap.set('', '<leader>bn', ':bnext<CR>', { silent = true })
 vim.keymap.set('', '<leader>bp', ':bprevious<CR>', { silent = true })
+
+
 -- Other
 -- ;; killring / registers
 -- ;; clipboard history
 -- (util.lnnoremap :ch "Telescope neoclip")
 vim.keymap.set('', '<leader>ch', ':Telescope neoclip<CR>', { silent = true })
 
--- Git
--- (util.lnnoremap :gd "DiffviewOpen")
-vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true })
 -- ToggleTerm
 vim.keymap.set('n', '<leader>.', ':ToggleTerm<CR>', { silent = true })
 

@@ -1,6 +1,18 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
+--
+--
+--
+-- Syntax
+-- vim.opt: behaves like :set
+-- vim.opt_global: behaves like :setglobal
+-- vim.opt_local: behaves like :setlocal
+--
+-- vim.o: behaves like :let &{option-name}
+-- vim.go: behaves like :let &g:{option-name}
+-- vim.bo: behaves like :let &l:{option-name} for buffer-local options
+-- vim.wo: behaves like :let &l:{option-name} for window-local options
 
 -- relative line numbers
 vim.o.relativenumber = true
@@ -39,7 +51,7 @@ vim.o.termguicolors = true
 vim.cmd [[colorscheme everforest]]
 
 -- Set :nos[wapfile]
-vim.cmd [[nos]]
+vim.cmd [[noswapfile]]
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 

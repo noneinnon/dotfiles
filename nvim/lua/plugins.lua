@@ -112,18 +112,19 @@ require('packer').startup(function(use)
   -- other
   use 'tpope/vim-sensible'
   use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
   use { "akinsho/toggleterm.nvim", tag = '*' }
   use 'mg979/vim-visual-multi'
   use 'junegunn/vim-easy-align'
-  use({
-    "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
-  })
+  -- use({
+  --   "kylechui/nvim-surround",
+  --   tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+  --   config = function()
+  --     require("nvim-surround").setup({
+  --       -- Configuration here, or leave empty to use defaults
+  --     })
+  --   end
+  -- })
   use 'AckslD/nvim-neoclip.lua'
   use 'mhinz/vim-startify'
   -- Which key
