@@ -1,1 +1,0 @@
-/Users/antonio/dotfiles_private/private.fish
