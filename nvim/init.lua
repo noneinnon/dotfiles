@@ -51,7 +51,8 @@ vim.o.termguicolors = true
 vim.cmd [[colorscheme everforest]]
 
 -- Set :nos[wapfile]
-vim.cmd [[noswapfile]]
+-- vim.cmd [[noswapfile]]
+vim.opt.swapfile = false
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
