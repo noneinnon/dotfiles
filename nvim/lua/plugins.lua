@@ -105,11 +105,15 @@ require('packer').startup(function(use)
   }
 
   -- lisp related stuff
+  -- https://github.com/tpope/vim-sexp-mappings-for-regular-people
   use 'tpope/vim-sexp-mappings-for-regular-people'
+  use 'tpope/vim-repeat'
+  use 'guns/vim-sexp'
   use 'Olical/conjure'
   use 'PaterJason/cmp-conjure'
 
   -- other
+  use 'mattn/emmet-vim'
   use 'tpope/vim-sensible'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
