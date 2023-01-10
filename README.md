@@ -3,11 +3,20 @@
 - *[nvim](https://neovim.io)* - text editor / IDE
 - *[kitty](https://sw.kovidgoyal.net/kitty/)* - terminal emulator
 
-## Run
+## Basic usage
 
-```bash
-sh install
-```
+### Updating Brewfile
+
+There are handly alliases in`fish/aliases.fish`, that can be used to update Brewfile:
+1. `brewup` - installs deps from `~/dotfiles/Brewfile`
+2. `brewdump` - updates Brewfile in `/dotfiles/Brewfile`
+
+## Installation
+
+1. Ensure all dependencies are installed
+2. Run `brewup`
+3. Run `sh install`
+
 ## Dependencies
 
 - fish
