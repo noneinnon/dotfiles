@@ -1,4 +1,8 @@
 require("toggleterm").setup()
+-- https://github.com/akinsho/toggleterm.nvim
+
+-- ToggleTerm
+vim.keymap.set('n', '<leader>.', ':ToggleTermToggleAll<CR>', { silent = true })
 
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}

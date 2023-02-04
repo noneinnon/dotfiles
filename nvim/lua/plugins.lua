@@ -129,7 +129,19 @@ require('packer').startup(function(use)
   --     })
   --   end
   -- })
-  use 'AckslD/nvim-neoclip.lua'
+
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      -- you'll need at least one of these
+      { 'nvim-telescope/telescope.nvim' },
+      -- {'ibhagwan/fzf-lua'},
+    },
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
+
   use 'mhinz/vim-startify'
   -- Which key
   use {
@@ -166,6 +178,9 @@ require('packer').startup(function(use)
   }
 
   use "mbbill/undotree"
+
+-- https://github.com/kevinhwang91/nvim-bqf#function-table
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')

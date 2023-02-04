@@ -7,6 +7,10 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+      n = {
+        ['<C-q>'] = require('telescope.actions').send_selected_to_qflist,
+        ['<C-l>'] = require('telescope.actions').send_to_qflist
+      }
     },
   },
 }
@@ -32,11 +36,14 @@ vim.keymap.set('n', '<leader>ss', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>sS', require('telescope.builtin').lsp_document_symbols, { desc = '[S]earch document [S]ymbols' })
+vim.keymap.set('', '<leader>sb', ':Telescope buffers<CR>', { silent = true })
+
+vim.keymap.set('n', '<leader>sn', function()
+  require('telescope.builtin').find_files{cwd = os.getenv("NOTES_DIR")}
+end, { desc = '[S]earch [N]notes' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
-
-

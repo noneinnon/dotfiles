@@ -18,35 +18,38 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '<leader>wm', ':only<CR>', { silent = true })
 vim.keymap.set('n', '<leader>ws', ':split<CR>', { silent = true })
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { silent = true })
+
+-- Tabs
+
+vim.keymap.set('n', '<leader>[', ':tabp<CR>', { silent = true })
+vim.keymap.set('n', '<leader>]', ':tabn<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { silent = true })
+
 -- Buffers
 --
-vim.keymap.set('v', '<C-c>', '"*y', { silent = true })
-vim.keymap.set('n', '<C-p>', '"*p', { silent = true })
+vim.keymap.set('v', '<C-c>', '"+y', { silent = true })
+vim.keymap.set('n', '<C-p>', '"+p', { silent = true })
 vim.keymap.set('', '<leader><tab>', 'b#<CR>', { silent = true })
 vim.keymap.set('', '<leader>ba', ':ball<CR>', { silent = true })
-vim.keymap.set('', '<leader>bb', ':Telescope buffers<CR>', { silent = true })
 vim.keymap.set('', '<leader>bd', ':bdelete<CR>', { silent = true })
 vim.keymap.set('', '<leader>Bd', ':%bd!|e#<CR>', { silent = true })
 vim.keymap.set('', '<leader>bn', ':bnext<CR>', { silent = true })
 vim.keymap.set('', '<leader>bp', ':bprevious<CR>', { silent = true })
-
 
 -- Other
 -- ;; killring / registers
 -- ;; clipboard history
 -- (util.lnnoremap :ch "Telescope neoclip")
 vim.keymap.set('', '<leader>ch', ':Telescope neoclip<CR>', { silent = true })
-
--- ToggleTerm
-vim.keymap.set('n', '<leader>.', ':ToggleTerm<CR>', { silent = true })
-
--- other
---
 vim.keymap.set('n', 'ga', ':EasyAlign<CR>', { silent = true })
 vim.keymap.set('x', 'ga', ':EasyAlign<CR>', { silent = true })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('', 'Q', '<Nop>', { silent = true })
+
+-- vim.keymap.set('', '<C-q>', ':copen<CR>', { silent = true })
+-- vim.keymap.set('', '<C-Q>', ':cclose<CR>', { silent = true })
 
 vim.keymap.set('x', '<leader>p', '\"_dP', { silent = true })
 -- vim.keymap.set('n', 'gx', ':!open <c-r><c-a>', { silent = true })
@@ -83,8 +86,3 @@ vim.keymap.set('x', '<leader>p', '\"_dP', { silent = true })
 -- end
 --
 -- vim.api.nvim_set_keymap("n", "gx", [[ <Cmd>lua M.HandleURL()<CR> ]], {})
---
--- REmap conjure
-vim.g["conjure#client#clojure#nrepl#mapping#session_fresh"]= '<leader>csf'
-vim.g["conjure#client#clojure#nrepl#mapping#session_select"]= '<leader>css'
-
