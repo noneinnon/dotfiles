@@ -20,14 +20,14 @@ local on_attach = function(_, bufnr)
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
   nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -55,9 +55,18 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
--- NOTICE https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- NOTICE https://github.com/williamboman/mason-lspconfig.nvim
-local servers = { 'pyright', 'html', 'pyright', 'tsserver', 'sumneko_lua', 'gopls', 'clojure_lsp', 'diagnosticls'}
+local servers = {
+  'pyright',
+  'html',
+  'pyright',
+  'tsserver',
+  'lua_ls',
+  'gopls',
+  'clojure_lsp',
+  'diagnosticls',
+}
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -76,7 +85,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Turn on lsp status information
-require('fidget').setup()
+-- require('fidget').setup()
 
 -- Example custom configuration for lua
 --
@@ -85,7 +94,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -105,3 +114,11 @@ require('lspconfig').sumneko_lua.setup {
     },
   },
 }
+
+-- https://github.com/neovim/nvim-lspconfig/issues/662
+-- :help vim.lsp.diagnostic.on_publish_diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+            virtual_text = false
+          }
+)

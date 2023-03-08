@@ -1,9 +1,3 @@
--- disable netrw at the very start of your init.lua (strongly advised)
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
---
---
---
 -- Syntax
 -- vim.opt: behaves like :set
 -- vim.opt_global: behaves like :setglobal
@@ -34,7 +28,7 @@ vim.o.mouse = 'a'
 
 -- Enable break indent
 vim.o.breakindent = true
-
+--
 -- Save undo history
 vim.o.undofile = true
 
@@ -48,7 +42,8 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme everforest]]
+vim.cmd [[colorscheme alabaster]]
+vim.o.background = "dark"
 
 -- Set :nos[wapfile]
 -- vim.cmd [[noswapfile]]
@@ -65,7 +60,11 @@ vim.opt.smartindent = true
 
 -- Disable vim sexp insert mode mappings
 vim.g.sexp_enable_insert_mode_mappings = 0;
-vim.opt.guifont = { "FiraCode Nerd Font", ":h15" }
+vim.g.guifont_size = 16
+vim.g.guifont_family = "FiraCode Nerd Font"
+vim.opt.guifont = { vim.g.guifont_family, string.format(":h%s", vim.g.guifont_size) }
+-- does not work for some reason
+-- vim.opt.linespace = 10;
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -87,6 +86,13 @@ vim.api.nvim_create_autocmd(
   "FileType",
   { pattern = { "help", "startuptime", "qf", "lspinfo" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
 )
+
+vim.g.netrw_banner = 0;
+vim.g.netrw_winsize = 30;
+
+-- hide sign column
+vim.opt.scl = 'no'
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 --
