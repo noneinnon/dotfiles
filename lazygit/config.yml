@@ -8,15 +8,16 @@ gui:
   language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
   timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
   theme:
+    lightTheme: false
     activeBorderColor:
-      - green
+      - black
       - bold
     inactiveBorderColor:
-      - white
+      - black
     optionsTextColor:
       - blue
     selectedLineBgColor:
-      - blue # set to `default` to have no background colour
+      - cyan # set to `default` to have no background colour
     selectedRangeBgColor:
       - blue
     cherryPickedCommitBgColor:
@@ -26,7 +27,7 @@ gui:
     unstagedChangesColor:
       - red
     defaultFgColor:
-      - default
+      - black
   commitLength:
     show: true
   mouseEvents: true
@@ -43,7 +44,7 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta --dark --paging=never
+    pager: delta --light --paging=never
   commit:
     signOff: false
     verbose: false
