@@ -45,6 +45,7 @@ function replace
 	  --preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2)
 	# files | fzf --bind "change:reload:$rg_command {q} || true" \
 	# 	    --preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2)
+	echo $files
 end
 
 # Kitty
@@ -53,9 +54,9 @@ alias s='kitty +kitten ssh'
 # Other
 alias lg='lazygit'
 alias ghw='gh repo view --web'
+alias theme="kitty +kitten themes"
 #alias neo='open -na "neovide" --args --frame None'
 
 # Brew
 alias brewup='brew update && brew upgrade && brew cleanup && brew doctor'
 alias brewdump='brew bundle dump --force --file=~/dotfiles/Brewfile'
-

@@ -4,6 +4,7 @@ set -U EDITOR nvim
 
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/private.fish
+source ~/.config/fish/variables.fish
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
@@ -33,7 +34,7 @@ set -gx FZF_ALT_C_OPTS "--preview='exa -T {}'"
 set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
 
 #https://github.com/PatrickF1/fzf.fish/pull/273
-set -gx $EDITOR "nvim" # or "vim", or "code", etc.
+set -gx $EDITOR "nvim"
 # Ctrl-o will open the selected file/directory in your editor of choice.
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 
@@ -64,16 +65,6 @@ end
 ## FZF keybindings
 fzf_configure_bindings --directory=\cf --history=\cr --processes=\cp --variables=\cv
 
-
-# function fzf-git-branch 
-#     command git rev-parse HEAD > /dev/null 2>&1 || return
-#
-#     command git branch --color=always --all --sort=-committerdate |
-#         grep -v HEAD |
-#         fzf --height 50% --ansi --no-multi --preview-window right:65% \
-#             --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed "s/.* //" <<< {})' |
-#         sed "s/.* //"
-# end
 
 # Status line
 function node_prompt_version
