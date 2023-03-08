@@ -1,0 +1,17 @@
+# https://stackoverflow.com/questions/10022161/open-programs-with-applescript
+# https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
+
+# browser
+cmd - 1 : bb ~/dotfiles/scripts/open-app.clj "Neovide"
+cmd - 2 : osascript -e "tell application \"$TERMINAL\" to activate"
+cmd - 3 : osascript -e "tell application \"$BROWSER\" to activate"
+cmd - 4 : osascript -e "tell application \"$DEV_BROWSER\" to activate"
+cmd - 5 : osascript -e "tell application \"Safari\" to activate"
+cmd - 6 : kitty -o allow_remote_control=yes --listen-on unix:/tmp/mykitty -o enabled_layouts=tall
+
+
+# other
+cmd - 7 : bb ~/dotfiles/scripts/open-app.clj "Dash"
+cmd - 8 : bb ~/dotfiles/scripts/open-app.clj "Sublime Merge"
+cmd - 9 : osascript -e "tell application \"Sublime Text\" to activate"
+cmd - 0 : osascript -e "tell application \"vscodium\" to activate"

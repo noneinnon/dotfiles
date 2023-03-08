@@ -11,12 +11,14 @@
     ~/.config/karabiner: karabiner/
     ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
+    ~/.skhdrc: .skhdrc
     ~/.aliases: .aliases
     ~/.tmux.conf: .tmux.conf
     ~/.tmux.conf.local: .tmux.conf.local
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
     ~/.config/fish/aliases.fish: fish/aliases.fish
+    ~/.config/fish/variables.fish: fish/variables.fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/lazygit/config.yml: lazygit/config.yml
     # ~/.oh-my-zsh/plugins/zsh-syntax-highlighting: .oh-my-zsh/plugins/zsh-syntax-highlighting
