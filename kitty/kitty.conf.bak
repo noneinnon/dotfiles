@@ -24,7 +24,7 @@
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
- font_size 15.0
+ font_size 16.0
 
 #: Font size (in pts)
 
@@ -302,7 +302,6 @@
 #: }}}
 
 #: Mouse {{{
-
 # mouse_hide_wait 3.0
 
 #: Hide mouse cursor after the specified number of seconds of the
@@ -725,7 +724,7 @@
 #: Fade the text in inactive windows by the specified amount (a number
 #: between zero and one, with zero being fully faded).
 
- hide_window_decorations yes
+hide_window_decorations yes
 
 #: Hide the window decorations (title-bar and window borders) with
 #: yes. On macOS, titlebar-only can be used to only hide the titlebar.
@@ -879,7 +878,7 @@
 #: The separator between tabs in the tab bar when using separator as
 #: the tab_bar_style.
 
-# tab_powerline_style angled
+ tab_powerline_style angled
 
 #: The powerline separator style between tabs in the tab bar when
 #: using powerline as the tab_bar_style, can be one of: angled,
@@ -947,7 +946,7 @@
 
 #: The foreground and background colors
 
- background_opacity 0.8
+ background_opacity 0.98
 
 #: The opacity of the background. A number between 0 and 1, where 1 is
 #: opaque and 0 is fully transparent.  This will only work if
@@ -1098,7 +1097,7 @@
 #: --login and --interactive to ensure that the shell starts in
 #: interactive mode and reads its startup rc files.
 
-# editor .
+editor .
 
 #: The terminal editor (such as ``vim`` or ``nano``) to use when
 #: editing the kitty config file or similar tasks.
@@ -1432,6 +1431,7 @@
 #: available here </actions>.
 
 # kitty_mod ctrl+shift
+kitty_mod alt
 
 #: The value of kitty_mod is used as the modifier for all default
 #: shortcuts, you can change it in your kitty.conf to change the
@@ -1444,6 +1444,7 @@
 
 # action_alias
 
+action_alias launch_tab launch --type=tab --cwd=current
 #: E.g. action_alias launch_tab launch --type=tab --cwd=current
 
 #: Define aliases to avoid repeating the same options in multiple
@@ -1452,7 +1453,7 @@
 #: create mappings to launch a new tab in the current working
 #: directory without duplication::
 
-#:     map f1 launch_tab vim
+map f1 launch_tab nvim
 #:     map f2 launch_tab emacs
 
 #: Similarly, to alias kitten invocation::
@@ -1649,11 +1650,11 @@
 
 #: Next window
 
-# map kitty_mod+] next_window
+map kitty_mod+l next_window
 
 #: Previous window
 
-# map kitty_mod+[ previous_window
+map kitty_mod+h previous_window
 
 #: Move window forward
 
@@ -1674,56 +1675,56 @@
 
 #: First window
 
-# map kitty_mod+1 first_window
+map kitty_mod+1 first_window
 # map cmd+1       first_window
 
 #: Second window
 
-# map kitty_mod+2 second_window
+map kitty_mod+2 second_window
 # map cmd+2       second_window
 
 #: Third window
 
-# map kitty_mod+3 third_window
+map kitty_mod+3 third_window
 # map cmd+3       third_window
 
 #: Fourth window
 
-# map kitty_mod+4 fourth_window
+map kitty_mod+4 fourth_window
 # map cmd+4       fourth_window
 
 #: Fifth window
 
-# map kitty_mod+5 fifth_window
+map kitty_mod+5 fifth_window
 # map cmd+5       fifth_window
 
 #: Sixth window
 
-# map kitty_mod+6 sixth_window
+map kitty_mod+6 sixth_window
 # map cmd+6       sixth_window
 
 #: Seventh window
 
-# map kitty_mod+7 seventh_window
+map kitty_mod+7 seventh_window
 # map cmd+7       seventh_window
 
 #: Eight window
 
-# map kitty_mod+8 eighth_window
+map kitty_mod+8 eighth_window
 # map cmd+8       eighth_window
 
 #: Ninth window
 
-# map kitty_mod+9 ninth_window
+map kitty_mod+9 ninth_window
 # map cmd+9       ninth_window
 
 #: Tenth window
 
-# map kitty_mod+0 tenth_window
+map kitty_mod+0 tenth_window
 
 #: Visually select focus window
 
-# map kitty_mod+f7 focus_visible_window
+map kitty_mod+s focus_visible_window
 
 #: Visually swap window with another
 
@@ -1748,7 +1749,7 @@
 #: New tab
 
 # map kitty_mod+t new_tab
-# map cmd+t       new_tab
+map cmd+t       new_tab_with_cwd
 
 #: Close tab
 
@@ -1758,7 +1759,6 @@
 #: Close OS window
 
 # map shift+cmd+w close_os_window
-
 #: Move tab forward
 
 # map kitty_mod+. move_tab_forward
@@ -1777,8 +1777,11 @@
 #: the first tab, 2 the second tab and -1 being the previously active
 #: tab, and any number larger than the last tab being the last tab::
 
-#:     map ctrl+alt+1 goto_tab 1
-#:     map ctrl+alt+2 goto_tab 2
+map ctrl+alt+1 goto_tab 1
+map ctrl+alt+2 goto_tab 2
+map ctrl+alt+2 goto_tab 3
+map ctrl+alt+2 goto_tab 4
+map ctrl+alt+2 goto_tab 5
 
 #: Just as with new_window above, you can also pass the name of
 #: arbitrary commands to run when using new_tab and use
@@ -1792,7 +1795,7 @@
 
 #: Next layout
 
-# map kitty_mod+l next_layout
+map cmd+l next_layout
 
 
 #: You can also create shortcuts to switch to specific layouts::
@@ -1939,7 +1942,7 @@
 #: Edit config file
 
 # map kitty_mod+f2 edit_config_file
-# map cmd+,        edit_config_file
+map cmd+, launch_tab nvim ~/dotfiles/kitty/kitty.conf
 
 #: Open the kitty command shell
 
@@ -2057,8 +2060,20 @@
 
 #: }}}
 
-
+# Kitty search
+#
+map cmd+/ launch --location=hsplit --allow-remote-control kitty +kitten ~/dotfiles/kitty/kitty_search/search.py @active-kitty-window-id
 # BEGIN_KITTY_THEME
-# Apprentice
+# Alabaster Dark
 include current-theme.conf
 # END_KITTY_THEME
+#
+# open window in same dir
+map alt+enter new_window_with_cwd
+
+
+font_family Fira Code
+
+map f2 remote_control launch --title "Nodejs Repl" --keep-focus node
+map f2 remote_control launch --title "lazygit" --cwd=current lazygit
+# map f3 launch_tab --cwd=current lazygit 
