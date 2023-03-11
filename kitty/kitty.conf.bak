@@ -1797,7 +1797,6 @@ map ctrl+alt+2 goto_tab 5
 
 map cmd+l next_layout
 
-
 #: You can also create shortcuts to switch to specific layouts::
 
 #:     map ctrl+alt+t goto_layout tall
@@ -1812,7 +1811,7 @@ map cmd+l next_layout
 #: Useful to temporarily "zoom" the active window by switching to the
 #: stack layout::
 
-#:     map ctrl+alt+z toggle_layout stack
+map alt+z toggle_layout stack
 #: }}}
 
 #: Font sizes {{{
@@ -2060,16 +2059,20 @@ map cmd+, launch_tab nvim ~/dotfiles/kitty/kitty.conf
 
 #: }}}
 
+#Layouts
+enabled_layouts tall,stack,horizontal
+layout stack
 # Kitty search
 #
 map cmd+/ launch --location=hsplit --allow-remote-control kitty +kitten ~/dotfiles/kitty/kitty_search/search.py @active-kitty-window-id
 # BEGIN_KITTY_THEME
-# Alabaster Dark
+# Alabaster
 include current-theme.conf
 # END_KITTY_THEME
 #
 # open window in same dir
-map alt+enter new_window_with_cwd
+# map alt+enter new_window_with_cwd --location=vsplit
+map kitty_mod+enter launch --location=vsplit --cwd=current
 
 
 font_family Fira Code

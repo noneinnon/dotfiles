@@ -80,6 +80,23 @@ require('packer').startup(function(use)
         -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
         use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+        -- Tree
+        use {
+            "nvim-neo-tree/neo-tree.nvim",
+            branch = "v2.x",
+            requires = { 
+                "nvim-lua/plenary.nvim",
+                "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+                "MunifTanjim/nui.nvim",
+            }
+        }
+
+        use {"ThePrimeagen/harpoon",
+            requires = {
+                "nvim-lua/plenary.nvim",
+            }
+        }
+
         -- lisp related stuff
         -- https://github.com/tpope/vim-sexp-mappings-for-regular-people
         use 'tpope/vim-sexp-mappings-for-regular-people'
@@ -112,15 +129,15 @@ require('packer').startup(function(use)
             end
         }
 
-        use {
-            'phaazon/hop.nvim',
-            branch = 'v2', -- optional but strongly recommended
-            config = function()
-                -- you can configure Hop the way you like here; see :h hop-config
-                require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-            end,
-        }
-
+        -- use {
+        --     'phaazon/hop.nvim',
+        --     branch = 'v2', -- optional but strongly recommended
+        --     config = function()
+        --         -- you can configure Hop the way you like here; see :h hop-config
+        --         require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        --     end,
+        -- }
+        --
         use "mbbill/undotree"
 
         -- https://github.com/edkolev/tmuxline.vim

@@ -141,13 +141,13 @@ end, { noremap = true, silent = true })
 
 -- Netrw
 
-vim.keymap.set('', '<C-f>', function()
-  if (vim.o.filetype == "netrw") then
-    vim.cmd [[:q]]
-  else
-    vim.cmd [[:sil! execute 'Lex' expand('%:p:h') . '/']]
-  end
-end, { noremap = true, silent = true })
+-- vim.keymap.set('', '<C-f>', function()
+--   if (vim.o.filetype == "netrw") then
+--     vim.cmd [[:q]]
+--   else
+--     vim.cmd [[:sil! execute 'Lex' expand('%:p:h') . '/']]
+--   end
+-- end, { noremap = true, silent = true })
 
 local open_at_buffer_loc = function(app)
   vim.cmd([[:silent !open -a ]] .. app .. " " .. vim.fn.expand('%:p:h'))
