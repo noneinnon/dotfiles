@@ -1,3 +1,3 @@
 set TERMINAL "Kitty"
-set BROWSER "Brave Browser"
+set BROWSER "Safari"
 set DEV_BROWSER "Firefox"

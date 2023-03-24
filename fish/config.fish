@@ -1,6 +1,7 @@
 alias oldvim vim
 alias vim nvim
 set -U EDITOR nvim
+set -g fish_greeting ""
 
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/private.fish

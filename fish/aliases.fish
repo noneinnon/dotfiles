@@ -11,6 +11,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias oldvim="vim"
 
+alias s="sh ~/dotfiles/scripts/session.sh"
+
 # npm
 function sscripts
     bat package.json | jq ".scripts" | fzf --ansi --header "NPM scripts for $(pwd) | CTRL-C to cancel" | cut -d ":" -f 1 | xargs -I {} npm run {}
@@ -47,9 +49,6 @@ function replace
 	# 	    --preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2)
 	echo $files
 end
-
-# Kitty
-alias s='kitty +kitten ssh'
 
 # Other
 alias lg='lazygit'
