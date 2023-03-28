@@ -2,6 +2,7 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    initial_mode = "normal",
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -53,8 +54,4 @@ vim.keymap.set('n', '<leader>sd', function()
   require('telescope.builtin').find_files { cwd = "~/dotfiles" }
 end, { desc = '[S]earch [D]otfiles' })
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
