@@ -8,12 +8,12 @@ gui:
   language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
   timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
   theme:
-    lightTheme: true
+    lightTheme: false
     activeBorderColor:
-      - 'auto'
+      - black
       - bold
     inactiveBorderColor:
-      - 'auto'
+      - black
     optionsTextColor:
       - blue
     selectedLineBgColor:
@@ -27,7 +27,7 @@ gui:
     unstagedChangesColor:
       - red
     defaultFgColor:
-      - 'auto'
+      - black
   commitLength:
     show: true
   mouseEvents: true
@@ -73,8 +73,8 @@ git:
   parseEmoji: false
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
 os:
-  editCommand: 'nvim'
-  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+  edit: 'nvim'
+  editAtLine: 'nvim +{{line}} -- {{filename}}'
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds. Auto-refresh can be disabled via option 'git.autoRefresh'.
   fetchInterval: 60 # Re-fetch interval in seconds. Auto-fetch can be disabled via option 'git.autoFetch'.

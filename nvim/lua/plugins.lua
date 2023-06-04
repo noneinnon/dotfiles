@@ -24,7 +24,11 @@ require('packer').startup(function(use)
 
         use { -- Autocompletion
             'hrsh7th/nvim-cmp',
-            requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',
+            requires = {
+                'hrsh7th/cmp-nvim-lsp',
+                'L3MON4D3/LuaSnip',
+                'saadparwaiz1/cmp_luasnip',
+                'rafamadriz/friendly-snippets'
                 -- 'hrsh7th/cmp-copilot',
                 -- 'github/copilot.vim'
             },
@@ -64,11 +68,10 @@ require('packer').startup(function(use)
             end,
         })
         use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
-        use 'tpope/vim-dadbod' -- DB client
-        use 'kristijanhusak/vim-dadbod-ui'
+        -- use 'tpope/vim-dadbod' -- DB client
+        -- use 'kristijanhusak/vim-dadbod-ui'
         use 'tpope/vim-dotenv'
         use 'tpope/vim-unimpaired'
-
 
         -- Fuzzy Finder (files, lsp, etc)
         use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -84,14 +87,14 @@ require('packer').startup(function(use)
         use {
             "nvim-neo-tree/neo-tree.nvim",
             branch = "v2.x",
-            requires = { 
+            requires = {
                 "nvim-lua/plenary.nvim",
                 "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
                 "MunifTanjim/nui.nvim",
             }
         }
 
-        use {"ThePrimeagen/harpoon",
+        use { "ThePrimeagen/harpoon",
             requires = {
                 "nvim-lua/plenary.nvim",
             }
@@ -110,7 +113,7 @@ require('packer').startup(function(use)
         use 'tpope/vim-sensible'
         use 'tpope/vim-surround'
         use 'mg979/vim-visual-multi'
-        use 'junegunn/vim-easy-align'
+        -- use 'junegunn/vim-easy-align'
         use {
             'folke/which-key.nvim',
             config = function()
@@ -129,42 +132,16 @@ require('packer').startup(function(use)
             end
         }
 
-        -- use {
-        --     'phaazon/hop.nvim',
-        --     branch = 'v2', -- optional but strongly recommended
-        --     config = function()
-        --         -- you can configure Hop the way you like here; see :h hop-config
-        --         require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-        --     end,
-        -- }
-        --
         use "mbbill/undotree"
+        use {
+            "windwp/nvim-autopairs",
+            config = function() require("nvim-autopairs").setup {} end
+        }
 
         -- https://github.com/edkolev/tmuxline.vim
         use 'edkolev/tmuxline.vim'
         use 'windwp/nvim-spectre'
         use 'windwp/nvim-ts-autotag'
-
-        -- Zen
-        -- https://github.com/folke/zen-mode.nvim
-        use {
-            "folke/zen-mode.nvim",
-            config = function()
-                require("zen-mode").setup {
-                    window = {
-                        options = {
-                            signcolumn = "no",
-                            number = false,
-                            relativenumber = false,
-                            cursorline = true,
-                            -- cursorcolumn = false, -- disable cursor column
-                            -- foldcolumn = "0", -- disable fold column
-                            -- list = false, -- disable whitespace characters
-                        }
-                    }
-                }
-            end
-        }
     end
     -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
     local has_plugins, plugins = pcall(require, 'custom.plugins')

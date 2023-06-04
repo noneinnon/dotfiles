@@ -24,7 +24,7 @@
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
- font_size 16.0
+# font_size 20.0
 
 #: Font size (in pts)
 
@@ -724,7 +724,7 @@
 #: Fade the text in inactive windows by the specified amount (a number
 #: between zero and one, with zero being fully faded).
 
-hide_window_decorations yes
+# hide_window_decorations yes
 
 #: Hide the window decorations (title-bar and window borders) with
 #: yes. On macOS, titlebar-only can be used to only hide the titlebar.
@@ -1430,8 +1430,8 @@ editor .
 #: The full list of actions that can be mapped to key presses is
 #: available here </actions>.
 
-# kitty_mod ctrl+shift
-kitty_mod alt
+kitty_mod ctrl+shift
+# kitty_mod 
 
 #: The value of kitty_mod is used as the modifier for all default
 #: shortcuts, you can change it in your kitty.conf to change the
@@ -2066,7 +2066,7 @@ layout stack
 #
 map cmd+/ launch --location=hsplit --allow-remote-control kitty +kitten ~/dotfiles/kitty/kitty_search/search.py @active-kitty-window-id
 # BEGIN_KITTY_THEME
-# Alabaster
+# Alabaster Dark
 include current-theme.conf
 # END_KITTY_THEME
 #
@@ -2076,6 +2076,7 @@ map kitty_mod+enter launch --location=vsplit --cwd=current
 
 
 font_family Fira Code
+font_size 18.0
 
 map f2 remote_control launch --title "Nodejs Repl" --keep-focus node
 map f2 remote_control launch --title "lazygit" --cwd=current lazygit

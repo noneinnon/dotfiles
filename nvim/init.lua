@@ -43,7 +43,7 @@ vim.wo.signcolumn = 'yes'
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.cmd [[colorscheme alabaster]]
-vim.o.background = "dark"
+vim.o.background = "light"
 
 -- Set :nos[wapfile]
 -- vim.cmd [[noswapfile]]

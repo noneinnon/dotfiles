@@ -16,7 +16,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<leader>,a', vim.lsp.buf.code_action, 'Code [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -53,7 +53,7 @@ end
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>,e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- Setup mason so it can manage external tooling
 require('mason').setup()
@@ -71,6 +71,7 @@ local servers = {
   'gopls',
   'clojure_lsp',
   'diagnosticls',
+  'tailwindcss',
 }
 
 -- Ensure the servers above are installed
@@ -88,9 +89,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
--- Turn on lsp status information
--- require('fidget').setup()
 
 -- Example custom configuration for lua
 --
@@ -123,7 +121,7 @@ require('lspconfig').lua_ls.setup {
 -- https://github.com/neovim/nvim-lspconfig/issues/662
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = false
-          }
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true -- false to disable helper text
+  }
 )

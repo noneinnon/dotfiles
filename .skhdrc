@@ -2,7 +2,6 @@
 # https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
 
 # browser
-# cmd - 1 : bb ~/dotfiles/scripts/open-app.clj "Neovide"
 cmd - 1 : osascript -e "tell application \"vscodium\" to activate"
 cmd - 2 : osascript -e "tell application \"$TERMINAL\" to activate"
 cmd - 3 : osascript -e "tell application \"$BROWSER\" to activate"
