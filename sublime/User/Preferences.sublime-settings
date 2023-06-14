@@ -1,0 +1,14 @@
+{
+	"font_size": 16,
+	"font_face": "Fira Code Nerd Font",
+	// "font_face": "Writer",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Alabaster.sublime-color-scheme",
+	"line_numbers": false,
+	"folder_exclude_patterns": ["node_modules", ".git", ".obsidian", ".venv"],
+	"open_files_in_new_window": "finder_only",
+}
