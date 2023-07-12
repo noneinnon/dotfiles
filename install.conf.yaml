@@ -6,6 +6,10 @@
 - clean: ['~']
 
 - link:
+    ~/.config/kitty: kitty
+    ~/.config/lazygit/config.yml: lazygit/config.yml
+    ~/.tmux.conf: .tmux.conf
+    ~/.config/nvim: nvim/
     ~/.config/karabiner: karabiner/
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig

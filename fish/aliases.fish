@@ -1,5 +1,6 @@
-#
 # ALIASES
+alias oldvim='vim'
+alias vim='nvim'
 alias la='ls -A'
 alias img='curl -O'
 alias ywav='youtube-dl -x --audio-format "wav"'
@@ -20,3 +21,12 @@ end
 # Brew
 alias brewup='brew update && brew upgrade && brew cleanup && brew doctor'
 alias brewdump='brew bundle dump --force --file=~/dotfiles/Brewfile'
+
+# Other
+alias n='neovide'
+alias s='subl'
+alias code='codium'
+
+alias ta='tmux attach'
+
+alias dc='docker compose'

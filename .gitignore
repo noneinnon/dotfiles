@@ -12,3 +12,5 @@ karabiner/automatic_backups
 packer_compiled.lua
 scripts/.nrepl-port
 .luarc.json
+
+dotbot

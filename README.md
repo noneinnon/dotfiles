@@ -20,3 +20,8 @@ There are handly alliases in`fish/aliases.fish`, that can be used to update Brew
 ## Cheatsheets
 
 - [fzf.fish](https://github.com/PatrickF1/fzf.fish)
+
+### Kitty
+`kitty list-fonts` lists available fonts
+`kitty +kitten themes` lists & sets themes
+
