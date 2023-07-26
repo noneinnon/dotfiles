@@ -27,12 +27,25 @@ require('packer').startup(function(use)
             requires = {
                 'hrsh7th/cmp-nvim-lsp',
                 'L3MON4D3/LuaSnip',
+                'onsails/lspkind.nvim',
                 'saadparwaiz1/cmp_luasnip',
-                'rafamadriz/friendly-snippets'
-                -- 'hrsh7th/cmp-copilot',
-                -- 'github/copilot.vim'
+                'rafamadriz/friendly-snippets',
+                'hrsh7th/cmp-copilot',
+                'github/copilot.vim',
             },
         }
+
+        use({
+            "jackMort/ChatGPT.nvim",
+            config = function()
+                require("chatgpt").setup()
+            end,
+            requires = {
+                "MunifTanjim/nui.nvim",
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim"
+            }
+        })
 
         use { -- Highlight, edit, and navigate code
             'nvim-treesitter/nvim-treesitter',
@@ -75,25 +88,6 @@ require('packer').startup(function(use)
 
         -- Fuzzy Finder (files, lsp, etc)
         use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
-
-        -- use {
-        --     "nvim-telescope/telescope-file-browser.nvim",
-        --     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-        -- }
-        --
-        -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-        use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
-
-        -- Tree
-        -- use {
-        --     "nvim-neo-tree/neo-tree.nvim",
-        --     branch = "v2.x",
-        --     requires = {
-        --         "nvim-lua/plenary.nvim",
-        --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-        --         "MunifTanjim/nui.nvim",
-        --     }
-        -- }
 
         use { "ThePrimeagen/harpoon",
             requires = {
@@ -138,11 +132,9 @@ require('packer').startup(function(use)
             config = function() require("nvim-autopairs").setup {} end
         }
 
-        -- https://github.com/edkolev/tmuxline.vim
-        -- use 'edkolev/tmuxline.vim'
         use 'windwp/nvim-spectre'
         use 'windwp/nvim-ts-autotag'
-
+        use 'folke/zen-mode.nvim'
     end
     -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
     local has_plugins, plugins = pcall(require, 'custom.plugins')
