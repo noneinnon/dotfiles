@@ -14,7 +14,7 @@
 
  // Terminal
  {"keys": ["primary+k", "t"],
- "command": "open_terminal"},
+ "command": "open_terminal_project_folder"},
 
   // Sublime merge
   {"keys": ["primary+k", "primary+e"],
