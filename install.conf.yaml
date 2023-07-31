@@ -13,6 +13,7 @@
     ~/.config/karabiner: karabiner/
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
+    ~/.skhdrc: .skhdrc
     ~/.config/fish/aliases.fish: fish/aliases.fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/Library/Application Support/Sublime Text/Packages/User: sublime/User/
