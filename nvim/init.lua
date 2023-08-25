@@ -2,7 +2,6 @@
 -- vim.opt: behaves like :set
 -- vim.opt_global: behaves like :setglobal
 -- vim.opt_local: behaves like :setlocal
---
 -- vim.o: behaves like :let &{option-name}
 -- vim.go: behaves like :let &g:{option-name}
 -- vim.bo: behaves like :let &l:{option-name} for buffer-local options
@@ -83,7 +82,6 @@ vim.api.nvim_create_autocmd(
   { pattern = { "help", "startuptime", "qf", "lspinfo", "netrw" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
 )
 
-vim.g.netrw_banner = 0;
 vim.g.netrw_winsize = 15;
 vim.g.netrw_banner = 0;
 vim.g.netrw_liststyle=3

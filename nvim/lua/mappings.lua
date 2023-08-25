@@ -139,10 +139,20 @@ end
 
 vim.keymap.set('', '<Leader>of', function()
     open_at_buffer_loc('Finder')
-end, { noremap = true })
+end, { noremap = true, desc ="Open finder at buffer location" })
 
 -- Terminal
 -- https://neovim.io/doc/user/nvim_terminal_emulator.html
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<LocalLeader>b', "<cmd>:make %<CR>", { noremap = true, silent = true })
+
+local bind = vim.keymap.set
+local opts = { silent = true, noremap = true }
+
+-- for russian layout
+bind("i", "<c-х>", "<C-[>", opts)
+bind("n", "л", "gk", opts)
+bind("n", "о", "gj", opts)
+bind("i", "<C-г>", "<C-G>u<C-U>", opts)
+bind("i", "<C-ц>", "<C-G>u<C-W>", opts)

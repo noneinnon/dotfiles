@@ -89,6 +89,11 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+  filetypes = {'html', 'handlebars'}
+}
+
 
 -- Example custom configuration for lua
 --
