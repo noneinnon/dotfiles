@@ -30,6 +30,8 @@ require('packer').startup(function(use)
                 'onsails/lspkind.nvim',
                 'saadparwaiz1/cmp_luasnip',
                 'rafamadriz/friendly-snippets',
+                'hrsh7th/cmp-path',
+                'ray-x/cmp-treesitter',
                 -- 'hrsh7th/cmp-copilot',
                 -- 'github/copilot.vim',
             },
@@ -128,6 +130,13 @@ require('packer').startup(function(use)
         use 'windwp/nvim-ts-autotag'
         use 'folke/zen-mode.nvim'
         use 'jpalardy/vim-slime'
+
+        -- use({
+        --     'Wansmer/langmapper.nvim',
+        --     config = function()
+        --         require('langmapper').setup({ --[[ your config ]] })
+        --     end,
+        -- })
     end
     -- Add custom plugins tlasto packer from ~/.config/nvim/lua/custom/plugins.lua
     local has_plugins, plugins = pcall(require, 'custom.plugins')

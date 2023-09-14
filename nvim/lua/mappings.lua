@@ -32,8 +32,9 @@ vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { silent = true })
 
 -- Buffers
 --
-vim.keymap.set('v', '<C-c>', '"+y', { silent = true })
-vim.keymap.set('n', '<C-p>', '"+p', { silent = true })
+vim.keymap.set('v', '<C-c>', '"+y', { silent = true }) -- copy to system clipboard
+vim.keymap.set('n', '<C-p>', '"+p', { silent = true }) -- paste from system clipboard
+
 vim.keymap.set('', '<leader><tab>', ':b#<CR>', { silent = true })
 vim.keymap.set('', '<leader>ba', ':ball<CR>', { silent = true })
 vim.keymap.set('', '<leader>bd', ':bdelete<CR>', { silent = true })
@@ -78,6 +79,14 @@ vim.keymap.set('n', '<leader>on', function()
     vim.cmd("e " .. os.getenv("NOTES_DIR"))
 end, { silent = true, desc = "[O]pen [N]otes" })
 
+vim.keymap.set('n', '<leader>nq', function()
+    vim.cmd("e " .. os.getenv("NOTES_DIR") .. "/quick.md")
+end, { silent = true, desc = "[N]ote [Q]uick" })
+
+vim.keymap.set('n', '<leader>nt', function()
+    vim.cmd("e " .. os.getenv("NOTES_DIR") .. "/todo.md")
+end, { silent = true, desc = "[N]ote [T]odo" })
+
 -- Packer
 vim.keymap.set('n', '<leader>ps', ':PackerSync<CR>', { silent = true, desc = 'Packer Sync' })
 
@@ -106,13 +115,15 @@ vim.keymap.set('n', '<D-->', function()
     adjustSize(-1)
 end)
 
+vim.keymap.set('n', '<C-s>', ':w<CR>')      -- Save
+
 if vim.g.neovide then
-    vim.g.neovide_input_use_logo = 1          -- enable use of the logo (cmd) key
-    vim.keymap.set('n', '<D-s>', ':w<CR>')    -- Save
-    vim.keymap.set('v', '<D-c>', '"+y')       -- Copy
-    vim.keymap.set('n', '<D-v>', '"+P')       -- Paste normal mode
-    vim.keymap.set('v', '<D-v>', '"+P')       -- Paste visual mode
-    vim.keymap.set('c', '<D-v>', '<C-R>+')    -- Paste command mode
+    vim.g.neovide_input_use_logo = 1            -- enable use of the logo (cmd) key
+    vim.keymap.set('n', '<D-s>', ':w<CR>')      -- Save
+    vim.keymap.set('v', '<D-c>', '"+y')         -- Copy
+    vim.keymap.set('n', '<D-v>', '"+P')         -- Paste normal mode
+    vim.keymap.set('v', '<D-v>', '"+P')         -- Paste visual mode
+    vim.keymap.set('c', '<D-v>', '<C-R>+')      -- Paste command mode
     vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 end
 
@@ -124,7 +135,6 @@ vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true })
 
 -- Netrw
-
 vim.keymap.set('', '<C-f>', function()
     if (vim.o.filetype == "netrw") then
         vim.cmd [[:q]]
@@ -139,7 +149,7 @@ end
 
 vim.keymap.set('', '<Leader>of', function()
     open_at_buffer_loc('Finder')
-end, { noremap = true, desc ="Open finder at buffer location" })
+end, { noremap = true, desc = "Open finder at buffer location" })
 
 -- Terminal
 -- https://neovim.io/doc/user/nvim_terminal_emulator.html

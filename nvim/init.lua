@@ -7,6 +7,8 @@
 -- vim.bo: behaves like :let &l:{option-name} for buffer-local options
 -- vim.wo: behaves like :let &l:{option-name} for window-local options
 
+vim.opt.clipboard = "unnamedplus"
+
 -- relative line numbers
 vim.o.relativenumber = true
 
@@ -85,6 +87,11 @@ vim.api.nvim_create_autocmd(
 vim.g.netrw_winsize = 15;
 vim.g.netrw_banner = 0;
 vim.g.netrw_liststyle=3
+-- if has("unnamedplus")
+--     set clipboard=unnamedplus
+-- else
+--     set clipboard=unnamed
+-- endif
 
 -- hide sign column
 vim.opt.scl = 'no'
@@ -92,5 +99,7 @@ vim.opt.scl = 'no'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 --
+vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчняж;abcdefghijklmnopqrstuvwxyz;"
+
 require("mappings")
 require("plugins")

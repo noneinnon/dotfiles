@@ -17,15 +17,15 @@
 "theme": "Adaptive.sublime-theme",
 
 	
-"color_scheme": "Alabaster Mono.sublime-color-scheme",
+"color_scheme": "Alabaster Dark.sublime-color-scheme",
 
 	
 "line_numbers": false,
 
 	
-"folder_exclude_patterns": ["node_modules", ".git", ".obsidian", ".venv"],
+"folder_exclude_patterns": ["node_modules", ".git", ".obsidian", ".venv", "dist", "build"],
 
 	
-"open_files_in_new_window": "finder_only",
+"open_files_in_new_window": false,
 
 }

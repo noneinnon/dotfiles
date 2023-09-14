@@ -48,17 +48,17 @@ vim.keymap.set('n', '<leader>lws', require('telescope.builtin').lsp_dynamic_work
   { desc = '[W]orkspace [S]ymbols' })
 vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = '[G]oto [R]eferences' })
 
-vim.keymap.set('n', '<leader>sn', function()
+vim.keymap.set('n', '<leader>ns', function()
   require('telescope.builtin').find_files { cwd = os.getenv("NOTES_DIR") }
-end, { desc = '[S]earch [N]otes' })
+end, { desc = '[N]otes [S]earch' })
 
-vim.keymap.set('n', '<leader>sg', function()
+vim.keymap.set('n', '<leader>ng', function()
   require('telescope.builtin').live_grep { cwd = os.getenv("NOTES_DIR") }
-end, { desc = '[S]earch [G]rep notes' })
+end, { desc = '[N]otes [G]rep' })
 
-vim.keymap.set('n', '<leader>sw', function()
+vim.keymap.set('n', '<leader>nw', function()
   require('telescope.builtin').grep_string { cwd = os.getenv("NOTES_DIR") }
-end, { desc = '[S]earch [W]ord notes' })
+end, { desc = '[N]otes [W]ord' })
 
 vim.keymap.set('n', '<leader>sd', function()
   require('telescope.builtin').find_files { cwd = "~/dotfiles" }

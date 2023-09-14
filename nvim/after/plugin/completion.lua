@@ -11,7 +11,7 @@ cmp.setup {
   completion = {
     -- autocomplete = false,
     keyword_length = 1,
-    completeopt = "menu,noselect"
+    -- completeopt = "menu,noselect"
   },
   snippet = {
     expand = function(args)
@@ -22,16 +22,23 @@ cmp.setup {
     ['<C-s>'] = function(fallback) -- complete snipper
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif has_words_before() then
+      else
+        has_words_before()
         cmp.complete({
           config = {
             sources = {
-              { name = 'luasnip' }
+              { name = 'nvim_lsp' },
+              { name = 'luasnip' },
+              { name = 'copilot' },
+              { name = 'path' },                          -- for path completion
+              { name = 'buffer',    keyword_length = 4 }, -- for buffer word completion
+              { name = 'emoji',     insert = true, },     -- emoji completion
+              { name = 'treesitter' }
             }
           }
         })
-      else
-          fallback()
+        -- else
+        --   fallback()
       end
     end,
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -61,19 +68,19 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
-  sources = {
+  sources = cmp.config.sources(
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'copilot' },
-    { name = 'path' }, -- for path completion
-    { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
-    { name = 'emoji', insert = true, }, -- emoji completion
-    { name = 'treesitter' }
-  },
+    { name = 'path' },                          -- for path completion
+    { name = 'buffer', keyword_length = 4 },    -- for buffer word completion
+    { name = 'emoji', insert = true, },         -- emoji completion
+    { name = 'treesitter' }),
   formatting = {
-    format = require'lspkind'.cmp_format({
+    format = require 'lspkind'.cmp_format({
       mode = "symbol_text",
-      menu = { nvim_lsp = "[LSP]",
+      menu = {
+        nvim_lsp = "[LSP]",
         vsnip = "[Snip]",
         nvim_lua = "[Lua]",
         path = "[Path]",

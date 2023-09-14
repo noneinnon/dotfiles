@@ -9,7 +9,7 @@
     ~/.config/kitty: kitty
     ~/.config/lazygit/config.yml: lazygit/config.yml
     ~/.tmux.conf: .tmux.conf
-    ~/.config/nvim: nvim/
+    ~/.config/nvim: nvim/ # TODO should only link edited files, not entire folder
     ~/.config/karabiner: karabiner/
     ~/.gitignore: .gitignore
     ~/.gitconfig: .gitconfig
