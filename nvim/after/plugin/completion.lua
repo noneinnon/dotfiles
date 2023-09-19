@@ -22,23 +22,10 @@ cmp.setup {
     ['<C-s>'] = function(fallback) -- complete snipper
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
       else
-        has_words_before()
-        cmp.complete({
-          config = {
-            sources = {
-              { name = 'nvim_lsp' },
-              { name = 'luasnip' },
-              { name = 'copilot' },
-              { name = 'path' },                          -- for path completion
-              { name = 'buffer',    keyword_length = 4 }, -- for buffer word completion
-              { name = 'emoji',     insert = true, },     -- emoji completion
-              { name = 'treesitter' }
-            }
-          }
-        })
-        -- else
-        --   fallback()
+        fallback()
       end
     end,
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -57,7 +44,6 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -68,14 +54,14 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
-  sources = cmp.config.sources(
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'copilot' },
     { name = 'path' },                          -- for path completion
-    { name = 'buffer', keyword_length = 4 },    -- for buffer word completion
-    { name = 'emoji', insert = true, },         -- emoji completion
-    { name = 'treesitter' }),
+    { name = 'buffer',    keyword_length = 4 }, -- for buffer word completion
+    { name = 'emoji',     insert = true, },     -- emoji completion
+    { name = 'treesitter' } }),
   formatting = {
     format = require 'lspkind'.cmp_format({
       mode = "symbol_text",
@@ -93,3 +79,30 @@ cmp.setup {
     }),
   },
 }
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
