@@ -56,7 +56,7 @@ os:
   editCommand: "nvim"
   editCommandTemplate: "{{editor}} {{filename}}"
   openCommand: ""
-  # editAtLine: 'nvim +{{line}} -- {{filename}}'
+  editAtLine: "nvim +{{line}} -- {{filename}}"
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds. Auto-refresh can be disabled via option 'git.autoRefresh'.
   fetchInterval: 60 # Re-fetch interval in seconds. Auto-fetch can be disabled via option 'git.autoFetch'.
