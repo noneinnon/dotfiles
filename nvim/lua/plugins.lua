@@ -78,7 +78,7 @@ require('packer').startup(function(use)
         })
         use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
         use 'tpope/vim-dadbod' -- DB client
-        -- use 'kristijanhusak/vim-dadbod-ui'
+        use 'kristijanhusak/vim-dadbod-ui'
         use 'tpope/vim-dotenv'
         use 'tpope/vim-unimpaired'
 
@@ -132,13 +132,8 @@ require('packer').startup(function(use)
         use 'windwp/nvim-ts-autotag'
         use 'folke/zen-mode.nvim'
         use 'jpalardy/vim-slime'
+        use 'stevearc/oil.nvim'
 
-        -- use({
-        --     'Wansmer/langmapper.nvim',
-        --     config = function()
-        --         require('langmapper').setup({ --[[ your config ]] })
-        --     end,
-        -- })
     end
     -- Add custom plugins tlasto packer from ~/.config/nvim/lua/custom/plugins.lua
     local has_plugins, plugins = pcall(require, 'custom.plugins')

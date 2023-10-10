@@ -94,6 +94,11 @@ require'lspconfig'.html.setup {
   filetypes = {'html', 'handlebars'}
 }
 
+require'lspconfig'.astro.setup {
+  capabilities = capabilities,
+  filetypes = {'astro' }
+}
+
 
 -- Example custom configuration for lua
 --
