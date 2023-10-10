@@ -77,9 +77,10 @@ vim.api.nvim_create_autocmd('FileType', {
     command = [[wincmd L]]
 })
 
+-- use "q" to close file by type
 vim.api.nvim_create_autocmd(
   "FileType",
-  { pattern = { "help", "startuptime", "qf", "lspinfo", "netrw" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
+  { pattern = { "help", "startuptime", "qf", "lspinfo", "netrw", "oil" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
 )
 
 vim.g.netrw_winsize = 15;

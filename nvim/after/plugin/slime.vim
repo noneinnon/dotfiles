@@ -9,6 +9,9 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-o
 let g:slime_no_mappings = 1
 let g:slime_dont_ask_default = 1
 
-xmap <c-/><c-/> <Plug>SlimeRegionSend
-nnoremap <c-/><c-/> <Plug>SlimeParagraphSend
-nnoremap <c-/>v     <Plug>SlimeConfig
+
+unmap <C-C><C-C>
+unmap <C-C>v
+	xmap <c-m><c-m> <Plug>SlimeRegionSend
+nnoremap <c-m><c-m> <Plug>SlimeParagraphSend
+nnoremap <c-m>v     <Plug>SlimeConfig
