@@ -30,3 +30,5 @@ alias code='codium'
 alias ta='tmux attach'
 
 alias dc='docker compose'
+
+alias vf='fzf | xargs nvim'
