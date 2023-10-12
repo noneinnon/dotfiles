@@ -22,3 +22,5 @@ set -gx FZF_ALT_C_OPTS "--preview='exa -T {}'"
 # https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings
 set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
 
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish

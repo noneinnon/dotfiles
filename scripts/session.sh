@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/Projects ~/work -mindepth 1 -maxdepth 1 -type d | fzf)
     # have to rewrite to fish to uze z
     # selected=$(z -l | awk '{print $2}' | fzf)
 fi
