@@ -60,6 +60,7 @@ require("oil").setup({
     ["gs"] = "actions.change_sort",
     ["gx"] = "actions.open_external",
     ["g."] = "actions.toggle_hidden",
+    ["<C-y>"] = "actions.copy_entry_path"
   },
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = true,
@@ -136,4 +137,4 @@ require("oil").setup({
   },
 })
 
-vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

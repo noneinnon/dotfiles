@@ -12,6 +12,6 @@ let g:slime_dont_ask_default = 1
 
 unmap <C-C><C-C>
 unmap <C-C>v
-	xmap <c-m><c-m> <Plug>SlimeRegionSend
-nnoremap <c-m><c-m> <Plug>SlimeParagraphSend
-nnoremap <c-m>v     <Plug>SlimeConfig
+	xmap ,s <Plug>SlimeRegionSend
+nnoremap ,s <Plug>SlimeParagraphSend
+nnoremap ,v   <Plug>SlimeConfig

@@ -1,6 +1,7 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+
   defaults = {
     initial_mode = "normal",
     file_ignore_patterns = { "^.git/", "^.png" },
@@ -18,7 +19,19 @@ require('telescope').setup {
         end,
       }
     },
-  }, }
+  },
+  pickers = {
+    find_files = {
+      theme = "dropdown"
+    },
+    grep_string = {
+      theme = "dropdown"
+    },
+    live_grep = {
+      theme = "dropdown"
+    }
+  },
+}
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')

@@ -6,7 +6,7 @@
 -- vim.go: behaves like :let &g:{option-name}
 -- vim.bo: behaves like :let &l:{option-name} for buffer-local options
 -- vim.wo: behaves like :let &l:{option-name} for window-local options
-
+--
 vim.opt.clipboard = "unnamedplus"
 
 -- relative line numbers
@@ -17,7 +17,7 @@ vim.o.relativenumber = true
 
 -- Set highlight on search
 vim.o.hlsearch = false
-
+--
 -- Make line numbers default
 vim.wo.number = true
 

@@ -2,8 +2,12 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
+
+local bind = vim.keymap.set
+local opts = { silent = true, noremap = true }
 
 
 -- Keymaps for better default experience
@@ -32,8 +36,8 @@ vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { silent = true })
 
 -- Buffers
 --
-vim.keymap.set('v', '<C-c>', '"+y', { silent = true }) -- copy to system clipboard
-vim.keymap.set('n', '<C-p>', '"+p', { silent = true }) -- paste from system clipboard
+vim.keymap.set('v', '<C-c>', '"+y', { silent = true, noremap = true }) -- copy to system clipboard
+vim.keymap.set('n', '<C-p>', '"+p', { silent = true, noremap = true }) -- paste from system clipboard
 
 vim.keymap.set('', '<leader><tab>', ':b#<CR>', { silent = true })
 vim.keymap.set('', '<leader>ba', ':ball<CR>', { silent = true })
@@ -46,11 +50,6 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
 vim.keymap.set('', 'Q', '<Nop>', { silent = true })
 
--- vim.keymap.set("n", "<C-]>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-[>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>]", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>[", "<cmd>lprev<CR>zz")
---
 vim.keymap.set('n', '<leader>5', ':so %<CR>', {})
 vim.keymap.set('n', '<leader>6', ':so ~/dotfiles/nvim/init.lua<CR>', {})
 
@@ -115,7 +114,7 @@ vim.keymap.set('n', '<D-->', function()
     adjustSize(-1)
 end)
 
-vim.keymap.set('n', '<C-s>', ':w<CR>')      -- Save
+vim.keymap.set('n', '<C-s>', ':w<CR>') -- Save
 
 if vim.g.neovide then
     vim.g.neovide_input_use_logo = 1            -- enable use of the logo (cmd) key
@@ -151,14 +150,14 @@ vim.keymap.set('', '<Leader>of', function()
     open_at_buffer_loc('Finder')
 end, { noremap = true, desc = "Open finder at buffer location" })
 
+-- bind('n', 'gx', require('utils').open, {noremap = true, silent = true})
+
 -- Terminal
 -- https://neovim.io/doc/user/nvim_terminal_emulator.html
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<LocalLeader>b', "<cmd>:make %<CR>", { noremap = true, silent = true })
 
-local bind = vim.keymap.set
-local opts = { silent = true, noremap = true }
 
 -- for russian layout
 bind("i", "<c-х>", "<C-[>", opts)
@@ -166,3 +165,24 @@ bind("n", "л", "gk", opts)
 bind("n", "о", "gj", opts)
 bind("i", "<C-г>", "<C-G>u<C-U>", opts)
 bind("i", "<C-ц>", "<C-G>u<C-W>", opts)
+
+-- Function to execute selected lines and paste the output into a new split
+local function execute_selected_lines_and_paste_output()
+    -- Get the selected lines
+    local selected_lines = vim.fn.getline("'<", "'>")
+
+    -- Convert the selected lines into a single string
+    local command = table.concat(selected_lines, "\n")
+
+    -- Execute the command and capture the output
+    local output = vim.fn.system(command)
+
+    -- Open a new split
+    vim.cmd('vnew')
+
+    -- Paste the output into the new split
+    vim.fn.append(0, vim.split(output, "\n"))
+end
+
+
+bind("v", "<leader><leader>e", execute_selected_lines_and_paste_output, opts)
