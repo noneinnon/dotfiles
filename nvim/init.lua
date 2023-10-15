@@ -102,3 +102,4 @@ vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEF
 
 require("mappings")
 require("plugins")
+require("autocmd")
