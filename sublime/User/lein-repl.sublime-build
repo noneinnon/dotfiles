@@ -1,5 +1,0 @@
-{
-	"shell_cmd": "lein repl",
-	"file_patterns": ["*.clj", "*.cljs"],
-	"keyfiles": ["project.clj"]
-}

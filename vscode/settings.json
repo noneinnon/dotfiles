@@ -1,12 +1,28 @@
 {
-    "http.proxyAuthorization": null,
-    "workbench.colorTheme": "Alabaster",
+    "workbench.colorTheme": "Alabaster Dark",
     "editor.minimap.enabled": false,
-    "editor.renderWhitespace": "none",
-    "editor.fontSize": 15,
+    "workbench.startupEditor": "none",
+    "explorer.confirmDelete": false,
+    "workbench.editor.enablePreview": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "editor.inlineSuggest.enabled": true,
-    "calva.paredit.defaultKeyMap": "strict",
-    "workbench.activityBar.visible": false,
-    "window.zoomLevel": 1
+    "github.copilot.advanced": {},
+    "editor.fontSize": 18,
+    "editor.fontFamily": "FiraCode Nerd Font Mono",
+    "workbench.statusBar.visible": false,
+    "breadcrumbs.enabled": false,
+    "editor.lineNumbers": "off",
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+    "svelte.enable-ts-plugin": true,
+    "editor.guides.bracketPairsHorizontal": false,
+    "workbench.tips.enabled": false,
+    "workbench.tree.renderIndentGuides": "none",
+    "editor.guides.indentation": false,
+    "window.zoomLevel": 1,
+    "workbench.activityBar.location": "hidden",
+    "tailwindCSS.experimental.configFile": null, 
+    "tailwindCSS.includeLanguages": {
+        "plaintext": "clojure"
+      }
 }
