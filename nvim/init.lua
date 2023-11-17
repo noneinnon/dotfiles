@@ -100,6 +100,8 @@ vim.opt.scl = 'no'
 --
 vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчняж;abcdefghijklmnopqrstuvwxyz;"
 
+vim.opt.linespace = 20;
+
 require("mappings")
 require("plugins")
 require("autocmd")

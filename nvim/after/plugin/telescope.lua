@@ -11,8 +11,8 @@ require('telescope').setup {
         ['<C-d>'] = false,
       },
       n = {
-        ['<C-q>'] = require('telescope.actions').smart_add_to_qflist,
-        ['<C-;>'] = require('telescope.actions').smart_add_to_loclist,
+        ['<C-q>'] = require('telescope.actions').smart_send_to_qflist,
+        ['<C-i>'] = require('telescope.actions').smart_send_to_loclist,
         ['<C-w>'] = function(args)
           require('telescope.actions').send_to_qflist(args)
           require('telescope.actions').open_qflist(args)
@@ -22,13 +22,13 @@ require('telescope').setup {
   },
   pickers = {
     find_files = {
-      theme = "dropdown"
+      -- theme = "dropdown"
     },
     grep_string = {
-      theme = "dropdown"
+      -- theme = "dropdown"
     },
     live_grep = {
-      theme = "dropdown"
+      -- theme = "dropdown"
     }
   },
 }
@@ -54,6 +54,7 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').registers, { desc = '[S]earch [R]egisters' })
+vim.keymap.set('n', '<leader>sm', require('telescope.builtin').resume, { desc = '[S]earch Resu[m]e' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('', '<leader>st', ':Telescope colorscheme<CR>', { silent = true, desc = "[S]earch [T]heme" })
 vim.keymap.set('n', '<leader>lds', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })

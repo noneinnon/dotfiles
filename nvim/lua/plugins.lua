@@ -22,6 +22,9 @@ require('packer').startup(function(use)
             },
         }
 
+        use 'karoliskoncevicius/sacredforest-vim'
+        use 'sainnhe/everforest'
+
         use { -- Autocompletion
             'hrsh7th/nvim-cmp',
             requires = {
@@ -38,6 +41,8 @@ require('packer').startup(function(use)
                 -- 'github/copilot.vim',
             },
         }
+
+        use 'David-Kunz/gen.nvim'
 
         -- use({
         --     "jackMort/ChatGPT.nvim",

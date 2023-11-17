@@ -1,2 +1,2 @@
-vim.cmd [[colorscheme alabaster]]
+vim.cmd [[colorscheme everforest]]
 vim.o.background = "dark"

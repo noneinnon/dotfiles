@@ -23,7 +23,6 @@ local on_attach = function(_, bufnr)
   nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
-
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
@@ -70,7 +69,7 @@ local servers = {
   'gopls',
   'clojure_lsp',
   'diagnosticls',
-  'tailwindcss'
+  -- 'tailwindcss'
 }
 
 -- Ensure the servers above are installed
@@ -89,14 +88,22 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require'lspconfig'.html.setup {
+require 'lspconfig'.html.setup {
   capabilities = capabilities,
-  filetypes = {'html', 'handlebars'}
+  filetypes = { 'html', 'handlebars' }
 }
 
-require'lspconfig'.astro.setup {
+require 'lspconfig'.astro.setup {
   capabilities = capabilities,
-  filetypes = {'astro' }
+  filetypes = { 'astro' }
+}
+
+require 'lspconfig'.tailwindcss.setup {
+  capabilities = capabilities,
+  filetypes = { 'astro', 'javascriptreact', 'typescriptreact', 'clojure' },
+  tailwindCss = {
+    classAttributes = { "class", "className", "class:list", "classList", "ngClass", ":class" },
+  }
 }
 
 
