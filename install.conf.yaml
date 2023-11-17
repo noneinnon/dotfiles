@@ -16,16 +16,16 @@
     ~/.skhdrc: .skhdrc
     ~/.config/fish/aliases.fish: fish/aliases.fish
     ~/.config/fish/config.fish: fish/config.fish
-    ~/Library/Application Support/Sublime Text/Packages/User: sublime/User/
     # sublime merge
+    ~/Library/Application Support/Sublime Text/Packages/User: sublime/User/
     # ~/Library/Application Support/Sublime Merge/Packages/User 
     # vscode & vscodium
-    # /Users/antonio/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
-    # /Users/antonio/Library/Application Support/Code/User/settings.json: vscode/settings.json
-    # /Users/antonio/Library/Application Support/VSCodium/User/keybindings.json: vscode/keybindings.json
-    # /Users/antonio/Library/Application Support/VSCodium/User/settings.json: vscode/settings.json
-
-
+    /Users/antonio/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
+    /Users/antonio/Library/Application Support/Code/User/settings.json: vscode/settings.json
+    /Users/antonio/Library/Application Support/VSCodium/User/keybindings.json: vscode/keybindings.json
+    /Users/antonio/Library/Application Support/VSCodium/User/settings.json: vscode/settings.json
+    /Users/antonio/Library/Application Support/Cursor/User/keybindings.json: vscode/keybindings.json
+    /Users/antonio/Library/Application Support/Cursor/User/settings.json: vscode/settings.json
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

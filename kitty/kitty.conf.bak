@@ -1,7 +1,6 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 #: Fonts {{{
-
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
@@ -568,7 +567,7 @@
 #: in full screen programs that redraw the entire screen on each loop,
 #: because kitty is so fast that partial screen updates will be drawn.
 
-# sync_to_monitor yes
+sync_to_monitor no # default: yes
 
 #: Sync screen updates to the refresh rate of the monitor. This
 #: prevents tearing (https://en.wikipedia.org/wiki/Screen_tearing)
@@ -665,7 +664,7 @@
 #: be pts. Note that borders are displayed only when more than one
 #: window is visible. They are meant to separate multiple windows.
 
-draw_minimal_borders yes
+# draw_minimal_borders yes
 
 #: Draw only the minimum borders needed. This means that only the
 #: minimum needed borders for inactive windows are drawn. That is only
@@ -1097,7 +1096,7 @@ draw_minimal_borders yes
 #: --login and --interactive to ensure that the shell starts in
 #: interactive mode and reads its startup rc files.
 
-editor .
+editor nvim
 
 #: The terminal editor (such as ``vim`` or ``nano``) to use when
 #: editing the kitty config file or similar tasks.
@@ -1290,7 +1289,7 @@ editor .
 #: background_opacity. If you want to use both, you are probably
 #: better off just hiding the titlebar with hide_window_decorations.
 
-# macos_option_as_alt no
+macos_option_as_alt yes
 
 #: Use the option key as an alt key. With this set to no, kitty will
 #: use the macOS native Option+Key = unicode character behavior. This
@@ -1329,7 +1328,7 @@ editor .
 #: Use the traditional full-screen transition, that is faster, but
 #: less pretty.
 
- macos_show_window_title_in off
+ #macos_show_window_title_in off
 
 #: Show or hide the window title in the macOS window or menu-bar. A
 #: value of window will show the title of the currently active window
@@ -1795,7 +1794,7 @@ map ctrl+alt+2 goto_tab 5
 
 #: Next layout
 
-map cmd+l next_layout
+# map cmd+l next_layout
 
 #: You can also create shortcuts to switch to specific layouts::
 
@@ -1811,7 +1810,7 @@ map cmd+l next_layout
 #: Useful to temporarily "zoom" the active window by switching to the
 #: stack layout::
 
-map alt+z toggle_layout stack
+
 #: }}}
 
 #: Font sizes {{{
@@ -2006,8 +2005,8 @@ map cmd+, launch_tab nvim ~/dotfiles/kitty/kitty.conf
 
 #: Reload kitty.conf
 
-map kitty_mod+f5 load_config_file
-map ctrl+cmd+,   load_config_file
+# map kitty_mod+f5 load_config_file
+# map ctrl+cmd+,   load_config_file
 
 #::  Reload kitty.conf, applying any changes since the last time it
 #::  was loaded. Note that a handful of settings cannot be dynamically
@@ -2066,17 +2065,23 @@ layout stack
 #
 map cmd+/ launch --location=hsplit --allow-remote-control kitty +kitten ~/dotfiles/kitty/kitty_search/search.py @active-kitty-window-id
 # BEGIN_KITTY_THEME
-# Alabaster
+# Everforest Dark Hard
 include current-theme.conf
 # END_KITTY_THEME
 #
 # open window in same dir
 # map alt+enter new_window_with_cwd --location=vsplit
 map kitty_mod+enter launch --location=vsplit --cwd=current
+unmap ctrl+l
 
-font_family Fira Code Nerd Font
-font_size 18.0;
+font_family FiraCode Nerd Font Mono
+font_size 20.0
 
-map f2 remote_control launch --title "Nodejs Repl" --keep-focus node
-map f2 remote_control launch --title "lazygit" --cwd=current lazygit
-# map f3 launch_tab --cwd=current lazygit 
+# Perf
+#
+repaint_delay 10
+input_delay 3
+#
+# Other
+#
+hide_window_decorations titlebar-only

@@ -1,9 +1,14 @@
 # https://stackoverflow.com/questions/10022161/open-programs-with-applescript
 # https://github.com/koekeishiya/skhd/blob/master/examples/skhdrc
 
-alt - 1 : osascript -e "tell application \"Kitty\" to activate"
-alt - 2 : osascript -e "tell application \"Sublime Merge\" to activate"
-alt - 3 : osascript -e "tell application \"Safari\" to activate"
-alt - 4 : osascript -e "tell application \"Dash\" to activate"
-alt - 5 : osascript -e "tell application \"Firefox\" to activate"
-alt - 6 : osascript -e "tell application \"Finder\" to activate"
+# alt - 1 : osascript -e "tell application \"Kitty\" to activate"
+# alt - 2 : osascript -e "tell application \"Vscodium\" to activate"
+# alt - 3 : osascript -e "tell application \"Dash\" to activate"
+# alt - 4 : osascript -e "tell application \"Finder\" to activate"
+# alt - 5 : osascript -e "tell application \"Finder\" to activate"
+alt - q : osascript -e "tell application \"Logseq\" to activate"
+alt - w : osascript -e "tell application \"Safari\" to activate"
+alt - e : osascript -e "tell application \"Firefox\" to activate"
+# alt - a : osascript -e "tell application \"Firefox\" to activate"
+# alt - s : osascript -e "tell application \"Finder\" to activate"
+# alt - d : osascript -e "tell application \"Finder\" to activate"
