@@ -26,6 +26,8 @@
     /Users/antonio/Library/Application Support/VSCodium/User/settings.json: vscode/settings.json
     /Users/antonio/Library/Application Support/Cursor/User/keybindings.json: vscode/keybindings.json
     /Users/antonio/Library/Application Support/Cursor/User/settings.json: vscode/settings.json
+    # neovide
+    ~/.config/neovide/config.toml: neovide/config.toml
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

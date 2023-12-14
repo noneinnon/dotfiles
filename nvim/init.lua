@@ -9,6 +9,9 @@
 --
 vim.opt.clipboard = "unnamedplus"
 
+-- vim.opt.spelllang = "en_us,ru_ru"
+-- vim.opt.spell = true
+
 -- relative line numbers
 vim.o.relativenumber = true
 
@@ -56,32 +59,11 @@ vim.opt.smartindent = true
 
 -- Disable vim sexp insert mode mappings
 vim.g.sexp_enable_insert_mode_mappings = 0;
-vim.g.guifont_size = 20
+vim.g.guifont_size = 18
 vim.g.guifont_family = "FiraCode Nerd Font"
 vim.opt.guifont = { vim.g.guifont_family, string.format(":h%s", vim.g.guifont_size) }
 -- does not work for some reason
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
-})
-
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = { "help" },
-    command = [[wincmd L]]
-})
-
--- use "q" to close file by type
-vim.api.nvim_create_autocmd(
-  "FileType",
-  { pattern = { "help", "startuptime", "qf", "lspinfo", "netrw", "oil" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
-)
 
 vim.g.netrw_winsize = 15;
 vim.g.netrw_banner = 0;

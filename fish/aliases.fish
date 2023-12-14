@@ -23,14 +23,11 @@ alias brewup='brew update && brew upgrade && brew cleanup && brew doctor'
 alias brewdump='brew bundle dump --force --file=~/dotfiles/Brewfile'
 
 # Other
-alias n='neovide'
+alias n='nvim'
 alias s='subl'
 alias code='codium'
 
 alias ta='tmux attach'
-
 alias dc='docker compose'
-
 alias vf='fzf | xargs nvim'
-
 alias p='pnpm'

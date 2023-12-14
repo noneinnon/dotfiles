@@ -28,7 +28,6 @@ vim.api.nvim_set_keymap('n', '<A-h>', '<C-w>h', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
 
 -- Tabs
-
 vim.keymap.set('n', '<leader>tp', ':tabp<CR>', { silent = true })
 vim.keymap.set('n', '<leader>tt', ':tabn<CR>', { silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { silent = true })
@@ -85,9 +84,6 @@ end, { silent = true, desc = "[N]ote [Q]uick" })
 vim.keymap.set('n', '<leader>nt', function()
     vim.cmd("e " .. os.getenv("NOTES_DIR") .. "/todo.md")
 end, { silent = true, desc = "[N]ote [T]odo" })
-
--- Packer
-vim.keymap.set('n', '<leader>ps', ':PackerSync<CR>', { silent = true, desc = 'Packer Sync' })
 
 -- neovide
 vim.g.neovide_scale_factor = 1.0

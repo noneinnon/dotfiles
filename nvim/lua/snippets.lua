@@ -33,3 +33,6 @@ ls.add_snippets("typescript", commonSnippets)
 ls.add_snippets("typescriptreact", commonSnippets)
 ls.add_snippets("javascriptreact", commonSnippets)
 
+-- for _, file_type in ipairs(file_types) do
+--   ls.add_snippets(file_type, commonSnippets)
+-- end
