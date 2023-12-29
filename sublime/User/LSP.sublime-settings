@@ -8,5 +8,10 @@
             "selector": "source.clojure",
             "initializationOptions": {}
         }
-    }
-}
+    },
+        // Show code actions:
+      // "annotation" - show an annotation on the right when code actions are available.
+      // "bulb" - show a bulb in the gutter when code actions are available.
+      // "" - don't show code actions.
+    "show_code_actions": "bulb"
+  }
