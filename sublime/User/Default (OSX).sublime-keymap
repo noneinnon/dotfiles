@@ -1,0 +1,228 @@
+[
+    { "keys": ["ctrl+o"], "command": "noop" },
+    { "keys": ["ctrl+o"], "command": "jump_back" },
+    { "keys": ["ctrl+p"], "command": "jump_forward" },
+    { "keys": ["ctrl+f"], "command": "toggle_side_bar" },
+    { "keys": ["ctrl+u"], "command": "scroll_lines", "args": {"amount": 50.0} },
+    { "keys": ["ctrl+d"], "command": "scroll_lines", "args": {"amount": -50.0} },
+    // Build
+    {
+        "keys": ["shift+escape"], "command": "show_panel",
+        "args": {"panel": "output.exec"},
+        "context": [ { "key": "panel_visible", "operand": false } ]
+    },
+
+ // Terminal
+ {"keys": ["primary+k", "t"],
+ "command": "open_terminal_project_folder"},
+
+  // Sublime merge
+  {"keys": ["primary+k", "primary+e"],
+  "command": "sublime_merge_open_repo"},
+  {
+    "keys": ["primary+k", "primary+s"],
+    "command": "save_project_and_workspace_as"
+},
+
+{
+    "keys": ["primary+alt+space"],
+    "command": "lsp_signature_help_show",
+    "context": [{"key": "lsp.signature_help_available"}]
+},
+        // Hover Popup
+        {
+            "keys": ["primary+l", "primary+k"],
+            "command": "lsp_hover",
+            "context": [{"key": "lsp.session_with_capability", "operand": "hoverProvider"}]
+        },
+        {
+            "keys": ["primary+l", "f"],
+            "command": "lsp_format_document",
+            "context": [{"key": "lsp.session_with_capability", "operand": "documentFormattingProvider | documentRangeFormattingProvider"}]
+        },
+      // Document Symbols (a replacement for ST's "Goto Symbol")
+      {
+        "keys": ["primary+l", "primary+s"],
+        "command": "lsp_document_symbols",
+        "context": [{"key": "lsp.session_with_capability", "operand": "documentSymbolProvider"}]
+    },
+    {
+        "keys": ["primary+l", "primary+w"],
+        "command": "lsp_workspace_symbols",
+        "context": [{"key": "lsp.session_with_capability", "operand": "workspaceSymbolProvider"}]
+    },
+    // Goto Definition
+    {
+        "keys": ["primary+l", "primary+g"],
+        "command": "lsp_symbol_definition",
+        "args": {"side_by_side": false, "force_group": true, "fallback": false, "group": -1},
+        "context": [
+            {"key": "lsp.session_with_capability", "operand": "definitionProvider"},
+            {"key": "auto_complete_visible", "operand": false}
+        ]
+    },
+       // Find References
+       {
+        "keys": ["primary+l", "primary+e"],
+        "command": "lsp_symbol_references",
+        "args": {"side_by_side": false, "force_group": true, "fallback": false, "group": -1},
+        "context": [{"key": "lsp.session_with_capability", "operand": "referencesProvider"}]
+    },
+        // Run Source Actions
+        {
+            "keys": ["primary+l", "primary+a"],
+            "command": "lsp_code_actions",
+        // "args": {"only_kinds": ["source"]},
+        "context": [{"key": "lsp.session_with_capability", "operand": "codeActionProvider.codeActionKinds"}]
+    },
+       // Rename
+       {
+        "keys": ["primary+l", "primary+r"],
+        "command": "lsp_symbol_rename",
+        "context": [{"key": "lsp.session_with_capability", "operand": "renameProvider"}]
+    },
+    // Jump to next Diagnostic in Tab
+    //    {
+    //     "keys": ["primary+l", "primary+d"],
+    //     "command": "lsp_next_diagnostic",
+    //     "context": [{"key": "setting.lsp_active"}]
+    // },
+     // Goto Diagnostic
+     {
+        "keys": ["primary+l", "primary+d"],
+        "command": "lsp_goto_diagnostic",
+        "args": {"uri": "$view_uri"}
+    },
+    // Goto Diagnostic in Project
+    // {
+    //     "keys": ["shift+f8"],
+    //     "command": "lsp_goto_diagnostic"
+    // },
+     // Remove Tag
+     {
+        "keys": ["primary+e", "primary+e"],
+        "command": "emmet_expand_abbreviation"
+    },
+    {
+        "keys": ["primary+e", "primary+d"],
+        "command": "emmet_remove_tag"
+    },
+       // Balance Outward
+       {
+        "keys": ["primary+e", "primary+o"],
+        "command": "emmet_balance",
+        "args": { "direction": "outward" }
+    },
+
+    // Balance Inward
+    {
+        "keys": ["primary+e", "primary+i"],
+        "command": "emmet_balance",
+        "args": { "direction": "inward" }
+    },
+      // Rename Tag
+      {
+        "keys": ["primary+e", "primary+r"],
+        "command": "emmet_rename_tag"
+    },
+       // Rename Tag
+       {
+        "keys": ["primary+e", "primary+a"],
+        "command": "emmet_wrap_with_abbreviation"
+    },
+    { "keys": ["alt+shift+b"], "command": "expand_selection", "args": {"to": "block"} },
+    { "keys": ["super+shift+l"], "command": "expand_selection", "args": {"to": "line"} },
+    { "keys": ["alt+shift+a"], "command": "expand_selection", "args": {"to": "smart"} },
+    { "keys": ["ctrl+a"], "command": "expand_selection", "args": {"to": "smart"} },
+    { "keys": ["alt+shift+p"], "command": "expand_selection_to_paragraph", "args": {"to": "paragraph"} },
+    {
+        "keys": ["primary+shift+a"],
+        "command": "lsp_expand_selection",
+        "context": [{"key": "lsp.session_with_capability", "operand": "selectionRangeProvider"}]
+    },
+    { "keys": ["ctrl+]"], "command": "next_result" },
+    { "keys": ["ctrl+["], "command": "prev_result" },
+
+    // Clojure Sublimed
+     // Look for .nrepl-port file and try connection to port in it
+     {"keys":    ["ctrl+j"],
+      "command": "clojure_sublimed_connect_nrepl_jvm",
+      "args":    {"address": "auto"}},
+
+      {"keys": ["ctrl+enter"],
+          "command": "clojure_sublimed_eval",
+          "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+     // Evaluate Buffer
+     {"keys": ["ctrl+b"],
+      "command": "clojure_sublimed_eval_buffer",
+      "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+       // // Toggle Info
+       {"keys": ["ctrl+i"],
+          "command": "clojure_sublimed_toggle_info",
+          "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+     // // Clear Evaluation Results
+     {"keys": ["ctrl+r"],
+      "command": "clojure_sublimed_clear_evals",
+      "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+    // // Toggle Stacktrace
+    {"keys": ["ctrl+e"],
+      "command": "clojure_sublimed_toggle_trace",
+      "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+       // // Copy Evaluation Result
+       {"keys": ["ctrl+c"],
+          "command": "clojure_sublimed_copy",
+          "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+      // Toggle Symbol Info
+     // {"keys": ["ctrl+d"],
+     //  "command": "clojure_sublimed_toggle_symbol",
+     //  "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
+
+     { "keys": ["ctrl+w", "c"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+     {"keys": ["ctrl+w", "left"], "command": "focus_neighboring_group", "args": {"forward": false} },
+     {"keys": ["ctrl+w", "right"], "command": "focus_neighboring_group" },
+     {"keys": ["ctrl+w", "right"], "command": "focus_neighboring_group" },
+     {
+        "keys": ["ctrl+w", "1"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 1.0],
+            "rows": [0.0, 1.0],
+            "cells": [[0, 0, 1, 1]]
+        }
+    },
+    {
+        "keys": ["ctrl+w", "2"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 0.5, 1.0],
+            "rows": [0.0, 1.0],
+            "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
+        }
+    },
+    {
+        "keys": ["ctrl+w", "3"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 0.33, 0.66, 1.0],
+            "rows": [0.0, 1.0],
+            "cells": [[0, 0, 1, 1], [1, 0, 2, 1], [2, 0, 3, 1]]
+        }
+    },
+    {
+        "keys": ["ctrl+w", "4"],
+        "command": "set_layout",
+        "args":
+        {
+            "cols": [0.0, 0.25, 0.5, 0.75, 1.0],
+            "rows": [0.0, 1.0],
+            "cells": [[0, 0, 1, 1], [1, 0, 2, 1], [2, 0, 3, 1], [3, 0, 4, 1]]
+        }
+    }
+ ]

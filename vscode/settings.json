@@ -1,0 +1,12 @@
+{
+    "http.proxyAuthorization": null,
+    "workbench.colorTheme": "Alabaster",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.fontSize": 15,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.inlineSuggest.enabled": true,
+    "calva.paredit.defaultKeyMap": "strict",
+    "workbench.activityBar.visible": false,
+    "window.zoomLevel": 1
+}

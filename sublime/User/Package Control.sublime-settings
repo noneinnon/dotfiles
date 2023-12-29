@@ -1,0 +1,33 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"Alabaster Color Scheme",
+		"AlpineJS",
+		"Ansible",
+		"Astro",
+		"Babel",
+		"BracketHighlighter",
+		"Clojure Sublimed",
+		"Emmet",
+		"Hyperscript",
+		"LSP",
+		"LSP-astro",
+		"LSP-eslint",
+		"LSP-marksman",
+		"LSP-pylsp",
+		"LSP-tailwindcss",
+		"LSP-typescript",
+		"LSP-yaml",
+		"Package Control",
+		"Profile Switcher",
+		"Python 3",
+		"RemoteSubl",
+		"Svelte",
+		"Terminal",
+		"Writer Color Scheme",
+	],
+	"in_process_packages":
+	[
+	],
+}

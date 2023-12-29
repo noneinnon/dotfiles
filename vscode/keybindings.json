@@ -1,0 +1,198 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+e f",
+        "command": "calva.evaluateSelection",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && !suggestWidgetVisible && editorLangId == 'clojure'"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-calva.evaluateSelection",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && !suggestWidgetVisible && editorLangId == 'clojure'"
+    },
+    {
+        "key": "cmd+e cmd+f",
+        "command": "calva.loadFile",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "ctrl+alt+c enter",
+        "command": "-calva.loadFile",
+        "when": "calva:connected && calva:keybindingsEnabled && editorLangId == 'clojure'"
+    },
+    {
+        "key": "cmd+e e",
+        "command": "calva.evaluateEnclosingForm",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-calva.evaluateEnclosingForm",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "cmd+e r",
+        "command": "calva.evaluateCurrentTopLevelForm",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "-calva.evaluateCurrentTopLevelForm",
+        "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+    },
+    {
+        "key": "cmd+e",
+        "command": "-actions.findWithSelection"
+    },
+    {
+        "key": "f1",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "cmd+k c",
+        "command": "-workbench.files.action.compareWithClipboard"
+    },
+    {
+        "key": "cmd+k r",
+        "command": "-workbench.action.files.revealActiveFileInWindows"
+    },
+    {
+        "key": "ctrl+alt+c alt+c",
+        "command": "-calva.connectNonProjectREPL",
+        "when": "calva:keybindingsEnabled"
+    },
+    {
+        "key": "cmd+k r",
+        "command": "calva.jackIn",
+        "when": "calva:keybindingsEnabled && workspaceFolderCount > 0"
+    },
+    {
+        "key": "ctrl+alt+c ctrl+alt+j",
+        "command": "-calva.jackIn",
+        "when": "calva:keybindingsEnabled && workspaceFolderCount > 0"
+    },
+    {
+        "key": "cmd+k c",
+        "command": "calva.startOrConnectRepl"
+    },
+    {
+        "key": "ctrl+alt+c ctrl+alt+r",
+        "command": "-calva.startOrConnectRepl"
+    },
+    {
+        "key": "shift+cmd+a",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+right",
+        "command": "-editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "cmd+k cmd+a",
+        "command": "editor.action.sourceAction"
+    },
+    {
+        "key": "cmd+k cmd+a",
+        "command": "-keybindings.editor.addKeybinding",
+        "when": "inKeybindings && keybindingFocus"
+    },
+    {
+        "key": "cmd+k cmd+g",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "f12",
+        "command": "-editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    {
+        "key": "cmd+k cmd+r",
+        "command": "-git.revertSelectedRanges",
+        "when": "isInDiffEditor && !operationInProgress"
+    },
+    {
+        "key": "cmd+k cmd+r",
+        "command": "-workbench.action.keybindingsReference"
+    },
+    {
+        "key": "cmd+k cmd+r",
+        "command": "editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "shift+f12",
+        "command": "-editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "cmd+k cmd+e",
+        "command": "editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "f2",
+        "command": "-editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+k cmd+k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+k cmd+i",
+        "command": "-editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+e cmd+u",
+        "command": "editor.emmet.action.updateTag"
+    },
+    {
+        "key": "cmd+e cmd+d",
+        "command": "editor.emmet.action.removeTag"
+    },
+    {
+        "key": "cmd+e cmd+o",
+        "command": "editor.emmet.action.balanceOut"
+    },
+    {
+        "key": "cmd+e cmd+i",
+        "command": "editor.emmet.action.balanceIn"
+    },
+    {
+        "key": "cmd+r",
+        "command": "workbench.action.gotoSymbol"
+    },
+    {
+        "key": "shift+cmd+o",
+        "command": "-workbench.action.gotoSymbol"
+    },
+    {
+        "key": "cmd+r",
+        "command": "-workbench.action.reloadWindow",
+        "when": "isDevelopment"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "workbench.action.showAllSymbols",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+t",
+        "command": "-workbench.action.showAllSymbols"
+    }
+]
