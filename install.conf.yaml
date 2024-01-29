@@ -16,7 +16,7 @@
     ~/.skhdrc: .skhdrc
     ~/.config/fish/aliases.fish: fish/aliases.fish
     ~/.config/fish/config.fish: fish/config.fish
-    # sublime merge
+    # sublime
     ~/Library/Application Support/Sublime Text/Packages/User: sublime/User/
     # ~/Library/Application Support/Sublime Merge/Packages/User 
     # vscode & vscodium

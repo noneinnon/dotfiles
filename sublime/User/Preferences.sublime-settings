@@ -1,5 +1,5 @@
 {
-"font_size": 19,
+"font_size": 16,
 "font_face": "Fira Code Nerd Font",
 	// "font_face": "Writer",
 	"ignored_packages":
@@ -16,11 +16,12 @@
 	
 "line_numbers": false,
 	
-"folder_exclude_patterns": ["node_modules", ".git", ".obsidian", ".venv", "dist", "build", ".next"],
+"folder_exclude_patterns": ["node_modules", ".git", ".obsidian", ".venv", "dist", "build", ".next", ".clj-kondo", ".lsp"],
 "open_files_in_new_window": true,
 "line_padding_top": 7,
 "line_padding_bottom": 7,
 "index_files": true,
 "tab_completion": true,
-"auto_complete": false,
+"auto_complete": true,
+"dictionary": "Packages/User/Russian.dic",
 }

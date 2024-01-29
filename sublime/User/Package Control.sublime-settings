@@ -3,8 +3,12 @@
 	"installed_packages":
 	[
 		"Hyperscript",
+		"LSP-dockerfile",
 		"LSP-marksman",
+		"MarkdownEditing",
+		"MarkdownPreview",
 		"Parinfer",
+		"Pretty JSON",
 		"Profile Switcher",
 		"Svelte",
 		"Writer Color Scheme",
