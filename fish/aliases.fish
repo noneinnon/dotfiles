@@ -31,3 +31,10 @@ alias ta='tmux attach'
 alias dc='docker compose'
 alias vf='fzf | xargs nvim'
 alias p='pnpm'
+
+function c
+    clear
+end
+
+# Bindings
+bind \ce "nvim ."

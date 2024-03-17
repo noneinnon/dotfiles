@@ -22,18 +22,9 @@ require('lazy').setup({
             'rafamadriz/friendly-snippets',
             'hrsh7th/cmp-path',
             'ray-x/cmp-treesitter',
-            'hrsh7th/cmp-copilot',
-            'github/copilot.vim',
+            -- 'hrsh7th/cmp-copilot'
         },
     },
-    'David-Kunz/gen.nvim',
-    -- {
-    --     'David-Kunz/gen.nvim',
-    --     config = function()
-    --         -- require('gen').model = 'mistral:instruct'
-    --     end,
-    --     lazy = false
-    -- },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -114,7 +105,7 @@ require('lazy').setup({
     },
     'windwp/nvim-spectre',
     'windwp/nvim-ts-autotag',
-    'folke/zen-mode.nvim',
+    -- 'folke/zen-mode.nvim',
     'jpalardy/vim-slime',
     'stevearc/oil.nvim',
     {
@@ -143,12 +134,42 @@ require('lazy').setup({
         build = function() vim.fn["mkdp#util#install"]() end,
     },
     'christoomey/vim-tmux-navigator',
-    { 'akinsho/toggleterm.nvim',       version = "*",                             config = true },
     {
-        'goolord/alpha-nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        'mfussenegger/nvim-dap',
         config = function()
-            require 'alpha'.setup(require 'alpha.themes.startify'.config)
+            local dap = require "dap"
+
+            dap.adapters.chrome = {
+                type = "executable",
+                command = "node",
+                args = { os.getenv("HOME") .. "/path/to/vscode-chrome-debug/out/src/chromeDebug.js" } -- TODO adjust
+            }
+
+            dap.configurations.javascriptreact = { -- change this to javascript if needed
+                {
+                    type = "chrome",
+                    request = "attach",
+                    program = "${file}",
+                    cwd = vim.fn.getcwd(),
+                    sourceMaps = true,
+                    protocol = "inspector",
+                    port = 9222,
+                    webRoot = "${workspaceFolder}"
+                }
+            }
+
+            dap.configurations.typescriptreact = { -- change to typescript if needed
+                {
+                    type = "chrome",
+                    request = "attach",
+                    program = "${file}",
+                    cwd = vim.fn.getcwd(),
+                    sourceMaps = true,
+                    protocol = "inspector",
+                    port = 9222,
+                    webRoot = "${workspaceFolder}"
+                }
+            }
         end
-    },
+    }
 })

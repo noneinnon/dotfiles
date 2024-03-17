@@ -100,4 +100,4 @@ vim.opt.rtp:prepend(lazypath)
 
 require("mappings")
 require("plugins")
--- require("autocmd")
+require("autocmd")

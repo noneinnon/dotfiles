@@ -16,7 +16,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>lca', vim.lsp.buf.code_action, 'Code [A]ction')
+  nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 
@@ -69,6 +69,8 @@ local servers = {
   'gopls',
   'clojure_lsp',
   'diagnosticls',
+  -- 'eslint-lsp',
+  -- 'eslint_d',
   -- 'tailwindcss'
 }
 
@@ -135,8 +137,8 @@ require('lspconfig').lua_ls.setup {
   },
 }
 
-require('lspconfig')["marksman"].setup {
-}
+
+require'lspconfig'.marksman.setup {}
 
 -- https://github.com/neovim/nvim-lspconfig/issues/662
 -- :help vim.lsp.diagnostic.on_publish_diagnostics

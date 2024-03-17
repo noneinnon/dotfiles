@@ -1,7 +1,6 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
-
   defaults = {
     initial_mode = "normal",
     file_ignore_patterns = { "^.git/", "^.png" },
@@ -33,8 +32,8 @@ require('telescope').setup {
   },
 }
 
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+-- Enable telescope rg native, if installed
+pcall(require('telescope').load_extension, 'rg') -- 'fzf'
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>so', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

@@ -24,12 +24,12 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local on_start_group = vim.api.nvim_create_augroup("on_start_group", { clear = true })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.cmd [[cd %:p:h]]
-    end,
-    group = on_start_group
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         vim.cmd [[cd %:p:h]]
+--     end,
+--     group = on_start_group
+-- })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

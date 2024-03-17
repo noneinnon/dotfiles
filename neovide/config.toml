@@ -4,4 +4,3 @@ vsync = true
 maximized = true
 srgb = false
 idle = true
-frame = "None"
