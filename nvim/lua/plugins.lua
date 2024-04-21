@@ -99,8 +99,11 @@ require('lazy').setup({
         end
     },
     "mbbill/undotree",
+-- https://github.com/windwp/nvim-autopairs
     {
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true,
         dependencies = { "nvim-lua/plenary.nvim" },
     },
     'windwp/nvim-spectre',

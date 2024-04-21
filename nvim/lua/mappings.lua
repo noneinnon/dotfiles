@@ -154,6 +154,9 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = 
 
 vim.keymap.set('n', '<LocalLeader>b', "<cmd>:make %<CR>", { noremap = true, silent = true })
 
+vim.keymap.set('n', '<LocalLeader>ls', "<cmd>:!npx lint-staged %<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<LocalLeader>f', "<cmd>:!npx prettier % --write<CR>", { noremap = true, silent = true })
+
 
 -- for russian layout
 bind("i", "<c-х>", "<C-[>", opts)
@@ -179,6 +182,8 @@ local function execute_selected_lines_and_paste_output()
     -- Paste the output into the new split
     vim.fn.append(0, vim.split(output, "\n"))
 end
+
+
 
 
 bind("v", "<leader><leader>e", execute_selected_lines_and_paste_output, opts)
