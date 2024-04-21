@@ -74,6 +74,8 @@ local servers = {
   -- 'tailwindcss'
 }
 
+local lspconfig = require 'lspconfig'
+
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
   ensure_installed = servers,
@@ -92,19 +94,35 @@ end
 
 require 'lspconfig'.html.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
   filetypes = { 'html', 'handlebars' }
 }
 
 require 'lspconfig'.astro.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
   filetypes = { 'astro' }
 }
 
 require 'lspconfig'.tailwindcss.setup {
   capabilities = capabilities,
-  filetypes = { 'astro', 'javascriptreact', 'typescriptreact', 'clojure' },
-  tailwindCss = {
-    classAttributes = { "class", "className", "class:list", "classList", "ngClass", ":class" },
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("resources/tailwind.config.js", "tailwind.config.js", ".git"),
+  filetypes = { 'astro', 'javascriptreact', 'typescriptreact', 'clojure', 'html' },
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+      validate = true,
+      experimental = {
+        classRegex = {
+          ":class\\s+\"([^\"]*)\"",
+          ":[\\w-.#>]+\\.([\\w-]*)"
+        },
+      },
+      includeLanguages = {
+        clojure = "html"
+      },
+    }
   }
 }
 
@@ -138,7 +156,7 @@ require('lspconfig').lua_ls.setup {
 }
 
 
-require'lspconfig'.marksman.setup {}
+require 'lspconfig'.marksman.setup {}
 
 -- https://github.com/neovim/nvim-lspconfig/issues/662
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
