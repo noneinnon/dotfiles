@@ -1,4 +1,6 @@
-require("oil").setup({
+local oil = require "oil"
+
+oil.setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
   -- Set to false if you still want to use netrw.
   default_file_explorer = true,
@@ -48,7 +50,7 @@ require("oil").setup({
     ["g?"] = "actions.show_help",
     ["<CR>"] = "actions.select",
     ["<C-s>"] = "actions.select_vsplit",
-    ["<C-h>"] = "actions.select_split",
+    -- ["<C-h>"] = "actions.select_split",
     ["<C-t>"] = "actions.select_tab",
     ["<C-p>"] = "actions.preview",
     ["<C-c>"] = "actions.close",
@@ -137,4 +139,8 @@ require("oil").setup({
   },
 })
 
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Oil - Open parent directory" })
+vim.keymap.set("n", "_", function()
+  local current_dir = vim.fn.expand('%:h')
+  oil.open_float(current_dir)
+end, { desc = "Oil - Open current directory in float" })
