@@ -69,7 +69,7 @@ local servers = {
   'gopls',
   'clojure_lsp',
   'diagnosticls',
-  -- 'eslint-lsp',
+  'eslint',
   -- 'eslint_d',
   -- 'tailwindcss'
 }
