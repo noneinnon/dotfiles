@@ -17,3 +17,5 @@ dotbot
 
 .sublime-workspace
 test
+dotfiles.sublime-workspace
+kitty/current-theme.conf
