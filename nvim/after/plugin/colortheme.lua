@@ -1,2 +1,2 @@
 vim.cmd [[colorscheme alabaster]]
-vim.o.background = "light"
+vim.o.background = "dark"
