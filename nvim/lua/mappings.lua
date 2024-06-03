@@ -42,8 +42,6 @@ vim.keymap.set('', '<leader><tab>', ':b#<CR>', { silent = true })
 vim.keymap.set('', '<leader>ba', ':ball<CR>', { silent = true })
 vim.keymap.set('', '<leader>bd', ':bdelete<CR>', { silent = true })
 vim.keymap.set('', '<leader>Bd', ':%bd!|e#<CR>', { silent = true })
-vim.keymap.set('', '<leader>bn', ':bnext<CR>', { silent = true })
-vim.keymap.set('', '<leader>bp', ':bprevious<CR>', { silent = true })
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
@@ -123,7 +121,6 @@ if vim.g.neovide then
 end
 
 -- Allow clipboard copy paste in neovim
-vim.g.neovide_input_use_logo = 1
 vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true })
@@ -153,7 +150,6 @@ end, { noremap = true, desc = "Open finder at buffer location" })
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<LocalLeader>b', "<cmd>:make %<CR>", { noremap = true, silent = true })
-
 vim.keymap.set('n', '<LocalLeader>ls', "<cmd>:!npx lint-staged %<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<LocalLeader>f', "<cmd>:!npx prettier % --write<CR>", { noremap = true, silent = true })
 
@@ -183,7 +179,7 @@ local function execute_selected_lines_and_paste_output()
     vim.fn.append(0, vim.split(output, "\n"))
 end
 
-
+vim.fn.expand('%:h')
 
 
 bind("v", "<leader><leader>e", execute_selected_lines_and_paste_output, opts)
