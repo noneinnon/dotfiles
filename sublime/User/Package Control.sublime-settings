@@ -2,18 +2,28 @@
 	"bootstrapped": true,
 	"installed_packages":
 	[
+		"AutoFileName",
+		"Formatter",
+		"GitHubinator",
 		"Hyperscript",
+		"JsPrettier",
 		"LSP-dockerfile",
+		"LSP-intelephense",
 		"LSP-marksman",
+		"LSP-prisma",
 		"MarkdownEditing",
 		"MarkdownPreview",
+		"PackageDev",
 		"Parinfer",
 		"Pretty JSON",
 		"Profile Switcher",
 		"Svelte",
+		"Terminus",
 		"Writer Color Scheme",
 	],
 	"in_process_packages":
 	[
+		"Astro",
+		"LSP-astro",
 	],
 }

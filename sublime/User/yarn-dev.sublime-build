@@ -1,5 +1,5 @@
 {
-	"shell_cmd": "bun test $file",
+	"cmd": ["yarn", "dev"],
 	"keyfiles": ["package.json"],
 	"working_dir": "$folder" // first folder listed in project https://www.sublimetext.com/docs/build_systems.html
 }

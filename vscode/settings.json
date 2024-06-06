@@ -7,5 +7,22 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "editor.inlineSuggest.enabled": true,
     "calva.paredit.defaultKeyMap": "strict",
-    "workbench.activityBar.location": "hidden"
+    "window.zoomLevel": 1,
+    "editor.lineHeight": 2,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "workbench.activityBar.location": "top",
+    "breadcrumbs.enabled": false,
+    "editor.renderControlCharacters": false,
+    "editor.stickyScroll.enabled": false,
+    "codeium.enableExplainProblem": false,
+    "codeium.enableCodeLens": false,
+    "editor.colorDecorators": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.inlineSuggest.suppressSuggestions": true,
+    "security.promptForLocalFileProtocolHandling": false
 }

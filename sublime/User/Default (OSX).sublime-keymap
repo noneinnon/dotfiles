@@ -1,7 +1,7 @@
 [
     { "keys": ["ctrl+o"], "command": "noop" },
     { "keys": ["ctrl+o"], "command": "jump_back" },
-    { "keys": ["ctrl+p"], "command": "jump_forward" },
+    { "keys": ["ctrl+i"], "command": "jump_forward" },
     { "keys": ["ctrl+f"], "command": "toggle_side_bar" },
     { "keys": ["ctrl+u"], "command": "scroll_lines", "args": {"amount": 50.0} },
     { "keys": ["ctrl+d"], "command": "scroll_lines", "args": {"amount": -50.0} },
@@ -16,6 +16,9 @@
  {"keys": ["primary+k", "t"],
  "command": "open_terminal_project_folder"},
 
+ {"keys": ["primary+j"],
+ "command": "toggle_terminus_panel"},
+
   // Git
   {"keys": ["primary+k", "primary+e"],
   "command": "sublime_merge_open_repo"},
@@ -24,6 +27,7 @@
     "command": "save_project_and_workspace_as"
 },
 
+// LSP
 {
     "keys": ["primary+alt+space"],
     "command": "lsp_signature_help_show",
@@ -36,7 +40,7 @@
             "context": [{"key": "lsp.session_with_capability", "operand": "hoverProvider"}]
         },
         {
-            "keys": ["primary+l", "f"],
+            "keys": ["primary+l", "primary+f"],
             "command": "lsp_format_document",
             "context": [{"key": "lsp.session_with_capability", "operand": "documentFormattingProvider | documentRangeFormattingProvider"}]
         },
@@ -98,6 +102,8 @@
     //     "keys": ["shift+f8"],
     //     "command": "lsp_goto_diagnostic"
     // },
+
+    // Emmet
     {
         "keys": ["primary+e", "primary+["],
         "command": "emmet_select_item",
@@ -191,7 +197,7 @@
      //  "command": "clojure_sublimed_toggle_symbol",
      //  "context": [{"key": "selector", "operator": "equal", "operand": "source.clojure"}]},
 
-     { "keys": ["ctrl+w", "c"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+     
      {"keys": ["ctrl+w", "left"], "command": "focus_neighboring_group", "args": {"forward": false} },
      {"keys": ["ctrl+w", "right"], "command": "focus_neighboring_group" },
      {"keys": ["ctrl+w", "right"], "command": "focus_neighboring_group" },
@@ -236,11 +242,11 @@
         }
     },
     {
-        "keys": ["primary+k", "s"],
+        "keys": ["primary+k", "primary+s"],
         "command": "reveal_in_side_bar"
           },
           {
-        "keys": ["primary+k", "f"],
+        "keys": ["primary+k", "primary+f"],
         "command": "open_dir",
         "args": {
             "dir": "$file_path"
@@ -251,5 +257,28 @@
      { "keys": ["primary+k", "p"], "command": "toggle_profile"},
      {  "keys": ["alt+shift+f"],   
         "command": "show_panel",
-         "args": { "panel": "output.find_results", "panel_name": "Results Panel", "toggle": true, "toggle_when_not_focused": true}}
+         "args": { "panel": "output.find_results", "panel_name": "Results Panel", "toggle": true, "toggle_when_not_focused": true}},
+
+     { "keys": ["primary+j"], 
+        "command": "toggle_terminus_panel"
+     }, 
+     // Debugger
+
+     {
+        "keys": ["ctrl+shift+d"],
+        "command": "debugger",
+        "args": {"action": "start_no_debug"}
+     },
+     {
+        "keys": ["ctrl+d"],
+        "command": "show_panel",
+        "args": {"panel": "output.Debugger"}
+     },
+     // windows & panels
+     { "keys": ["ctrl+w", "c"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+     { "keys": ["ctrl+w", "b"], "command": "show_panel", "args": {"panel": "output.exec", "toggle": true} },
+
+     { "keys": ["alt+keypad_enter"], "command": "replace_all", "args": {"close_panel": true},
+         "context": [{"key": "panel", "operand": "replace"}, {"key": "panel_has_focus"}]
+    }
  ]

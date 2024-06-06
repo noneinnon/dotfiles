@@ -1,26 +1,25 @@
 {
+"highlight_line": true,
 "font_size": 16,
 "font_face": "Fira Code Nerd Font",
-	// "font_face": "Writer",
-	"ignored_packages":
-	// [
-	// 	"Vintage",
-	// 	"Vintageous",
+// "font_face": "Writer",
+"ignored_packages":
+// [
+// 	"Vintage",
+// 	"Vintageous",
 	[
+		"Astro",
+		"LSP-astro",
 		"Vintage",
 	],
-	
 "theme": "Adaptive.sublime-theme",
-	
 "color_scheme": "Alabaster BG.sublime-color-scheme",
-	
-"line_numbers": false,
-	
-"folder_exclude_patterns": ["node_modules", ".git", ".obsidian", ".venv", "dist", "build", ".next", ".clj-kondo", ".lsp"],
-"open_files_in_new_window": true,
-"line_padding_top": 7,
-"line_padding_bottom": 7,
-"index_files": true,
+"line_numbers": true,
+"folder_exclude_patterns": ["vendor", "node_modules", ".git", ".obsidian", ".venv", "dist", "build", ".next", ".clj-kondo", ".lsp"],
+"open_files_in_new_window": false,
+"line_padding_top": 15,
+"line_padding_bottom": 15,
+"index_files": false,
 "tab_completion": true,
 "auto_complete": true,
 "dictionary": "Packages/User/Russian.dic",

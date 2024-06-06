@@ -1,0 +1,13 @@
+{
+	// http://www.sublimetext.com/docs/3/themes.html
+	"variables": {
+		"font_face": "Fira Code Nerd Font",
+		"font_size_sm": 15,
+		"font_size": 16,
+		"font_size_lg": 20,
+		"font_size_title": 30,
+	},
+	"rules": [
+	
+	],
+}
