@@ -21,15 +21,17 @@
 	guessRemote = true
 
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 	conflictstyle = diff3
 
 [diff]
 	editor = nvim
-	tool = nvim
+	tool = nvimdiff
+	# tool = smerge
 	colorMoved = default
 
 [core]
+	editor = nvim
 	pager = delta
 	excludesfile = /Users/antonio/.gitignore_global
 
@@ -42,9 +44,3 @@
 
 [push]
 	default = current
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true

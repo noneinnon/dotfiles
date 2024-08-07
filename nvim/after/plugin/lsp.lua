@@ -66,7 +66,7 @@ local servers = {
   'pyright',
   'tsserver',
   'lua_ls',
-  'gopls',
+  -- 'gopls',
   'clojure_lsp',
   'diagnosticls',
   'eslint',

@@ -47,7 +47,7 @@ require('lazy').setup({
         opts = {
             -- add any options here
         },
-        lazy = false,
+        -- lazy = false,
     },
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
     'tpope/vim-dadbod', -- DB client

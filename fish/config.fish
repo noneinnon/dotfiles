@@ -3,6 +3,8 @@ source ~/.config/fish/private.fish
 
 set -g fish_greeting ""
 
+set -gx EDITOR "nvim"
+
 # FZF
 ## https://gist.github.com/max-sixty/3ce6b262b650ac5b94f94c9c190ef7d4
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
