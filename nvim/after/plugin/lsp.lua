@@ -61,15 +61,14 @@ require('mason').setup()
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- NOTICE https://github.com/williamboman/mason-lspconfig.nvim
 local servers = {
-  'pyright',
   'html',
-  'pyright',
-  'tsserver',
+  'ts_ls',
   'lua_ls',
   -- 'gopls',
   'clojure_lsp',
   'diagnosticls',
   'eslint',
+  'terraformls',
   -- 'eslint_d',
   -- 'tailwindcss'
 }

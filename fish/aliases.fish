@@ -37,4 +37,5 @@ function c
 end
 
 # Bindings
-bind \ce "nvim ."
+bind \ce "$EDITOR ."
+alias biff='clj -M:dev dev'

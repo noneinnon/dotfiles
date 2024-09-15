@@ -76,3 +76,5 @@ end, { desc = '[N]otes [W]ord' })
 vim.keymap.set('n', '<leader>sd', function()
   require('telescope.builtin').find_files { cwd = "~/dotfiles" }
 end, { desc = '[S]earch [D]otfiles' })
+
+-- vim.keymap.set('n', '<leader>ga',require("telescope").extensions.live_grep_args.live_grep_args, { noremap = true, desc = 'Grep Args' })

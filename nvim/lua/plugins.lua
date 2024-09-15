@@ -8,8 +8,6 @@ require('lazy').setup({
             'williamboman/mason-lspconfig.nvim',
         },
     },
-    'karoliskoncevicius/sacredforest-vim',
-    'sainnhe/everforest',
     { -- Autocompletion
         'hrsh7th/nvim-cmp',
         dependencies = {
@@ -41,17 +39,45 @@ require('lazy').setup({
     'tpope/vim-rhubarb',
     'kyazdani42/nvim-web-devicons',
     'p00f/alabaster.nvim',
-    'nvim-lualine/lualine.nvim', -- Fancier statusline
+    {
+        'nvim-lualine/lualine.nvim', -- Fancier statusline
+        options = {
+            theme = "zenbones"
+        }
+    },
     {
         'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup {
+                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+            }
+        end,
+        dependencies = {
+            'JoosepAlviste/nvim-ts-context-commentstring', -- jsx comments
+        },
         opts = {
             -- add any options here
         },
         -- lazy = false,
     },
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-    'tpope/vim-dadbod', -- DB client
-    'kristijanhusak/vim-dadbod-ui',
+    {
+        'kristijanhusak/vim-dadbod-ui',
+        dependencies = {
+            { 'tpope/vim-dadbod',                     lazy = true },
+            { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+        },
+        cmd = {
+            'DBUI',
+            'DBUIToggle',
+            'DBUIAddConnection',
+            'DBUIFindBuffer',
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+        end,
+    },
     'tpope/vim-dotenv',
     'tpope/vim-unimpaired',
     -- Fuzzy Finder (files, lsp, etc)
@@ -148,41 +174,44 @@ require('lazy').setup({
     },
     'christoomey/vim-tmux-navigator',
     {
-        'mfussenegger/nvim-dap',
+        "zenbones-theme/zenbones.nvim",
+        -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+        -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+        -- In Vim, compat mode is turned on as Lush only works in Neovim.
+        dependencies = "rktjmp/lush.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
         config = function()
-            local dap = require "dap"
-
-            dap.adapters.chrome = {
-                type = "executable",
-                command = "node",
-                args = { os.getenv("HOME") .. "/path/to/vscode-chrome-debug/out/src/chromeDebug.js" } -- TODO adjust
-            }
-
-            dap.configurations.javascriptreact = { -- change this to javascript if needed
-                {
-                    type = "chrome",
-                    request = "attach",
-                    program = "${file}",
-                    cwd = vim.fn.getcwd(),
-                    sourceMaps = true,
-                    protocol = "inspector",
-                    port = 9222,
-                    webRoot = "${workspaceFolder}"
-                }
-            }
-
-            dap.configurations.typescriptreact = { -- change to typescript if needed
-                {
-                    type = "chrome",
-                    request = "attach",
-                    program = "${file}",
-                    cwd = vim.fn.getcwd(),
-                    sourceMaps = true,
-                    protocol = "inspector",
-                    port = 9222,
-                    webRoot = "${workspaceFolder}"
-                }
-            }
         end
-    }
+    },
+    {
+        "David-Kunz/gen.nvim",
+        opts = {
+            model = "mistral",  -- The default model to use.
+            quit_map = "q",     -- set keymap for close the response window
+            retry_map = "<c-r>", -- set keymap to re-send the current prompt
+            accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
+            host = "localhost", -- The host running the Ollama service.
+            port = "11434",     -- The port on which the Ollama service is listening.
+            display_mode = "split", -- The display mode. Can be "float" or "split" or "horizontal-split".
+            show_prompt = false, -- Shows the prompt submitted to Ollama.
+            show_model = false, -- Displays which model you are using at the beginning of your chat session.
+            no_auto_close = false, -- Never closes the window automatically.
+            hidden = false,     -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+            init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+            -- Function to initialize Ollama
+            command = function(options)
+                local body = { model = options.model, stream = true }
+                return "curl --silent --no-buffer -X POST http://" ..
+                options.host .. ":" .. options.port .. "/api/chat -d $body"
+            end,
+            -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+            -- This can also be a command string.
+            -- The executed command must return a JSON object with { response, context }
+            -- (context property is optional).
+            -- list_models = '<omitted lua function>', -- Retrieves a list of model names
+            debug = false -- Prints errors and the command which is run.
+        }
+    },
 })

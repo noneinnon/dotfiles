@@ -2065,7 +2065,7 @@ layout stack
 #
 map cmd+/ launch --location=hsplit --allow-remote-control kitty +kitten ~/dotfiles/kitty/kitty_search/search.py @active-kitty-window-id
 # BEGIN_KITTY_THEME
-# Alabaster Dark
+# Alabaster
 include current-theme.conf
 # END_KITTY_THEME
 #
@@ -2089,3 +2089,5 @@ input_delay 3
 # Other
 #
 # hide_window_decorations titlebar-only
+tab_bar_style powerline
+
