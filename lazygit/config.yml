@@ -69,6 +69,10 @@ quitOnTopLevelReturn: false
 disableStartupPopups: false
 notARepository: 'prompt' # one of: 'prompt' | 'create' | 'skip' | 'quit'
 promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
+customCommands:
+  - key: '<c-r>'
+    context: 'commits'
+    command: 'gh browse {{.SelectedLocalCommit.Hash}}'
 keybinding:
     universal:
         quit: 'q'
