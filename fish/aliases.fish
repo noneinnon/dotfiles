@@ -6,7 +6,6 @@ alias img='curl -O'
 alias ywav='youtube-dl -x --audio-format "wav"'
 alias ymp3='youtube-dl -x --audio-format "wav"'
 alias ymp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
-
 # npm
 function sscripts
     bat package.json | jq ".scripts" | fzf --ansi --header "NPM scripts for $(pwd) | CTRL-C to cancel" | cut -d ":" -f 1 | xargs -I {} npm run {}
@@ -39,3 +38,5 @@ end
 # Bindings
 bind \ce "$EDITOR ."
 alias biff='clj -M:dev dev'
+
+alias lg='lazygit'
