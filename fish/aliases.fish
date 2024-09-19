@@ -40,3 +40,4 @@ bind \ce "$EDITOR ."
 alias biff='clj -M:dev dev'
 
 alias lg='lazygit'
+alias k='kubectl'
