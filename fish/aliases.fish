@@ -4,7 +4,7 @@ alias vim='nvim'
 alias la='ls -A'
 alias img='curl -O'
 alias ywav='youtube-dl -x --audio-format "wav"'
-alias ymp3='youtube-dl -x --audio-format "wav"'
+alias ymp3='youtube-dl -x --audio-format "mp3"'
 alias ymp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
 # npm
 function sscripts
@@ -41,3 +41,10 @@ alias biff='clj -M:dev dev'
 
 alias lg='lazygit'
 alias k='kubectl'
+
+function posix-source
+	for i in (cat $argv)
+        set arr (echo $i | string match -r "([^=]+)=(.*)")
+  		set -gx $arr[2] $arr[3]
+	end
+end
