@@ -70,6 +70,15 @@ disableStartupPopups: false
 notARepository: 'prompt' # one of: 'prompt' | 'create' | 'skip' | 'quit'
 promptToReturnFromSubprocess: true # display confirmation when subprocess terminates
 customCommands:
+  - key: "C"
+    context: "files"
+    prompts:
+      - type: "input"
+        title: "Commit Summary"
+        key: "Summary"
+    command: git commit -m "[no ci] {{.Form.Summary}}"
+    subprocess: true
+    description: "Multi-line commit with [no ci] prefix"
   - key: '<c-r>'
     context: 'commits'
     command: 'gh browse {{.SelectedLocalCommit.Hash}}'

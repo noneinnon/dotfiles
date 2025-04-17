@@ -96,6 +96,9 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 
+vim.o.backupdir="/tmp/nvim,."
+vim.o.directory="/tmp/nvim,."
+
 vim.opt.rtp:prepend(lazypath)
 
 require("mappings")

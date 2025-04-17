@@ -2,7 +2,7 @@
 vim.keymap.set({ 'n', 'v' }, '<leader>e', ':Gen<CR>')
 
 -- https://github.com/David-Kunz/gen.nvim/blob/main/lua/gen/prompts.lua
-vim.keymap.set('v', '<leader>e', ':Gen Enhance_Grammar_Spelling<CR>')
+vim.keymap.set('v', '<leader>g', ':Gen Enhance_Grammar_Spelling<CR>')
 
 require('gen').prompts['Elaborate_Text'] = {
   prompt = "Elaborate the following text:\n$text",
@@ -20,3 +20,5 @@ require('gen').prompts['Custom_Generate'] = {
   replace = true,
   extract = "```$filetype\n(.-)```"
 }
+
+-- require('gen').select_model()

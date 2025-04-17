@@ -9,7 +9,7 @@ end
 
 cmp.setup {
   completion = {
-    -- autocomplete = false,
+    autocomplete = false,
     keyword_length = 1,
     -- completeopt = "menu,noselect"
   },

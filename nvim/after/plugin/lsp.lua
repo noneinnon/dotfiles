@@ -1,3 +1,4 @@
+
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -7,13 +8,13 @@ local on_attach = function(_, bufnr)
   --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+local nmap = function(keys, func, desc)
+  if desc then
+    desc = 'LSP: ' .. desc
   end
+
+  vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
@@ -86,24 +87,28 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
+    autostart = false,
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
 
 require 'lspconfig'.html.setup {
+  autostart = false,
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { 'html', 'handlebars' }
 }
 
 require 'lspconfig'.astro.setup {
+  autostart = false,
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { 'astro' }
 }
 
 require 'lspconfig'.tailwindcss.setup {
+  autostart = false,
   capabilities = capabilities,
   on_attach = on_attach,
   root_dir = lspconfig.util.root_pattern("resources/tailwind.config.js", "tailwind.config.js", ".git"),
@@ -164,3 +169,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     virtual_text = true -- false to disable helper text
   }
 )
+
+vim.keymap.set('n', '<leader>le', function()
+  vim.cmd[[LspStart]]
+  end
+, { desc = 'Start LSP' })
+
+vim.keymap.set('n', '<leader>ls', function()
+  vim.cmd[[LspStop]]
+  end
+, { desc = 'Stop LSP' })
+
+vim.keymap.set('n', '<leader>li', function()
+  vim.cmd[[LspInfo]]
+  end
+, { desc = 'Lsp Info' })

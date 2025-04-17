@@ -1,11 +1,7 @@
 # ALIASES
-alias oldvim='vim'
 alias vim='nvim'
 alias la='ls -A'
 alias img='curl -O'
-alias ywav='youtube-dl -x --audio-format "wav"'
-alias ymp3='youtube-dl -x --audio-format "mp3"'
-alias ymp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
 # npm
 function sscripts
     bat package.json | jq ".scripts" | fzf --ansi --header "NPM scripts for $(pwd) | CTRL-C to cancel" | cut -d ":" -f 1 | xargs -I {} npm run {}
@@ -30,17 +26,14 @@ alias ta='tmux attach'
 alias dc='docker compose'
 alias vf='fzf | xargs nvim'
 alias p='pnpm'
+alias biff='clj -M:dev dev'
+alias lg='lazygit'
+alias k='kubectl'
+alias t='terraform'
 
 function c
     clear
 end
-
-# Bindings
-bind \ce "$EDITOR ."
-alias biff='clj -M:dev dev'
-
-alias lg='lazygit'
-alias k='kubectl'
 
 function posix-source
 	for i in (cat $argv)
@@ -48,3 +41,18 @@ function posix-source
   		set -gx $arr[2] $arr[3]
 	end
 end
+
+# github related
+function ghw
+    gh repo view --web
+end
+
+function ghp
+    gh pr view --web
+end
+
+function ghpc
+    gh pr create --fill
+end
+# Bindings
+bind \ce "$EDITOR ."

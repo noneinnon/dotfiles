@@ -24,6 +24,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local on_start_group = vim.api.nvim_create_augroup("on_start_group", { clear = true })
 
+
+
 -- vim.api.nvim_create_autocmd("VimEnter", {
 --     callback = function()
 --         vim.cmd [[cd %:p:h]]
@@ -52,4 +54,12 @@ vim.api.nvim_create_autocmd(
   "FileType",
   { pattern = { "help", "startuptime", "qf", "lspinfo", "netrw", "oil" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
 )
+
+vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function()
+        vim.cmd [[LspStop]]
+    end,
+    -- group = on_start_group
+})
+
 

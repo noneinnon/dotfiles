@@ -11,9 +11,18 @@ require('nvim-treesitter.configs').setup {
   -- languages to be installed here that you want installed for treesitter
   ensure_installed = {
     'html', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'sql', 'json', 'clojure', 'javascript',
-    'vim' },
+    'vim', 'yaml' },
 
-  highlight = { enable = true },
+  highlight = {
+    enable = true,
+    disable = function(_, buf)
+      local max_filesize = 100 * 1024   -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
+  },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
