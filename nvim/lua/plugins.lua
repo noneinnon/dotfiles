@@ -38,7 +38,6 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'kyazdani42/nvim-web-devicons',
-    'p00f/alabaster.nvim',
     {
         'nvim-lualine/lualine.nvim', -- Fancier statusline
         options = {
