@@ -62,22 +62,21 @@ require('mason').setup()
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- NOTICE https://github.com/williamboman/mason-lspconfig.nvim
 local servers = {
-  'html',
+  -- 'html',
   'ts_ls',
   'lua_ls',
   -- 'gopls',
   'clojure_lsp',
   'diagnosticls',
-  'eslint',
+  -- 'eslint',
   'terraformls',
   -- 'eslint_d',
   -- 'tailwindcss'
 }
 
-local lspconfig = require 'lspconfig'
-
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
+  -- automatic_enable = false,
   ensure_installed = servers,
 }
 
@@ -86,51 +85,18 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
+  vim.lsp.config(lsp, {
     autostart = false,
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
+  -- require('lspconfig')[lsp].setup {
+  --   autostart = false,
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  -- }
 end
-
-require 'lspconfig'.html.setup {
-  autostart = false,
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { 'html', 'handlebars' }
-}
-
-require 'lspconfig'.astro.setup {
-  autostart = false,
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = { 'astro' }
-}
-
-require 'lspconfig'.tailwindcss.setup {
-  autostart = false,
-  capabilities = capabilities,
-  on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern("resources/tailwind.config.js", "tailwind.config.js", ".git"),
-  filetypes = { 'astro', 'javascriptreact', 'typescriptreact', 'clojure', 'html' },
-  settings = {
-    tailwindCSS = {
-      classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
-      validate = true,
-      experimental = {
-        classRegex = {
-          ":class\\s+\"([^\"]*)\"",
-          ":[\\w-.#>]+\\.([\\w-]*)"
-        },
-      },
-      includeLanguages = {
-        clojure = "html"
-      },
-    }
-  }
-}
-
-
+--
 -- Example custom configuration for lua
 --
 -- Make runtime files discoverable to the server
