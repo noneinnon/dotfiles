@@ -26,6 +26,9 @@ require('lazy').setup({
   ui = {
     border = "rounded",
   },
+  rocks = {
+    enabled = false,  -- Disable luarocks support to avoid warnings
+  },
   performance = {
     rtp = {
       disabled_plugins = {
