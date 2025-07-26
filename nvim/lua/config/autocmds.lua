@@ -55,11 +55,11 @@ vim.api.nvim_create_autocmd(
   { pattern = { "help", "startuptime", "qf", "lspinfo", "netrw", "oil" }, command = [[nnoremap <buffer><silent> q :close<CR>]] }
 )
 
-vim.api.nvim_create_autocmd('VimEnter', {
-    callback = function()
-        vim.cmd [[LspStop]]
-    end,
-    -- group = on_start_group
-})
+-- vim.api.nvim_create_autocmd('VimEnter', {
+--     callback = function()
+--         vim.cmd [[LspStop]]
+--     end,
+--     -- group = on_start_group
+-- })
 
 
