@@ -19,7 +19,8 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- Theme configuration can go here
+      vim.cmd [[colorscheme zenbones]]
+      vim.o.background = "dark"
     end,
   },
   {

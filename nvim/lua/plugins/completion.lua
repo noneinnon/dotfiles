@@ -118,7 +118,14 @@ return {
       'rafamadriz/friendly-snippets',
     },
     config = function()
+      local ls = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
+      require('snippets')
+      
+      -- Filetype extensions
+      ls.filetype_extend('typescriptreact', {'javascriptreact'})
+      ls.filetype_extend('typescript', {'javascript'})
+      ls.filetype_extend('javascript', {'html'})
     end,
   },
 }
