@@ -3,133 +3,32 @@ return {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      { 'williamboman/mason.nvim', config = true },
+      { 'williamboman/mason-lspconfig.nvim' },
     },
     config = function()
-      -- LSP settings - function runs when LSP connects to buffer
-      local on_attach = function(_, bufnr)
-        local nmap = function(keys, func, desc)
-          if desc then
-            desc = 'LSP: ' .. desc
-          end
-          vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-        end
-
-        nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-        nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
-        nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-        nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-        nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-        nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-        nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
-        nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-        nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-        nmap('<leader>wl', function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, '[W]orkspace [L]ist Folders')
-
-        -- Create Format command
-        vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-          if vim.lsp.buf.format then
-            vim.lsp.buf.format()
-          elseif vim.lsp.buf.formatting then
-            vim.lsp.buf.formatting()
-          end
-        end, { desc = 'Format current buffer with LSP' })
-
-        nmap('<leader>lf', ':Format<CR>', '[L]SP format [B]uffer')
-      end
-
-      -- Diagnostic keymaps
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-      vim.keymap.set('n', '<leader>,e', vim.diagnostic.open_float)
-      vim.keymap.set('n', '<leader>,q', vim.diagnostic.setloclist)
-
-      -- LSP servers to install
-      local servers = {
-        'ts_ls',
-        'lua_ls',
-        'clojure_lsp',
-        'diagnosticls',
-        'terraformls',
-      }
-
-      -- Setup mason and mason-lspconfig
+      -- Load global diagnostic keymaps and configuration
+      require('lsp.keymaps')
+      
+      -- Get our modular components
+      local servers = require('lsp.servers')
+      local on_attach = require('lsp.on_attach')
+      local capabilities = require('util.lsp').capabilities
+      
+      -- Setup Mason
       require('mason').setup()
       require('mason-lspconfig').setup {
-        ensure_installed = servers,
+        ensure_installed = vim.tbl_keys(servers),
       }
-
-      -- Get capabilities from nvim-cmp
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-      -- Setup LSP servers using both methods for compatibility
-      for _, lsp in ipairs(servers) do
-        require('lspconfig')[lsp].setup {
-          autostart = false,
+      
+      -- Setup each server manually (compatible with all versions)
+      for server_name, server_config in pairs(servers) do
+        require('lspconfig')[server_name].setup {
           on_attach = on_attach,
           capabilities = capabilities,
+          settings = server_config.settings,
         }
-        -- Also register with vim.lsp.config for v0.11 compatibility
-        vim.lsp.config(lsp, {
-          autostart = false,
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
       end
-
-      -- Special configuration for lua_ls
-      local runtime_path = vim.split(package.path, ';')
-      table.insert(runtime_path, 'lua/?.lua')
-      table.insert(runtime_path, 'lua/?/init.lua')
-
-      require('lspconfig').lua_ls.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT',
-              path = runtime_path,
-            },
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-            telemetry = { enable = false },
-          },
-        },
-      }
-
-      -- Setup marksman for markdown
-      require('lspconfig').marksman.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
-
-      -- Configure diagnostic handlers
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          virtual_text = true
-        }
-      )
-
-      -- LSP control keymaps
-      vim.keymap.set('n', '<leader>le', function()
-        vim.cmd[[LspStart]]
-      end, { desc = 'Start LSP' })
-
-      vim.keymap.set('n', '<leader>ls', function()
-        vim.cmd[[LspStop]]
-      end, { desc = 'Stop LSP' })
-
-      vim.keymap.set('n', '<leader>li', function()
-        vim.cmd[[LspInfo]]
-      end, { desc = 'Lsp Info' })
     end,
   },
   {

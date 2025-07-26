@@ -183,3 +183,9 @@ vim.fn.expand('%:h')
 
 
 bind("v", "<leader><leader>e", execute_selected_lines_and_paste_output, opts)
+
+-- LSP Diagnostic keymaps (global, not buffer-specific)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+vim.keymap.set('n', '<leader>,e', vim.diagnostic.open_float, { desc = 'Show diagnostic float' })
+vim.keymap.set('n', '<leader>,q', vim.diagnostic.setloclist, { desc = 'Show diagnostic list' })
