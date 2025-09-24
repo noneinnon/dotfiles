@@ -9,9 +9,6 @@ return {
         ignore_install = {},
         modules = {},
         auto_install = false,
-        autotag = {
-          enable = true
-        },
         ensure_installed = {
           'html', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'bash', 'sql', 'json', 'clojure', 'javascript',
           'vim', 'yaml'
@@ -96,12 +93,12 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
   },
-  {
-    'windwp/nvim-ts-autotag',
-    event = "InsertEnter",
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    opts = {},
-  },
+  -- {
+  --   'windwp/nvim-ts-autotag',
+  --   event = "InsertEnter",
+  --   dependencies = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --   },
+  --   opts = {},
+  -- },
 }

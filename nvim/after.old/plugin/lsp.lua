@@ -1,4 +1,3 @@
-
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -8,54 +7,53 @@ local on_attach = function(_, bufnr)
   --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
-local nmap = function(keys, func, desc)
-  if desc then
-    desc = 'LSP: ' .. desc
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = "LSP: " .. desc
+    end
+
+    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
-  vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-end
+  nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+  nmap("<leader>la", vim.lsp.buf.code_action, "Code [A]ction")
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
+  nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-
-  nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-  nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+  nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+  nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+  nmap("<leader>K", vim.lsp.buf.signature_help, "Signature Documentation")
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  nmap('<leader>wl', function()
+  nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+  nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+  nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+  nmap("<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  end, "[W]orkspace [L]ist Folders")
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     if vim.lsp.buf.format then
       vim.lsp.buf.format()
     elseif vim.lsp.buf.formatting then
       vim.lsp.buf.formatting()
     end
-  end, { desc = 'Format current buffer with LSP' })
+  end, { desc = "Format current buffer with LSP" })
 
-  nmap('<leader>lf', ':Format<CR>', '[L]SP format [B]uffer')
+  nmap("<leader>lf", ":Format<CR>", "[L]SP format [B]uffer")
 end
 
-
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>,e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>,q', vim.diagnostic.setloclist)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>,e", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>,q", vim.diagnostic.setloclist)
 -- Setup mason so it can manage external tooling
-require('mason').setup()
+require("mason").setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
@@ -63,26 +61,26 @@ require('mason').setup()
 -- NOTICE https://github.com/williamboman/mason-lspconfig.nvim
 local servers = {
   -- 'html',
-  'ts_ls',
-  'lua_ls',
+  "ts_ls",
+  "lua_ls",
   -- 'gopls',
-  'clojure_lsp',
-  'diagnosticls',
+  "clojure_lsp",
+  "diagnosticls",
   -- 'eslint',
-  'terraformls',
+  "terraformls",
   -- 'eslint_d',
   -- 'tailwindcss'
 }
 
 -- Ensure the servers above are installed
-require('mason-lspconfig').setup {
+require("mason-lspconfig").setup({
   -- automatic_enable = false,
   ensure_installed = servers,
-}
+})
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {
@@ -100,53 +98,47 @@ end
 -- Example custom configuration for lua
 --
 -- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
-require('lspconfig').lua_ls.setup {
+require("lspconfig").lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT)
-        version = 'LuaJIT',
+        version = "LuaJIT",
         -- Setup your lua path
         path = runtime_path,
       },
       diagnostics = {
-        globals = { 'vim' },
+        globals = { "vim", "nvim" },
       },
-      workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      workspace = { library = vim.api.nvim_get_runtime_file("", true) },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = { enable = false },
     },
   },
-}
+})
 
-
-require 'lspconfig'.marksman.setup {}
+require("lspconfig").marksman.setup({})
 
 -- https://github.com/neovim/nvim-lspconfig/issues/662
 -- :help vim.lsp.diagnostic.on_publish_diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true -- false to disable helper text
-  }
-)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = true, -- false to disable helper text
+})
 
-vim.keymap.set('n', '<leader>le', function()
-  vim.cmd[[LspStart]]
-  end
-, { desc = 'Start LSP' })
+vim.keymap.set("n", "<leader>le", function()
+  vim.cmd([[LspStart]])
+end, { desc = "Start LSP" })
 
-vim.keymap.set('n', '<leader>ls', function()
-  vim.cmd[[LspStop]]
-  end
-, { desc = 'Stop LSP' })
+vim.keymap.set("n", "<leader>ls", function()
+  vim.cmd([[LspStop]])
+end, { desc = "Stop LSP" })
 
-vim.keymap.set('n', '<leader>li', function()
-  vim.cmd[[LspInfo]]
-  end
-, { desc = 'Lsp Info' })
+vim.keymap.set("n", "<leader>li", function()
+  vim.cmd([[LspInfo]])
+end, { desc = "Lsp Info" })
