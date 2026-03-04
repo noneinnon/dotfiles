@@ -18,9 +18,10 @@ alias brewup='brew update && brew upgrade && brew cleanup && brew doctor'
 alias brewdump='brew bundle dump --force --file=~/dotfiles/Brewfile'
 
 # Other
-alias n='nvim'
+alias n='neovide'
 alias s='subl'
-alias code='codium'
+# alias code='codium'
+alias code='open -a "Visual Studio Code"'
 
 alias ta='tmux attach'
 alias dc='docker compose'
@@ -56,3 +57,6 @@ function ghpc
 end
 # Bindings
 bind \ce "$EDITOR ."
+
+alias ar 'php artisan'
+alias oc 'opencode'
