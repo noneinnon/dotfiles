@@ -12,7 +12,7 @@ return {
       'rafamadriz/friendly-snippets',
       'hrsh7th/cmp-path',
       'ray-x/cmp-treesitter',
-      'PaterJason/cmp-conjure',
+      -- 'PaterJason/cmp-conjure',
     },
     config = function()
       local cmp = require('cmp')
@@ -75,7 +75,10 @@ return {
           { name = 'path' },
           { name = 'buffer', keyword_length = 4 },
           { name = 'treesitter' },
-          { name = 'conjure' },
+          { name = 'conjure', entry_filter = function(entry, ctx)
+            return ctx.filetype ~= 'php'
+          end
+          },
         }),
         formatting = {
           format = require('lspkind').cmp_format({

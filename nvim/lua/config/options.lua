@@ -92,3 +92,6 @@ vim.diagnostic.config {
     prefix = "",
   },
 }
+
+-- search for local config
+vim.o.exrc = true

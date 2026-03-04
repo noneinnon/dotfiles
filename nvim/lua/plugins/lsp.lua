@@ -23,7 +23,7 @@ return {
       
       -- Setup each server manually (compatible with all versions)
       for server_name, server_config in pairs(servers) do
-        require('lspconfig')[server_name].setup {
+        vim.lsp.config[server_name] = {
           on_attach = on_attach,
           capabilities = capabilities,
           settings = server_config.settings,

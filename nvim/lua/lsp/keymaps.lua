@@ -10,3 +10,7 @@ end, { desc = 'Stop LSP' })
 vim.keymap.set('n', '<leader>li', function()
   vim.cmd[[LspInfo]]
 end, { desc = 'LSP Info' })
+
+vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { desc = 'Database UI' })
+vim.keymap.set('n', '<leader>df', ':DBUIFindBuffer<CR>', { desc = 'Database UI - Find buffer' })
+vim.keymap.set('n', '<leader>dt', ':DBUIToggle<CR>', { desc = 'Database UI - Toggle' })

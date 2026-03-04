@@ -16,7 +16,9 @@ return {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
     config = function()
-      vim.keymap.set('n', '<leader>db', ':DBUIToggle<CR>', { desc = 'Database UI' })
+      -- vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { desc = 'Database UI' })
+      -- vim.keymap.set('n', '<leader>df', ':DBUIFindBuffer<CR>', { desc = 'Database UI - Find buffer' })
+      -- vim.keymap.set('n', '<leader>dt', ':DBUIToggle<CR>', { desc = 'Database UI - Toggle' })
     end,
   },
 
@@ -31,7 +33,11 @@ return {
   },
   {
     'Olical/conjure',
+    lazy = true,
     ft = { "clojure", "fennel", "lisp", "scheme" },
+    init = function()
+    end,
+    dependencies = { "PaterJason/cmp-conjure" },
   },
 
   -- Web development
