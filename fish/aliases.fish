@@ -60,3 +60,27 @@ bind \ce "$EDITOR ."
 
 alias ar 'php artisan'
 alias oc 'opencode'
+alias sail 'APP_SERVICE=app sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias compose 'docker compose'
+
+alias fp "fish --private"
+alias bws "bw list items --search"
+alias bwp "bw get password"
+alias bwl "bw get username"
+alias bwi "bw get item"
+
+function bwk
+    bw get item $argv | jq '.sshKey'
+end
+
+function bwkp
+    bw get item $argv | jq '.sshKey.privateKey'
+end
+
+function bwu
+    set -gx BW_SESSION (bw unlock --raw)
+end
+
+function no
+    nvim "oil-ssh://$argv"
+end

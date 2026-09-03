@@ -11,7 +11,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'rafamadriz/friendly-snippets',
       'hrsh7th/cmp-path',
-      'ray-x/cmp-treesitter',
+      -- 'ray-x/cmp-treesitter',
       -- 'PaterJason/cmp-conjure',
     },
     config = function()

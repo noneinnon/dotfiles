@@ -27,14 +27,14 @@ return {
   },
   -- Intellephse
   -- intelephense = {},
-  phpactor = {
-    filetypes = { "php", "blade" },
-  },
+  -- phpactor = {
+  --   filetypes = { "php", "blade" },
+  -- },
   -- phpstan = {
   --   filetypes = { "php", "blade"  },
   -- },
   psalm = {
-    filetypes = { "php", "blade"  },
+    filetypes = { "php", "blade" },
   },
   
   -- Lua with custom settings for Neovim development

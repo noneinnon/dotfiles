@@ -27,7 +27,6 @@ set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
-
 function dark-theme
     kitty +kitten themes --reload-in=all zenbones_dark
     sed -ie 's/vim.o.background.*/vim.o.background = "dark"/' ~/.config/nvim/lua/plugins/ui.lua
@@ -37,6 +36,9 @@ function light-theme
     kitty +kitten themes --reload-in=all zenbones_light
     sed -ie 's/vim.o.background.*/vim.o.background = "light"/' ~/.config/nvim/lua/plugins/ui.lua
 end
+
+# fish_vi_key_bindings
+fish_default_key_bindings
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
