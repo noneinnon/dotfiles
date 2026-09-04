@@ -83,21 +83,6 @@ install_lazygit() {
   rm -rf "$tmp"
 }
 
-install_delta() {
-  # git pager configured in .gitconfig
-  if have delta; then log "delta already installed"; return; fi
-  log "Installing git-delta"
-  local tag tmp
-  tag="$(gh_latest dandavison/delta)"
-  tmp="$(mktemp -d)"
-  if curl -fsSL "https://github.com/dandavison/delta/releases/download/${tag}/git-delta_${tag}_${DEB_ARCH}.deb" -o "$tmp/delta.deb"; then
-    sudo dpkg -i "$tmp/delta.deb" || sudo apt-get install -yf
-  else
-    warn "delta .deb download failed; skipping"
-  fi
-  rm -rf "$tmp"
-}
-
 install_gh() {
   if have gh; then log "gh already installed"; return; fi
   log "Installing GitHub CLI"
@@ -162,7 +147,6 @@ main() {
       install_apt
       install_nvim
       install_lazygit
-      install_delta
       install_gh
       install_herdr
       install_tpm
