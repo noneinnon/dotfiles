@@ -52,7 +52,8 @@ install_apt() {
 install_nvim() {
   # Ubuntu's apt neovim is too old for this config (lazy.nvim + modern LSP),
   # so pull the official stable tarball into /opt.
-  if have nvim && nvim --version | head -n1 | grep -qE 'v0\.(1[1-9]|[2-9][0-9])'; then
+  # 0.12+ required: some plugins (aerial, oil) hard-gate on nvim-0.12 at setup.
+  if have nvim && nvim --version | head -n1 | grep -qE 'v0\.(1[2-9]|[2-9][0-9])'; then
     log "nvim already recent enough ($(nvim --version | head -n1))"
     return
   fi

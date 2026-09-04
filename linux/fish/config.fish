@@ -1,14 +1,15 @@
 # Linux fish config — minimal counterpart of ../../fish/config.fish
 # Differences vs macOS: no homebrew paths, no pbcopy, no orbstack.
 
+set -g fish_greeting ""
+set -gx EDITOR nvim
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+
+# after EDITOR is set: aliases.fish binds ctrl-e to "$EDITOR ."
 source ~/.config/fish/aliases.fish
 
 # optional, machine-local secrets (not in git)
 test -f ~/.config/fish/private.fish; and source ~/.config/fish/private.fish
-
-set -g fish_greeting ""
-set -gx EDITOR nvim
-set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 # PATH: user binaries (fd/bat shims, lazygit) + neovim tarball install
 fish_add_path -g "$HOME/.local/bin"
