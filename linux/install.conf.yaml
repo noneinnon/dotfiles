@@ -7,8 +7,13 @@
     link:
       relink: true
       create: true
+      force: true
 
-- clean: ['~', '~/.config']
+- clean:
+    '~/':
+        force: true
+    '~/.config':
+        force: true
 
 - link:
     # editor
