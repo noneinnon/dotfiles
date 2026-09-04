@@ -8,8 +8,19 @@ There are handly alliases in`fish/aliases.fish`, that can be used to update Brew
 
 ## Installation
 
+### macOS
+
 1. Run `brewup`
 2. Run `sh install`
+
+### Linux (Ubuntu/Debian)
+
+Minimal profile — nvim, tmux, lazygit + CLI utilities (no casks/GUI apps):
+
+1. Run `./linux/bootstrap.sh`
+2. Run `./install.linux`
+
+See [linux/README.md](linux/README.md) for details.
 
 ## Dependencies
 

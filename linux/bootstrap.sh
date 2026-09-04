@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+# Minimal Ubuntu/Debian bootstrap for this dotfiles repo.
+#
+#   nvim + tmux + lazygit + CLI utilities. No casks, no GUI apps.
+#
+# Usage:
+#   ./linux/bootstrap.sh          # everything
+#   ./linux/bootstrap.sh apt      # only apt packages
+#   SKIP_FISH_DEFAULT=1 ./linux/bootstrap.sh
+#
+# Idempotent: safe to re-run.
+
+set -euo pipefail
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LOCAL_BIN="$HOME/.local/bin"
+mkdir -p "$LOCAL_BIN"
+
+log()  { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
+warn() { printf '\033[1;33m[warn]\033[0m %s\n' "$*"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+case "$(uname -m)" in
+  x86_64|amd64) ARCH=x86_64; DEB_ARCH=amd64; NVIM_ARCH=linux-x86_64 ;;
+  aarch64|arm64) ARCH=arm64;  DEB_ARCH=arm64; NVIM_ARCH=linux-arm64 ;;
+  *) echo "unsupported arch: $(uname -m)" >&2; exit 1 ;;
+esac
+
+# Resolve the latest release tag of a GitHub repo without needing a token.
+gh_latest() {
+  curl -fsSL "https://api.github.com/repos/$1/releases/latest" \
+    | grep -m1 '"tag_name"' | cut -d'"' -f4
+}
+
+install_apt() {
+  log "Installing apt packages"
+  sudo apt-get update -qq
+  sudo apt-get install -y --no-install-recommends \
+    build-essential ca-certificates curl wget git unzip tar gzip \
+    fish tmux \
+    ripgrep fd-find bat jq tree htop \
+    fzf \
+    python3 python3-pip python3-venv \
+    xclip wl-clipboard \
+    gettext ninja-build cmake pkg-config
+
+  # Ubuntu ships these under different binary names.
+  [ -x /usr/bin/fdfind ] && ln -sf /usr/bin/fdfind "$LOCAL_BIN/fd"
+  [ -x /usr/bin/batcat ] && ln -sf /usr/bin/batcat "$LOCAL_BIN/bat"
+}
+
+install_nvim() {
+  # Ubuntu's apt neovim is too old for this config (lazy.nvim + modern LSP),
+  # so pull the official stable tarball into /opt.
+  if have nvim && nvim --version | head -n1 | grep -qE 'v0\.(1[1-9]|[2-9][0-9])'; then
+    log "nvim already recent enough ($(nvim --version | head -n1))"
+    return
+  fi
+  log "Installing neovim (stable tarball) to /opt/nvim"
+  local tmp url
+  tmp="$(mktemp -d)"
+  url="https://github.com/neovim/neovim/releases/download/stable/nvim-${NVIM_ARCH}.tar.gz"
+  curl -fsSL "$url" -o "$tmp/nvim.tar.gz"
+  sudo rm -rf /opt/nvim
+  sudo mkdir -p /opt/nvim
+  sudo tar -xzf "$tmp/nvim.tar.gz" -C /opt/nvim --strip-components=1
+  sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+  rm -rf "$tmp"
+  nvim --version | head -n1
+}
+
+install_lazygit() {
+  if have lazygit; then log "lazygit already installed"; return; fi
+  log "Installing lazygit"
+  local tag ver tmp
+  tag="$(gh_latest jesseduffield/lazygit)"
+  ver="${tag#v}"
+  tmp="$(mktemp -d)"
+  curl -fsSL "https://github.com/jesseduffield/lazygit/releases/download/${tag}/lazygit_${ver}_Linux_${ARCH}.tar.gz" \
+    -o "$tmp/lazygit.tar.gz"
+  tar -xzf "$tmp/lazygit.tar.gz" -C "$tmp" lazygit
+  install -m 755 "$tmp/lazygit" "$LOCAL_BIN/lazygit"
+  rm -rf "$tmp"
+}
+
+install_delta() {
+  # git pager configured in .gitconfig
+  if have delta; then log "delta already installed"; return; fi
+  log "Installing git-delta"
+  local tag tmp
+  tag="$(gh_latest dandavison/delta)"
+  tmp="$(mktemp -d)"
+  if curl -fsSL "https://github.com/dandavison/delta/releases/download/${tag}/git-delta_${tag}_${DEB_ARCH}.deb" -o "$tmp/delta.deb"; then
+    sudo dpkg -i "$tmp/delta.deb" || sudo apt-get install -yf
+  else
+    warn "delta .deb download failed; skipping"
+  fi
+  rm -rf "$tmp"
+}
+
+install_gh() {
+  if have gh; then log "gh already installed"; return; fi
+  log "Installing GitHub CLI"
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg >/dev/null 2>&1
+  sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+  echo "deb [arch=${DEB_ARCH} signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+    | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+  sudo apt-get update -qq
+  sudo apt-get install -y gh
+}
+
+install_herdr() {
+  # Agent multiplexer; keybindings mirror .tmux.conf (see herdr/config.toml).
+  # Official installer drops the binary into ~/.local/bin (HERDR_INSTALL_DIR).
+  if have herdr; then log "herdr already installed (update with: herdr update)"; return; fi
+  log "Installing herdr"
+  curl -fsSL https://herdr.dev/install.sh | sh
+}
+
+install_tpm() {
+  local dir="$HOME/.tmux/plugins/tpm"
+  if [ -d "$dir" ]; then
+    log "tpm already installed"
+  else
+    log "Installing tmux plugin manager (tpm)"
+    git clone -q --depth 1 https://github.com/tmux-plugins/tpm "$dir"
+  fi
+  warn "Open tmux and press <prefix> + I (C-a I) to install tmux plugins"
+}
+
+install_fisher() {
+  if ! have fish; then warn "fish not installed; skipping fisher"; return; fi
+  log "Installing fisher + plugins"
+  fish -c 'type -q fisher; or curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher' || warn "fisher install failed"
+  # fisher_list holds one plugin per line
+  while read -r plugin; do
+    [ -z "$plugin" ] && continue
+    case "$plugin" in \#*) continue ;; esac
+    fish -c "fisher install $plugin" || warn "failed to install $plugin"
+  done < "$BASEDIR/fisher_list"
+}
+
+set_default_shell() {
+  [ "${SKIP_FISH_DEFAULT:-0}" = "1" ] && { log "Skipping chsh"; return; }
+  local fish_path
+  fish_path="$(command -v fish || true)"
+  [ -z "$fish_path" ] && return
+  if [ "$SHELL" = "$fish_path" ]; then log "fish already default shell"; return; fi
+  log "Setting fish as default shell (may prompt for password)"
+  grep -qxF "$fish_path" /etc/shells || echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
+  chsh -s "$fish_path" || warn "chsh failed; run manually: chsh -s $fish_path"
+}
+
+main() {
+  case "${1:-all}" in
+    apt)     install_apt ;;
+    nvim)    install_nvim ;;
+    lazygit) install_lazygit ;;
+    herdr)   install_herdr ;;
+    all)
+      install_apt
+      install_nvim
+      install_lazygit
+      install_delta
+      install_gh
+      install_herdr
+      install_tpm
+      install_fisher
+      set_default_shell
+      log "Done. Now run: ./install.linux"
+      log "Ensure ~/.local/bin is on PATH (fish config does this for you)."
+      ;;
+    *) echo "usage: $0 [all|apt|nvim|lazygit|herdr]" >&2; exit 1 ;;
+  esac
+}
+
+main "$@"

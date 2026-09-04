@@ -9,6 +9,17 @@ vim.g.maplocalleader = ','
 local bind = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
+local is_mac = vim.fn.has('macunix') == 1
+
+-- Open a path with the OS file/app opener (macOS `open -a`, Linux `xdg-open`)
+local function os_open(app, path)
+    if is_mac then
+        vim.cmd('silent !open -a ' .. vim.fn.shellescape(app) .. ' ' .. vim.fn.shellescape(path))
+    else
+        vim.cmd('silent !xdg-open ' .. vim.fn.shellescape(path))
+    end
+end
+
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -66,9 +77,8 @@ end
 )
 
 vim.keymap.set('n', '<leader>to', function()
-    local current_buffer_path = vim.fn.expand('%:p:h')
-    vim.cmd('silent !open -a "kitty" ' .. current_buffer_path)
-end, { silent = true })
+    os_open('kitty', vim.fn.expand('%:p:h'))
+end, { silent = true, desc = "[T]erminal [O]pen at buffer location" })
 
 
 vim.keymap.set('n', '<leader>on', function()
@@ -136,12 +146,13 @@ vim.keymap.set('', '<C-f>', function()
 end, { noremap = true, silent = true })
 
 local open_at_buffer_loc = function(app)
-    vim.cmd([[:silent !open -a ]] .. app .. " " .. vim.fn.expand('%:p:h'))
+    os_open(app, vim.fn.expand('%:p:h'))
 end
 
 vim.keymap.set('', '<Leader>of', function()
+    -- `app` is only meaningful on macOS; Linux always uses xdg-open
     open_at_buffer_loc('Finder')
-end, { noremap = true, desc = "Open finder at buffer location" })
+end, { noremap = true, desc = "Open file manager at buffer location" })
 
 -- bind('n', 'gx', require('utils').open, {noremap = true, silent = true})
 

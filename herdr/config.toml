@@ -1,0 +1,84 @@
+# ██╗  ██╗███████╗██████╗ ██████╗ ██████╗
+# ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔══██╗
+# ███████║█████╗  ██████╔╝██║  ██║██████╔╝
+# ██╔══██║██╔══╝  ██╔══██╗██║  ██║██╔══██╗
+# ██║  ██║███████╗██║  ██║██████╔╝██║  ██║
+# ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝
+# Agent runtime / terminal multiplexer
+# https://herdr.dev/docs/configuration/
+#
+# Keybindings mirror ~/.tmux.conf so muscle memory transfers:
+# same prefix (C-a), same splits (% / "), same hjkl pane focus,
+# same app shortcuts (g/G/K/N/o), r reloads this config.
+# Reload a running server after edits: `herdr server reload-config` (or prefix, r).
+# `prefix+?` shows every active binding live.
+
+onboarding = false # dotfiles-managed: skip the first-run wizard
+
+[terminal]
+default_shell = "fish" # same as tmux default-shell (bootstrap installs fish)
+
+[ui]
+accent = "magenta" # matches the tmux active-pane/current-window color
+
+[keys]
+prefix = "ctrl+a" # tmux: set -g prefix C-a (C-a C-a sends a literal C-a, like send-prefix)
+
+# Already identical to tmux out of the box, kept as herdr defaults:
+#   new_tab = prefix+c   focus_pane_* = prefix+h/j/k/l   close_pane = prefix+x
+#   next/previous_tab = prefix+n / prefix+p              switch_tab = prefix+1..9
+
+# tmux: bind '%' split-window -h | bind '"' split-window
+# (herdr "vertical" = side by side, "horizontal" = stacked; herdr defaults kept as extras)
+split_vertical   = ["prefix+v", "prefix+percent"]
+split_horizontal = ["prefix+minus", "prefix+double_quote"]
+
+detach = "prefix+d" # tmux default detach binding
+
+# tmux: bind r source-file ~/.tmux.conf (herdr's resize mode moves to R)
+reload_config = "prefix+r"
+resize_mode   = "prefix+shift+r"
+
+# tmux: bind S -> session.sh (tmux-only script). The native herdr equivalent
+# of a session switcher is the goto navigator, so it moves to where S lives.
+goto = "prefix+shift+s" # displaced from prefix+g (lazygit, below)
+
+# Herdr defaults displaced to make room for the tmux app shortcuts below:
+new_workspace            = "prefix+shift+c" # default prefix+shift+n -> notes (N)
+new_worktree             = ""               # default prefix+shift+g -> node (G); still in sidebar right-click
+open_notification_target = "prefix+shift+o" # default prefix+o       -> opencode (o)
+swap_pane_up             = "prefix+alt+k"   # default prefix+shift+k -> k9s (K); other swap directions stay on shift+h/j/l
+
+# --- app shortcuts -----------------------------------------------------------
+# tmux runs these with new-window / split-window; herdr's closest analog is
+# type = "pane": a temporary zoomed pane that closes when the command exits.
+
+[[keys.command]] # tmux: bind g new-window -n '' lazygit
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+description = "lazygit"
+
+[[keys.command]] # tmux: bind G split-window -h node
+key = "prefix+shift+g"
+type = "pane"
+command = "node"
+description = "node repl"
+
+[[keys.command]] # tmux: bind K new-window -n 'k9s' k9s
+key = "prefix+shift+k"
+type = "pane"
+command = "k9s"
+description = "k9s"
+
+[[keys.command]] # tmux: bind N new-window -c $NOTES_DIR -n 'notes' 'nvim .'
+key = "prefix+shift+n"
+type = "pane"
+command = 'cd "${NOTES_DIR:-$HOME}" && exec nvim .'
+description = "notes"
+
+[[keys.command]] # tmux: bind o split-window -h opencode
+key = "prefix+o"
+type = "pane"
+command = "opencode"
+description = "opencode"
