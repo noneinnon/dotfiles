@@ -1,0 +1,8 @@
+# On non-macOS hosts, skip macOS-only entries.
+{{ if ne .chezmoi.os "darwin" }}
+.config/karabiner
+.config/kitty
+{{ end }}
+
+# repo-only files
+README.md

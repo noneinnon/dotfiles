@@ -1,38 +1,43 @@
-## Basic usage
+# dotfiles
 
-### Updating Brewfile
+Managed by [chezmoi](https://www.chezmoi.io). One source, macOS and Linux.
 
-There are handly alliases in`fish/aliases.fish`, that can be used to update Brewfile:
-1. `brewup` - installs deps from `~/dotfiles/Brewfile`
-2. `brewdump` - updates Brewfile in `/dotfiles/Brewfile`
+## Install
 
-## Installation
+```bash
+git clone <this-repo> ~/dotfiles
+chezmoi init --source ~/dotfiles --apply
+```
 
-### macOS
+- **Linux**: also runs `run_once_bootstrap_linux.sh.tmpl` — installs nvim, lazygit,
+  gh, herdr, fisher plugins, CLI utils via apt + GitHub releases. Set
+  `SKIP_FISH_DEFAULT=1` to skip `chsh` to fish.
+- **macOS**: applies configs only; karabiner/kitty included via
+  `{{ if eq .chezmoi.os "darwin" }}` blocks in `.chezmoiignore.tmpl` and the
+  fish/gitconfig templates.
 
-1. Run `brewup`
-2. Run `sh install`
+## What's managed
 
-### Linux (Ubuntu/Debian)
+| Target | Source |
+|---|---|
+| `~/.config/nvim` | `private_dot_config/nvim` |
+| `~/.config/fish` | `private_dot_config/fish` (`config.fish.tmpl`, `aliases.fish.tmpl`) |
+| `~/.gitconfig` | `dot_gitconfig.tmpl` (mac-only WebStorm mergetool behind OS guard) |
+| `~/.gitignore` | `dot_gitignore_global` |
+| `~/.tool-versions` | `dot_tool-versions` |
+| `~/.config/lazygit` | `private_dot_config/lazygit` |
+| `~/.config/herdr` | `private_dot_config/herdr` |
+| `~/.config/karabiner` | `private_dot_config/karabiner` (mac only) |
+| `~/.config/kitty` | `private_dot_config/kitty` (mac only) |
 
-Minimal profile — nvim, tmux, lazygit + CLI utilities (no casks/GUI apps):
+## Daily workflow
 
-1. Run `./linux/bootstrap.sh`
-2. Run `./install.linux`
-
-See [linux/README.md](linux/README.md) for details.
-
-## Dependencies
-
-- fish
-- [fisher](curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher)
-- homebrew
+- Edit: `chezmoi edit ~/.config/nvim/...`
+- Apply to home: `chezmoi apply`
+- After editing a file already on disk: `chezmoi re-add`
 
 ## Cheatsheets
 
 - [fzf.fish](https://github.com/PatrickF1/fzf.fish)
-
-### Kitty
-`kitty list-fonts` lists available fonts
-`kitty +kitten themes` lists & sets themes
-
+- `kitty list-fonts` lists available fonts
+- `kitty +kitten themes` lists & sets themes

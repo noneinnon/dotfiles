@@ -1,0 +1,10 @@
+.DS_Store
+
+tags
+temp
+.idea
+node_modules
+.lsp
+.clj-kondo
+
+.luarc.json

@@ -2,6 +2,7 @@
 	name = Anton Baranov
 	email = 44464480+noneinnon@users.noreply.github.com
 
+{{- if eq .chezmoi.os "darwin" }}
 [mergetool "idea"]
 	cmd = /Applications/WebStorm.app/Contents/MacOS/webstorm merge \
 		$(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") \
@@ -9,6 +10,7 @@
 		$(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") \
 		$(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED") \
 		&& read -n 1 -s
+{{ end }}
 
 [mergetool "vimdiff"]
 	cmd = "nvim $MERGED -c ':Gvdiffsplit!'"

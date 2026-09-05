@@ -1,24 +1,29 @@
-# Linux aliases — minimal counterpart of ../../fish/aliases.fish
-# Dropped: brew*, subl, neovide, open -a, sail/artisan, bw (bitwarden).
-
+# ALIASES
 # ---------------------------------------------------------------- basics
-alias vim 'nvim'
-alias la 'ls -A'
-alias ll 'ls -alh'
-alias img 'curl -O'
-alias c 'clear'
-alias o 'xdg-open'
+alias vim='nvim'
+alias la='ls -A'
+alias ll='ls -alh'
+alias img='curl -O'
+alias c='clear'
+alias fp 'fish --private'
 
 type -q batcat; and alias bat 'batcat'
 type -q fdfind; and alias fd 'fdfind'
 
 # ---------------------------------------------------------------- editors
+{{ if eq .chezmoi.os "darwin" -}}
+alias n='neovide'
+alias s='subl'
+alias code='open -a "Visual Studio Code"'
+{{ else -}}
 alias n 'nvim'
-alias vf 'fzf | xargs nvim'
+alias o 'xdg-open'
+{{ end -}}
+alias vf='fzf | xargs nvim'
 
 # ------------------------------------------------------------------- git
-alias lg 'lazygit'
-alias gco 'git branch --sort=-committerdate | fzf --header "Checkout recent branch" --preview "git diff {1} --color=always | delta" | xargs git checkout'
+alias lg='lazygit'
+alias gco='git branch --sort=-committerdate | fzf --header "Checkout recent branch" --preview "git diff {1} --color=always | delta" | xargs git checkout'
 
 function ghpr
     GH_FORCE_TTY=100% gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 | awk '{print $1}' | xargs gh pr checkout
@@ -36,25 +41,28 @@ function ghpc
     gh pr create --fill
 end
 
-# ------------------------------------------------------------------ tmux
-alias ta 'tmux attach'
-alias tl 'tmux ls'
-
 # --------------------------------------------------------- containers/k8s
-alias dc 'docker compose'
-alias compose 'docker compose'
-alias k 'kubectl'
-alias t 'terraform'
+alias dc='docker compose'
+alias compose='docker compose'
+alias k='kubectl'
+alias t='terraform'
 
 # ------------------------------------------------------------------- node
-alias p 'pnpm'
+alias p='pnpm'
 
 function sscripts
     bat package.json | jq ".scripts" | fzf --ansi --header "NPM scripts for $(pwd) | CTRL-C to cancel" | cut -d ":" -f 1 | xargs -I {} npm run {}
 end
 
-# ------------------------------------------------------------------- misc
-alias fp 'fish --private'
+{{ if eq .chezmoi.os "darwin" -}}
+# ------------------------------------------------------------------- php
+alias ar='php artisan'
+alias sail='APP_SERVICE=app sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+
+# ------------------------------------------------------------------ misc
+alias oc='opencode'
+alias biff='clj -M:dev dev'
+{{ end -}}
 
 function posix-source
     for i in (cat $argv)

@@ -47,7 +47,7 @@ goto = "prefix+shift+s" # displaced from prefix+g (lazygit, below)
 new_workspace            = "prefix+shift+c" # default prefix+shift+n -> notes (N)
 new_worktree             = ""               # default prefix+shift+g -> node (G); still in sidebar right-click
 open_notification_target = "prefix+shift+o" # default prefix+o       -> opencode (o)
-swap_pane_up             = "prefix+alt+k"   # default prefix+shift+k -> k9s (K); other swap directions stay on shift+h/j/l
+swap_pane_up             = "prefix+alt+k"   # default prefix+shift+k freed by dropping k9s; other swap directions stay on shift+h/j/l
 
 # --- app shortcuts -----------------------------------------------------------
 # tmux runs these with new-window / split-window; herdr's closest analog is
@@ -64,12 +64,6 @@ key = "prefix+shift+g"
 type = "pane"
 command = "node"
 description = "node repl"
-
-[[keys.command]] # tmux: bind K new-window -n 'k9s' k9s
-key = "prefix+shift+k"
-type = "pane"
-command = "k9s"
-description = "k9s"
 
 [[keys.command]] # tmux: bind N new-window -c $NOTES_DIR -n 'notes' 'nvim .'
 key = "prefix+shift+n"

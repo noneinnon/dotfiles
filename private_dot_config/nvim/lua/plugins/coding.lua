@@ -46,15 +46,12 @@ return {
     ft = { "html", "css", "javascript", "typescript", "jsx", "tsx", "vue", "svelte" },
   },
 
-  -- Terminal/REPL integration
+  -- Terminal/REPL integration (tmux target dropped with tmux; sends to neovim terminal)
   {
     'jpalardy/vim-slime',
     event = "VeryLazy",
     config = function()
-      -- Slime configuration
-      vim.g.slime_target = "tmux"
-      vim.g.slime_paste_file = vim.fn.expand("$HOME/.slime_paste")
-      vim.g.slime_default_config = {socket_name = "default", target_pane = "{right-of}"}
+      vim.g.slime_target = "neovim"
       vim.g.slime_no_mappings = 1
       vim.g.slime_dont_ask_default = 1
 

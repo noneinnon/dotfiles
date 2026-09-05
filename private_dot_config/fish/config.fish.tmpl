@@ -1,5 +1,8 @@
-# Linux fish config — minimal counterpart of ../../fish/config.fish
-# Differences vs macOS: no homebrew paths, no pbcopy, no orbstack.
+{{- if eq .chezmoi.os "darwin" -}}
+# macOS fish config
+{{- else -}}
+# Linux fish config — no homebrew paths, no pbcopy, no orbstack.
+{{- end }}
 
 set -g fish_greeting ""
 set -gx EDITOR nvim
@@ -11,11 +14,14 @@ source ~/.config/fish/aliases.fish
 # optional, machine-local secrets (not in git)
 test -f ~/.config/fish/private.fish; and source ~/.config/fish/private.fish
 
+{{- if eq .chezmoi.os "linux" }}
 # PATH: user binaries (fd/bat shims, lazygit) + neovim tarball install
 # NOTE: node comes from mise (see 'version mgrs' below); pi uses its bundled node.
 fish_add_path -g "$HOME/.local/bin"
 test -d /opt/nvim/bin; and fish_add_path -g /opt/nvim/bin
+{{- end }}
 
+{{- if eq .chezmoi.os "linux" }}
 # ---------------------------------------------------------------- clipboard
 # Pick whatever this box actually has: wayland -> wl-copy, x11 -> xclip
 if type -q wl-copy
@@ -27,8 +33,9 @@ else if type -q xclip
     alias pbcopy "xclip -selection clipboard"
     alias pbpaste "xclip -selection clipboard -o"
 end
+{{- end }}
 
-# ---------------------------------------------------------------------- FZF
+# FZF
 set -gx FZF_DEFAULT_COMMAND "fd --hidden --no-ignore --follow --exclude='**/.git/'"
 set -gx FZF_DEFAULT_OPTS '--height 50% --min-height=30 --layout=reverse
 --bind=ctrl-u:preview-half-page-up
@@ -41,7 +48,13 @@ set -gx FZF_ALT_C_OPTS "--preview='tree -C {}'"
 set -gx FZF_CTRL_R_OPTS "--preview='echo {}' --preview-window=down:3:hidden:wrap --bind='?:toggle-preview'"
 
 # ------------------------------------------------------------ version mgrs
-# only sourced when actually installed
+{{- if eq .chezmoi.os "darwin" }}
+# macOS: asdf via homebrew
+if test -f /opt/homebrew/opt/asdf/libexec/asdf.fish
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
+end
+{{- else }}
+# Linux: asdf homebrew / asdf-git / mise, whichever is installed
 if test -f /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
     source /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.fish
 else if test -f "$HOME/.asdf/asdf.fish"
@@ -49,15 +62,32 @@ else if test -f "$HOME/.asdf/asdf.fish"
 end
 
 type -q mise; and mise activate fish | source
+{{- end }}
 
 fish_default_key_bindings
 
-# theme toggle for nvim only (no kitty on a server)
+# theme toggle for nvim
 function dark-theme
+    {{- if eq .chezmoi.os "darwin" }}
+    kitty +kitten themes --reload-in=all zenbones_dark
+    sed -i '' -e 's/vim.o.background.*/vim.o.background = "dark"/' ~/.config/nvim/lua/plugins/ui.lua
+    {{- else }}
     sed -i 's/vim.o.background.*/vim.o.background = "dark"/' ~/.config/nvim/lua/plugins/ui.lua
+    {{- end }}
 end
 
 function light-theme
+    {{- if eq .chezmoi.os "darwin" }}
+    kitty +kitten themes --reload-in=all zenbones_light
+    sed -i '' -e 's/vim.o.background.*/vim.o.background = "light"/' ~/.config/nvim/lua/plugins/ui.lua
+    {{- else }}
     sed -i 's/vim.o.background.*/vim.o.background = "light"/' ~/.config/nvim/lua/plugins/ui.lua
+    {{- end }}
 end
+
+{{- if eq .chezmoi.os "darwin" }}
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+{{- end }}
+
 fish_add_path $HOME/.config/composer/vendor/bin

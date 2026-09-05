@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
-# Minimal Ubuntu/Debian bootstrap for this dotfiles repo.
-#
-#   nvim + tmux + lazygit + CLI utilities. No casks, no GUI apps.
-#
-# Usage:
-#   ./linux/bootstrap.sh          # everything
-#   ./linux/bootstrap.sh apt      # only apt packages
-#   SKIP_FISH_DEFAULT=1 ./linux/bootstrap.sh
-#
-# Idempotent: safe to re-run.
+# chezmoi run_once: Linux (Ubuntu/Debian) bootstrap.
+# nvim + lazygit + herdr + fish + CLI utilities. No casks, no GUI apps.
+# Idempotent: re-run manually with `chezmoi init --force` after changing this file.
+
+{{ if ne .chezmoi.os "linux" -}}
+exit 0
+{{ end -}}
 
 set -euo pipefail
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOCAL_BIN="$HOME/.local/bin"
 mkdir -p "$LOCAL_BIN"
 
@@ -37,7 +33,7 @@ install_apt() {
   sudo apt-get update -qq
   sudo apt-get install -y --no-install-recommends \
     build-essential ca-certificates curl wget git unzip tar gzip \
-    fish tmux \
+    fish \
     ripgrep fd-find bat jq tree htop \
     fzf \
     python3 python3-pip python3-venv \
@@ -97,34 +93,24 @@ install_gh() {
 }
 
 install_herdr() {
-  # Agent multiplexer; keybindings mirror .tmux.conf (see herdr/config.toml).
+  # Agent multiplexer (see private_dot_config/herdr/config.toml).
   # Official installer drops the binary into ~/.local/bin (HERDR_INSTALL_DIR).
   if have herdr; then log "herdr already installed (update with: herdr update)"; return; fi
   log "Installing herdr"
   curl -fsSL https://herdr.dev/install.sh | sh
 }
 
-install_tpm() {
-  local dir="$HOME/.tmux/plugins/tpm"
-  if [ -d "$dir" ]; then
-    log "tpm already installed"
-  else
-    log "Installing tmux plugin manager (tpm)"
-    git clone -q --depth 1 https://github.com/tmux-plugins/tpm "$dir"
-  fi
-  warn "Open tmux and press <prefix> + I (C-a I) to install tmux plugins"
-}
-
 install_fisher() {
   if ! have fish; then warn "fish not installed; skipping fisher"; return; fi
   log "Installing fisher + plugins"
   fish -c 'type -q fisher; or curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher' || warn "fisher install failed"
-  # fisher_list holds one plugin per line
-  while read -r plugin; do
-    [ -z "$plugin" ] && continue
-    case "$plugin" in \#*) continue ;; esac
+  for plugin in \
+    patrickf1/fzf.fish \
+    jethrokuan/z \
+    jhillyerd/plugin-git \
+    mattgreen/lucid.fish; do
     fish -c "fisher install $plugin" || warn "failed to install $plugin"
-  done < "$BASEDIR/fisher_list"
+  done
 }
 
 set_default_shell() {
@@ -138,26 +124,12 @@ set_default_shell() {
   chsh -s "$fish_path" || warn "chsh failed; run manually: chsh -s $fish_path"
 }
 
-main() {
-  case "${1:-all}" in
-    apt)     install_apt ;;
-    nvim)    install_nvim ;;
-    lazygit) install_lazygit ;;
-    herdr)   install_herdr ;;
-    all)
-      install_apt
-      install_nvim
-      install_lazygit
-      install_gh
-      install_herdr
-      install_tpm
-      install_fisher
-      set_default_shell
-      log "Done. Now run: ./install.linux"
-      log "Ensure ~/.local/bin is on PATH (fish config does this for you)."
-      ;;
-    *) echo "usage: $0 [all|apt|nvim|lazygit|herdr]" >&2; exit 1 ;;
-  esac
-}
+install_apt
+install_nvim
+install_lazygit
+install_gh
+install_herdr
+install_fisher
+set_default_shell
 
-main "$@"
+log "Bootstrap done. Ensure ~/.local/bin is on PATH (fish config does this for you)."
