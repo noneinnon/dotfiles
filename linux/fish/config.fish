@@ -12,6 +12,7 @@ source ~/.config/fish/aliases.fish
 test -f ~/.config/fish/private.fish; and source ~/.config/fish/private.fish
 
 # PATH: user binaries (fd/bat shims, lazygit) + neovim tarball install
+# NOTE: node comes from mise (see 'version mgrs' below); pi uses its bundled node.
 fish_add_path -g "$HOME/.local/bin"
 test -d /opt/nvim/bin; and fish_add_path -g /opt/nvim/bin
 
@@ -59,3 +60,4 @@ end
 function light-theme
     sed -i 's/vim.o.background.*/vim.o.background = "light"/' ~/.config/nvim/lua/plugins/ui.lua
 end
+fish_add_path $HOME/.config/composer/vendor/bin
