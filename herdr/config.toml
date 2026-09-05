@@ -82,3 +82,7 @@ key = "prefix+o"
 type = "pane"
 command = "opencode"
 description = "opencode"
+
+[theme]
+name = "terminal"
+auto_switch = false
