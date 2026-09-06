@@ -41,17 +41,18 @@ function ghpc
     gh pr create --fill
 end
 
+# --------------------------------------------------------------- chezmoi
+alias cz='chezmoi'
+alias cza='chezmoi apply'
+
 # --------------------------------------------------------- containers/k8s
 alias dc='docker compose'
 alias compose='docker compose'
 alias k='kubectl'
 alias t='terraform'
 
-# ------------------------------------------------------------------- node
-alias p='pnpm'
-
-function sscripts
-    bat package.json | jq ".scripts" | fzf --ansi --header "NPM scripts for $(pwd) | CTRL-C to cancel" | cut -d ":" -f 1 | xargs -I {} npm run {}
+function h
+    herdr
 end
 
 {{ if eq .chezmoi.os "darwin" -}}
@@ -60,8 +61,6 @@ alias ar='php artisan'
 alias sail='APP_SERVICE=app sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
 # ------------------------------------------------------------------ misc
-alias oc='opencode'
-alias biff='clj -M:dev dev'
 {{ end -}}
 
 function posix-source
