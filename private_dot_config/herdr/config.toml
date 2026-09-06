@@ -49,6 +49,9 @@ new_worktree             = ""               # default prefix+shift+g -> node (G)
 open_notification_target = "prefix+shift+o" # default prefix+o       -> opencode (o)
 swap_pane_up             = "prefix+alt+k"   # default prefix+shift+k freed by dropping k9s; other swap directions stay on shift+h/j/l
 
+[experimental]
+kitty_graphics = true
+
 # --- app shortcuts -----------------------------------------------------------
 # tmux runs these with new-window / split-window; herdr's closest analog is
 # type = "pane": a temporary zoomed pane that closes when the command exits.
