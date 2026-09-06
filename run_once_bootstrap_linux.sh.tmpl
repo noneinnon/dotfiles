@@ -100,6 +100,23 @@ install_herdr() {
   curl -fsSL https://herdr.dev/install.sh | sh
 }
 
+install_herdr_plugins() {
+  # Declarative plugin list. Add a line here to have it installed on fresh machines.
+  # herdr-navigator builds from source with cargo (rust comes from mise, see dot_tool-versions).
+  if ! have herdr; then warn "herdr not installed; skipping herdr plugins"; return; fi
+  if ! have cargo; then warn "cargo not found; run 'mise install' first, skipping herdr plugins"; return; fi
+  local plugin
+  for plugin in \
+    thanhdat77/herdr-navigator; do
+    if herdr plugin list | grep -q "$plugin"; then
+      log "herdr plugin $plugin already installed"
+    else
+      log "Installing herdr plugin: $plugin"
+      herdr plugin install "$plugin" --yes || warn "failed to install herdr plugin $plugin"
+    fi
+  done
+}
+
 install_pi() {
   # pi coding agent. npm global install under the mise-managed node
   # (dot_tool-versions), so skip if node isn't set up yet.
@@ -138,6 +155,7 @@ install_nvim
 install_lazygit
 install_gh
 install_herdr
+install_herdr_plugins
 install_pi
 install_fisher
 set_default_shell

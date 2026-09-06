@@ -62,6 +62,12 @@ type = "pane"
 command = "lazygit"
 description = "lazygit"
 
+[[keys.command]] # herdr-navigator plugin (installed by bootstrap, see run_once_bootstrap_linux.sh.tmpl)
+key = "prefix+t"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
 [theme]
 name = "terminal"
 auto_switch = false
