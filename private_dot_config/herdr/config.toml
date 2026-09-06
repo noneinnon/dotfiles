@@ -59,24 +59,6 @@ type = "pane"
 command = "lazygit"
 description = "lazygit"
 
-[[keys.command]] # tmux: bind G split-window -h node
-key = "prefix+shift+g"
-type = "pane"
-command = "node"
-description = "node repl"
-
-[[keys.command]] # tmux: bind N new-window -c $NOTES_DIR -n 'notes' 'nvim .'
-key = "prefix+shift+n"
-type = "pane"
-command = 'cd "${NOTES_DIR:-$HOME}" && exec nvim .'
-description = "notes"
-
-[[keys.command]] # tmux: bind o split-window -h opencode
-key = "prefix+o"
-type = "pane"
-command = "opencode"
-description = "opencode"
-
 [theme]
 name = "terminal"
 auto_switch = false
