@@ -1,0 +1,11 @@
+{
+  "lastChangelogVersion": "0.85.1",
+  "theme": "terminal",
+  "defaultProvider": "opencode",
+  "defaultModel": "kimi-k3",
+  "packages": [
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:pi-terminal-theme"
+  ]
+}

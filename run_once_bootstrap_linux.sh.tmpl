@@ -100,6 +100,15 @@ install_herdr() {
   curl -fsSL https://herdr.dev/install.sh | sh
 }
 
+install_pi() {
+  # pi coding agent. npm global install under the mise-managed node
+  # (dot_tool-versions), so skip if node isn't set up yet.
+  if have pi; then log "pi already installed (update with: pi update)"; return; fi
+  if ! have npm; then warn "npm not found; run 'mise install' first, skipping pi"; return; fi
+  log "Installing pi coding agent"
+  npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+}
+
 install_fisher() {
   if ! have fish; then warn "fish not installed; skipping fisher"; return; fi
   log "Installing fisher + plugins"
@@ -129,6 +138,7 @@ install_nvim
 install_lazygit
 install_gh
 install_herdr
+install_pi
 install_fisher
 set_default_shell
 

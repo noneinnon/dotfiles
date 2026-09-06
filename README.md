@@ -10,7 +10,7 @@ chezmoi init --source ~/dotfiles --apply
 ```
 
 - **Linux**: also runs `run_once_bootstrap_linux.sh.tmpl` — installs nvim, lazygit,
-  gh, herdr, fisher plugins, CLI utils via apt + GitHub releases. Set
+  gh, herdr, pi, fisher plugins, CLI utils via apt + GitHub releases. Set
   `SKIP_FISH_DEFAULT=1` to skip `chsh` to fish.
 - **macOS**: applies configs only; karabiner/kitty included via
   `{{ if eq .chezmoi.os "darwin" }}` blocks in `.chezmoiignore.tmpl` and the
