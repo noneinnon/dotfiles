@@ -64,6 +64,9 @@ end
 type -q mise; and mise activate fish | source
 {{- end }}
 
+# direnv: per-directory env via .envrc (installed via apt on Linux, brew on macOS)
+type -q direnv; and direnv hook fish | source
+
 fish_default_key_bindings
 
 # theme toggle for nvim
